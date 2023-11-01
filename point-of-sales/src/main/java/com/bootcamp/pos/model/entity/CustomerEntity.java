@@ -36,6 +36,10 @@ public class CustomerEntity {
     @Column(name = "other_customer_detail")
     private String otherCustomerDetail;
 
-    @Column(name = "")
+    @Column(name = "ref_payment_id")
     private Long refPaymentId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ref_payment_id", insertable = false, updatable = false)
+    private RefPaymentEntity refPayment;
 }

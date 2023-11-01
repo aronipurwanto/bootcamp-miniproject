@@ -32,6 +32,12 @@ public class CustomerAddressEntity {
     @JoinColumn(name = "address_id", insertable = false, updatable = false)
     private AddressEntity address;
 
+    @Column(name = "date_from")
+    private Date dateFrom;
+
+    @Column(name = "date_to")
+    private Date dateTo;
+
     @Column(name = "ref_address_id")
     private Long refAddressId;
 
@@ -39,6 +45,4 @@ public class CustomerAddressEntity {
     @JoinColumn(name = "ref_address_id", insertable = false, updatable = false)
     private RefAddressEntity refAddress;
 
-    @Column(name = "date_from")
-    private Date dateFrom;
 }

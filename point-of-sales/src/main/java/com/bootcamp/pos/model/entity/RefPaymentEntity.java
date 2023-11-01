@@ -15,9 +15,9 @@ public class RefPaymentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "code", unique = true)
+    @Column(name = "code")
     private String code;
 
-    @Column(name = "description", unique = true)
+    @Column(name = "description")
     private String desc;
 }

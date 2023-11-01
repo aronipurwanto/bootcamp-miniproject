@@ -28,7 +28,7 @@ public class ShoppingBasketEntity {
     private LocalDateTime basketDateTime;
 
     @Column(name = "total_cost")
-    private String totalCost;
+    private Double totalCost;
 
     @Column(name = "other_basket_detail")
     private String otherBasketDetail;

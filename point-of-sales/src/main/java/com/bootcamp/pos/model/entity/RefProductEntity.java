@@ -1,6 +1,7 @@
 package com.bootcamp.pos.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NegativeOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,8 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tbl_ref_address")
-public class RefAddressEntity {
+@Table(name = "tbl_ref_product")
+public class RefProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -21,5 +22,6 @@ public class RefAddressEntity {
 
     @Column(name = "description")
     private String desc;
+
 
 }

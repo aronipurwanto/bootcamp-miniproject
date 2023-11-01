@@ -31,5 +31,12 @@ public class BasketItemEntity {
     private Long productId;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id", insertable = false, nullable = false)
     private ProductEntity product;
+
+    @Column(name = "quantity")
+    private Double quantity;
+
+    @Column(name = "cost")
+    private Double cost;
 }

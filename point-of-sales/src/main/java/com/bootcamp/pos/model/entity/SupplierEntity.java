@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tbl_ref_address")
-public class RefAddressEntity {
+@Table(name = "tbl_supplier")
+public class SupplierEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -19,7 +19,15 @@ public class RefAddressEntity {
     @Column(name = "code")
     private String code;
 
-    @Column(name = "description")
-    private String desc;
+    @Column(name = "name")
+    private String name;
 
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "phone")
+    private Integer phone;
+
+    @Column(name = "other_supplier_detail")
+    private String otherSupplierDetail;
 }
