@@ -15,9 +15,14 @@ public class InventoryLocationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "inventory_location_id")
     private Long locationId;
-
+    //--------Relasi ke Product--------//
     @Column(name = "product_id")
     private Long productId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name ="product_id")
+    private ProductEntity product;
+    //----------------//
 
     //--------Relasi ke Address--------//
     @Column(name = "location_address_id")
@@ -25,6 +30,8 @@ public class InventoryLocationEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "localtion_address_id")
+    private AddressesEntity addresses;
+    //--------------------------------//
 
     @Column(name = "quantity_in_stock")
     private Integer quantity;

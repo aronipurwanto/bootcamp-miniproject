@@ -6,27 +6,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+
 @Data
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name ="tb_customer_address")
-public class CustomerAddressEntity {
-
+@Entity
+@Table(name = "tbl_supplier_locations")
+public class Supplier_Locations {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
-
-    //--------Relasi ke Customer--------//
-    @Column(name = "customer_id")
-    private Long customerId;
+    //--------Relasi ke SUPPLIERS--------//
+    @Column(name = "supplier_code")
+    private String supplierCode;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
-    private CustomerEntity customer;
-    //------------------//
+    @JoinColumn(name = "supplier_code")
+    private SuppliersEntity suppliers;
+    //----------------//
 
     //--------Relasi ke Address--------//
     @Column(name = "address_id")
@@ -35,18 +32,11 @@ public class CustomerAddressEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id")
     private AddressesEntity addresses;
-    //------------------//
+    //----------------//
 
 
-    @Column(name = "date_from")
+    @Column(name = "date_form")
     private Date dateFrom;
-
     @Column(name = "date_to")
     private Date dateTo;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @Column(name = "address_type_code")
-    private RefAddressTypeEntity refAddressType;
-
-
 }

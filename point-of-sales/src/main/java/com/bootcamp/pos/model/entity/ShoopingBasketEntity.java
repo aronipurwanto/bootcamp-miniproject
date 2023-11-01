@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name ="tbl_shopping_basket")
-public class ShoopingBasket {
+public class ShoopingBasketEntity {
     //--------Relasi ke CUSTOMER--------//
     @Column(name = "customer_id")
     private Long customerId;
