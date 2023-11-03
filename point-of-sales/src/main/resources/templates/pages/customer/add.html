@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Customer</title>
+</head>
+<body>
+<form th:action="@{~/customer/save}" method="post">
+  <label>Name :</label><br>
+  <input type="text" name="name" placeholder="Enter Name"><br>
+
+  <label>Phone :</label><br>
+  <input type="text" name="phone" placeholder="Enter Phone"><br>
+
+  <label>Email :</label><br>
+  <input type="text" name="email" placeholder="Enter Phone"><br>
+
+  <label>Date Became</label><br>
+  <input type="date" name="dateBecame" placeholder="Enter Date Became"><br>
+
+  <label>Payment Detail:</label><br>
+  <input type="text" name="paymentDetail" placeholder="Enter Payment Detail"><br>
+
+  <label>Other Customer Detail</label><br>
+  <input type="text" name="otherCustomerDetail" placeholder="Enter Other Customer"><br>
+
+  <button type="submit">Save</button>
+  <a th:href="@{~/customer}">Back</a>
+</form>
+
+</body>
+</html>

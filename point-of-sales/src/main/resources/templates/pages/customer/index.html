@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Customer-Index</title>
 </head>
 <body>
-
+<h2>CUSTOMER</h2>
+<a th:href="@{~/customer/add}">Add Customer</a>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Date Became</th>
+        <th>Payment Detail</th>
+        <th>Other Customer Detail</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer :${customerList}">
+        <td th:text="${customer.name}"></td>
+        <td th:text="${customer.phone}"></td>
+        <td th:text="${customer.email}"></td>
+        <td th:text="${customer.dateBecame}"></td>
+        <td th:text="${customer.paymentDetail}"></td>
+        <td th:text="${customer.otherCustomerDetail}"></td>
+        <td>
+            <a th:href="@{~/customer/edit/{id}(id=${customer.id})}">Edit</a>
+            <a th:href="@{~/customer/Delete/{id}(id=${customer.id})}">Delete</a>
+            <a th:href="@{~/customer/Detail/{id}(id=${customer.id})}">Detail</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
