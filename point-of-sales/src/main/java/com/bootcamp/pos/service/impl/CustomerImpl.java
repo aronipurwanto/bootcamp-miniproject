@@ -2,7 +2,7 @@ package com.bootcamp.pos.service.impl;
 
 import com.bootcamp.pos.model.entity.CustomerEntity;
 import com.bootcamp.pos.model.request.CustomerRequest;
-import com.bootcamp.pos.repository.CustomerRepo;
+import com.bootcamp.pos.repository.CustomerRepository;
 import com.bootcamp.pos.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 public class CustomerImpl implements CustomerService {
-    private final CustomerRepo customerRepo;
+    private final CustomerRepository customerRepo;
     @Override
     public List<CustomerRequest> getAll() {
         return customerRepo.findAll()

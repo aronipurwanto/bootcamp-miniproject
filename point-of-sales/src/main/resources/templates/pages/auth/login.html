@@ -6,14 +6,14 @@
 </head>
 <body>
 <!-- /.login-logo -->
-<div layout:fragment="content" class="card card-outline card-yellow">
-    <div class="card-header text-yellow">
-       <!-- <img th:src="@{~/dist/img/download.png}" alt="Kampus Siakad Logo" class="brand-image img-circle elevation-3"
-             style="width: 50px"> -->
-        <a th:href="@{~/home}" class="h1"><b>Admin</b>LTE</a>
+<div layout:fragment="content" class="card card-outline card-blue">
+    <div class="card-header text-blue">
+       <img th:src="@{~/dist/img/penjualan.jpg}" alt="Kampus Siakad Logo" class="brand-image img-bordered-sm elevation-3"
+             style="width: 50px">
+        <a th:href="@{~/home}" class="h3">Point Of Sales</a>
     </div>
     <div class="card-body">
-        <p>Sign in to start your session</p>
+        <p class="login-box-msg">Sign in to start your session</p>
 
         <form th:action="@{~/login}" method="post">
             <div class="input-group mb-3">
@@ -34,7 +34,7 @@
             </div>
             <div class="row">
                 <div class="col-8">
-                    <div class="icheck-yellow">
+                    <div class="icheck-dark">
                         <input type="checkbox" id="remember" name="remember-me">
                         <label for="remember">
                             Remember Me
@@ -43,7 +43,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-4">
-                    <button type="submit" class="btn btn-outline-warning btn-block">Sign In</button>
+                    <button type="submit" class="btn btn-outline-dark btn-block">Sign In</button>
                 </div>
                 <!-- /.col -->
             </div>

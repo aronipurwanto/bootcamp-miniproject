@@ -15,6 +15,7 @@ import java.util.Date;
 public class SupplierLocationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "date_from")

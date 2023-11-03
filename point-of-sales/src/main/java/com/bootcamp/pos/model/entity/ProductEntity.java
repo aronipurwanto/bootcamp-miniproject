@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -34,5 +37,9 @@ public class ProductEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ref_product_id", insertable = false, updatable = false)
     private RefProductEntity refProduct;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProductSupplierEntity> productSupplier = new ArrayList<>();
+
 
 }

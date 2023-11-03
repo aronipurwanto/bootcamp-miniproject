@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 public class ShoppingBasketEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "customer_id")

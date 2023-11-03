@@ -14,19 +14,18 @@ import java.util.Date;
 @Table(name = "tbl_customer_address")
 public class CustomerAddressEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_addr_id")
-    private Long id;
+    @Column(name = "customer_addr_id", length = 36)
+    private String id;
 
-    @Column(name = "customer_id")
-    private Long customerId;
+    @Column(name = "customer_id", length = 36)
+    private String customerId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id", insertable = false, updatable = false)
     private CustomerEntity customer;
 
-    @Column(name = "address_id")
-    private Long addressId;
+    @Column(name = "address_id", length = 36)
+    private String addressId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id", insertable = false, updatable = false)
@@ -38,11 +37,5 @@ public class CustomerAddressEntity {
     @Column(name = "date_to")
     private Date dateTo;
 
-    @Column(name = "ref_address_id")
-    private Long refAddressId;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ref_address_id", insertable = false, updatable = false)
-    private RefAddressEntity refAddress;
 
 }

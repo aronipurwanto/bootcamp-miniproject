@@ -1,11 +1,14 @@
 package com.bootcamp.pos.model.entity;
 
+import com.bootcamp.pos.model.request.CustomerRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table(name = "tbl_customer")
@@ -14,21 +17,20 @@ import java.util.Date;
 @AllArgsConstructor
 public class CustomerEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
-    private Long id;
+    @Column(name = "customer_id", length = 36)
+    private String id;
 
     @Column(name = "customer_name")
     private String name;
 
     @Column(name = "customer_phone")
-    private Integer phone;
+    private String phone;
 
     @Column(name = "customer_email")
     private String email;
 
     @Column(name = "date_became_customer")
-    private Date dateBecame;
+    private LocalDate dateBecame;
 
     @Column(name = "payment_detail")
     private String paymentDetail;
@@ -36,10 +38,8 @@ public class CustomerEntity {
     @Column(name = "other_customer_detail")
     private String otherCustomerDetail;
 
-    @Column(name = "ref_payment_id")
-    private Long refPaymentId;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ref_payment_id", insertable = false, updatable = false)
-    private RefPaymentEntity refPayment;
+    public CustomerEntity(CustomerRequest request) {
+        BeanUtils.copyProperties(request, this);
+        this.id = UUID.randomUUID().toString();
+    }
 }

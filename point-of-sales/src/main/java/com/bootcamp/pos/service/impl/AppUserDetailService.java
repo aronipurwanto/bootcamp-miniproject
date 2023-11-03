@@ -1,7 +1,7 @@
-package com.sabillamrayhan.siakad.service.impl;
+package com.bootcamp.pos.service.impl;
 
-import com.sabillamrayhan.siakad.entity.UserEntity;
-import com.sabillamrayhan.siakad.repository.UserRepo;
+import com.bootcamp.pos.model.entity.UserEntity;
+import com.bootcamp.pos.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,11 +17,11 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class AppUserDetailService implements UserDetailsService {
-    private final UserRepo userRepo;
+    private final UserRepository userRepository;
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
         // get user by email or username
-        UserEntity userEntity = userRepo.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
+        UserEntity userEntity = userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
                 .orElseThrow(() -> new UsernameNotFoundException("User not exists by Username or Email"));
 
         Collection<GrantedAuthority> authorities = userEntity.getRoles().stream()

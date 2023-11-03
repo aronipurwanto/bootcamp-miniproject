@@ -1,4 +1,4 @@
-package com.sabillamrayhan.siakad.config;
+package com.bootcamp.pos.config;
 
 import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
 import org.springframework.context.annotation.Bean;

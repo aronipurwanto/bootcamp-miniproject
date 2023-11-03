@@ -1,9 +1,9 @@
-package com.sabillamrayhan.siakad.config;
+package com.bootcamp.pos.config;
 
-import com.sabillamrayhan.siakad.entity.RoleEntity;
-import com.sabillamrayhan.siakad.entity.UserEntity;
-import com.sabillamrayhan.siakad.repository.RoleRepo;
-import com.sabillamrayhan.siakad.repository.UserRepo;
+import com.bootcamp.pos.model.entity.RoleEntity;
+import com.bootcamp.pos.model.entity.UserEntity;
+import com.bootcamp.pos.repository.RoleRepository;
+import com.bootcamp.pos.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -15,9 +15,9 @@ import java.util.List;
 @Component
 @Slf4j
 @RequiredArgsConstructor
-public class DbInit implements CommandLineRunner {
-    private final UserRepo userRepo;
-    private final RoleRepo roleRepo;
+public class DatabaseInit implements CommandLineRunner {
+    private final UserRepository userRepo;
+    private final RoleRepository roleRepo;
     private final PasswordEncoder encoder;
 
     @Override
