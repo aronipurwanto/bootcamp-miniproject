@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "tbl_refpayment_method")
-public class RefPaymentMethod {
+public class RefPaymentMethodEntity {
 
     @Id
     @Column(name = "id")

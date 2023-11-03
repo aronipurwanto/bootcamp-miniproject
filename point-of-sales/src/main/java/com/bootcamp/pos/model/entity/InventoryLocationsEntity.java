@@ -1,6 +1,5 @@
 package com.bootcamp.pos.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "tbl_inventory_locations")
-public class InventoryLocations {
+public class InventoryLocationsEntity {
 
     @Id
     @Column(name = "id")

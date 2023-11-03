@@ -1,6 +1,5 @@
 package com.bootcamp.pos.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "tbl_shopping_basket")
-public class ShoppingBasket {
+public class ShoppingBasketEntity {
 
     @Id
     @Column(name = "id")

@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,10 +14,10 @@ public class ProductsEntity {
 
     @Id
     @Column(name = "id")
-    private Long id;
+    private String id;
 
-    @Column(name = "product_type_code")
-    private Long productTypeCode;
+    @Column(name = "product_type")
+    private String productTypeCode;
 
     @Column(name = "product_details")
     private String productDetails;

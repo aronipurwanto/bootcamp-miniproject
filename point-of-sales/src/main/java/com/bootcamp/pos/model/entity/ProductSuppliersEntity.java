@@ -11,11 +11,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "tbl_product_suppliers")
-public class ProductSuppliers {
+public class ProductSuppliersEntity {
 
     @Id
     @Column(name = "id")
     private Long id;
+
+    @Column(name = "product_id")
+    private Long productId;
+
+    @Column(name = "supplier_code")
+    private Long supplierCode;
 
     @Column(name = "value_supplied")
     private String valueSupplied;
@@ -46,11 +52,5 @@ public class ProductSuppliers {
 
     @Column(name = "item_supplier_details")
     private String itemSupplierDetails;
-
-    @Column(name = "product_id")
-    private Long productId;
-
-    @Column(name = "supplier_code")
-    private Long supplierCode;
 
 }

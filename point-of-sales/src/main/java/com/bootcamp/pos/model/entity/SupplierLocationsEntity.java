@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "tbl_suppliers_locations")
-public class SupplierLocations {
+public class SupplierLocationsEntity {
 
     @Id
     @Column(name = "id")
