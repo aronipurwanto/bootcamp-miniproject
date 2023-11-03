@@ -1,9 +1,13 @@
 package com.bootcamp.pos.model.entity;
 
+import com.bootcamp.pos.model.request.AddressRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
+
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -12,18 +16,11 @@ import lombok.NoArgsConstructor;
 @Table(name = "tbl_address")
 public class AddressEntity {
     @Id
-    @TableGenerator(name = "tbl_address_seq",
-            table = "tbl_sequence",
-            pkColumnName = "sequence_id",
-            valueColumnName = "sequence_value",
-            pkColumnValue = "address_id",
-            allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "tbl_address_seq")
     @Column(name = "id")
-    private Long id;
+    private String id;
 
-    @Column(name = "no", length = 60)
-    private String no;
+    @Column(name = "no_home", length = 60)
+    private String noHome;
 
     @Column(name = "street", length = 60)
     private String street;
@@ -31,14 +28,14 @@ public class AddressEntity {
     @Column(name = "village", length = 60)
     private String village;
 
-    @Column(name = "city", length = 100)
-    private String city;
-
     @Column(name = "sub_district", length = 100)
     private String subDistrict;
 
     @Column(name = "regency", length = 100)
     private String regency;
+
+    @Column(name = "city", length = 100)
+    private String city;
 
     @Column(name = "province", length = 100)
     private String province;
@@ -51,4 +48,9 @@ public class AddressEntity {
 
     @Column(name = "other_details", length = 100)
     private String otherDetails;
+
+    public AddressEntity(AddressRequest request) {
+        BeanUtils.copyProperties(request, this);
+        this.id = UUID.randomUUID().toString();
+    }
 }

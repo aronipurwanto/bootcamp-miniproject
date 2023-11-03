@@ -14,27 +14,14 @@ import lombok.NoArgsConstructor;
 public class InventoryLocations {
 
     @Id
-    @TableGenerator(name = "tbl_inventory_locations_seq",
-            table = "tbl_sequence",
-            pkColumnName = "sequence_id",
-            valueColumnName="sequence_value",
-            pkColumnValue = "inventory_locations_id",
-            allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "tbl_inventory_locations_seq")
     @Column(name = "id")
     private Long id;
 
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_id", insertable = false, updatable = false)
-    private ProductsEntity productId;
+    @Column(name = "productId")
+    private Long productId;
 
-    @Column(name = "location_address_id", nullable = false)
-    private String locationAddressId;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "address_id", insertable = false, updatable = false)
-    private AddressEntity address;
+    @Column(name = "location_address_id")
+    private Long locationAddressId;
 
     @Column(name = "quantity_stock")
     private Double quantityStock;

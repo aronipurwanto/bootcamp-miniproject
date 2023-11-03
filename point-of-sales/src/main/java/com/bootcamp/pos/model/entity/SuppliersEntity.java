@@ -13,18 +13,11 @@ import lombok.NoArgsConstructor;
 public class SuppliersEntity {
 
     @Id
-    @TableGenerator(name = "tbl_suppliers_seq",
-            table = "tbl_sequence",
-            pkColumnName = "sequence_id",
-            valueColumnName="sequence_value",
-            pkColumnValue = "suppliers_id",
-            allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "tbl_suppliers_seq")
     @Column(name = "id")
     private Long id;
 
     @Column(name = "supplier_code")
-    private String supplierCode;
+    private Long supplierCode;
 
     @Column(name = "supplier_name")
     private String supplierName;

@@ -13,14 +13,10 @@ import lombok.NoArgsConstructor;
 public class RefPaymentMethod {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "payment_code")
-    private String paymentCode;
-
-    @Column(name = "payment_desc")
-    private String paymentDescription;
+    @Column(name = "product_type_desc")
+    private String productTypeDesc;
 
 }

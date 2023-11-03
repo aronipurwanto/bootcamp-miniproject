@@ -1,13 +1,14 @@
 package com.bootcamp.pos.model.entity;
 
+import com.bootcamp.pos.model.request.CustomerRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.UUID;
 
 
 @Data
@@ -17,34 +18,20 @@ import java.util.List;
 @Table(name = "tbl_customer")
 public class CustomerEntity {
     @Id
-    @TableGenerator(name = "tbl_customer_seq",
-            table = "tbl_sequence",
-            pkColumnName = "sequence_id",
-            valueColumnName="sequence_value",
-            pkColumnValue = "customer_id",
-            allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "tbl_customer_seq")
     @Column(name = "id")
-    private Long id;
+    private String id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "payment_method_id", insertable = false, updatable = false)
-    private RefPaymentMethod paymentCode;
-
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<AddressEntity> address = new ArrayList<>();
-
-    @Column(name = "customer_name")
+    @Column(name = "customer_name", length = 200)
     private String customerName;
 
     @Column(name = "customer_phone")
-    private Integer customerPhone;
+    private String customerPhone;
 
-    @Column(name = "customer_email")
+    @Column(name = "customer_email", unique = true)
     private String customerEmail;
 
     @Column(name = "date_customer")
-    private Date dateCustomer;
+    private LocalDate dateCustomer;
 
     @Column(name = "payment_details")
     private String paymentDetails;
@@ -52,4 +39,8 @@ public class CustomerEntity {
     @Column(name = "other_details")
     private String otherCustomerDetails;
 
+    public CustomerEntity(CustomerRequest request) {
+        BeanUtils.copyProperties(request, this);
+        this.id = UUID.randomUUID().toString();
+    }
 }

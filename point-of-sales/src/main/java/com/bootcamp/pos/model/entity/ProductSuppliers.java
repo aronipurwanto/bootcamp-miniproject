@@ -14,13 +14,6 @@ import lombok.NoArgsConstructor;
 public class ProductSuppliers {
 
     @Id
-    @TableGenerator(name = "tbl_product_suppliers_seq",
-            table = "tbl_sequence",
-            pkColumnName = "sequence_id",
-            valueColumnName="sequence_value",
-            pkColumnValue = "product_suppliers_id",
-            allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "tbl_product_suppliers_seq")
     @Column(name = "id")
     private Long id;
 
@@ -55,17 +48,9 @@ public class ProductSuppliers {
     private String itemSupplierDetails;
 
     @Column(name = "product_id")
-    private String productId;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "products_id", insertable = false, updatable = false)
-    private ProductsEntity products;
+    private Long productId;
 
     @Column(name = "supplier_code")
-    private String supplierCode;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "supplier_code", insertable = false, updatable = false)
-    private SuppliersEntity suppliers;
+    private Long supplierCode;
 
 }

@@ -16,23 +16,14 @@ import java.time.LocalDate;
 public class ShoppingBasket {
 
     @Id
-    @TableGenerator(name = "tbl_shopping_basket_seq",
-            table = "tbl_sequence",
-            pkColumnName = "sequence_id",
-            valueColumnName="sequence_value",
-            pkColumnValue = "shopping_basket_id",
-            allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "tbl_shopping_basket_seq")
     @Column(name = "id")
     private Long id;
 
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
-    private CustomerEntity customerId;
+    @Column(name = "customer_id")
+    private Long customerId;
 
     @Column(name = "basket_date")
-    private LocalDate basketDatetime;
+    private LocalDate basketDateTime;
 
     @Column(name = "total_cost")
     private Double totalCost;
