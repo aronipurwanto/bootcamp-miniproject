@@ -1,6 +1,9 @@
 package com.bootcamp.pos.model.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,13 +15,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "tbl_address_type")
 public class AddressTypeEntity {
     @Id
-    @TableGenerator(name = "tbl_address_type_seq",
-            table = "tbl_sequence",
-            pkColumnName = "sequence_id",
-            valueColumnName = "sequence_value",
-            pkColumnValue = "address_type_id",
-            allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "tbl_address_type_seq")
+    @Column(name = "address_id")
     private Long id;
 
     @Column(name = "address_code")

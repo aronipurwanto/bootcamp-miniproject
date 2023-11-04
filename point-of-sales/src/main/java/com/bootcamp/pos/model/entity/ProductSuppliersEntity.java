@@ -14,13 +14,6 @@ import java.util.Date;
 @Table(name = "tbl_product_suppliers")
 public class ProductSuppliersEntity {
     @Id
-    @TableGenerator(name = "tbl_products_supplier_seq",
-            table = "tbl_sequence",
-            pkColumnName = "sequence_id",
-            valueColumnName = "sequence_value",
-            pkColumnValue = "products_supplier_id",
-            allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "tbl_products_supplier_seq")
     @Column(name = "product_supplier_id")
     private Long productSupplierId;
 
@@ -33,6 +26,13 @@ public class ProductSuppliersEntity {
 
     @Column(name = "supplier_code")
     private String supplierCode;
+
+    @Column(name = "supplier_id")
+    private Long supplierId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "supplier_id", insertable = false, updatable = false)
+    private SuppliersEntity suppliersEntity;
 
     @Column(name = "supplied_to_date")
     private Date suppliedToDate;

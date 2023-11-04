@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer-Address</title>
+</head>
+<body>
+<!-- row start -->
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0 font-weight-bolder">Customer Address</h1>
+    </div>
+    <!-- /.col -->
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active font-weight-light">Customer Address</li>
+        </ol>
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+
+<div class="row" layout:fragment="content">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- card start -->
+        <div class="card">
+            <!-- card header -->
+            <div class="card-header bg-gradient-pink">
+                <h3 class="card-title font-weight-light">Data Customer Address</h3>
+                <!-- header tools -->
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 200px">
+                        <input type="text" name="table_search" class="form-control float-right btn-outline-dark" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-outline-dark">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <a th:href="@{~/customer_address/add}" id="btn-add" class="btn btn-outline-dark">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- tools end -->
+            </div>
+            <!-- card header end -->
+
+            <!-- card body start -->
+            <div class="card-body">
+                <table id="table-data" class="table">
+                    <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Address </th>
+                        <th>Address Type</th>
+                        <th>Date From</th>
+                        <th>Date To</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="data: ${customerAddressList}">
+                        <td th:text="|${data.customer.customerName} - ${data.customer.customerEmail}|"></td>
+                        <td th:text="|${data.address.noHome} - ${data.address.onStreet} - ${data.address.city} - ${data.address.province}|"></td>
+                        <td th:text="${data.addressType}"></td>
+                        <td th:text="${data.dateFrom}"></td>
+                        <td th:text="${data.dateTo}"></td>
+
+                        <!-- tombol action -->
+                        <td>
+                            <a th:href="@{customer_address/detail/{id}(id=${data.id})}"
+                            class="btn btn-xs btn-outline-success btn-detail">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a th:href="@{customer_address/edit/{id}(id=${data.id})}"
+                            class="btn btn-xs btn-outline-warning btn-edit">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a th:href="@{customer_address/delete/{id}(id=${data.id})}"
+                            class="btn btn-xs btn-outline-danger">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

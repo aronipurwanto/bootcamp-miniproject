@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer-add</title>
+</head>
+<body>
+<!-- header -->
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0 font-weight-bolder">Customer</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active font-weight-light">Customer</li>
+        </ol>
+    </div>
+</div>
+<!-- header end -->
+
+<!-- card -->
+<div class="row" layout:fragment="content">
+    <!-- left column -->
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- general form elements -->
+        <!-- /.card-header -->
+        <div class="card card-pink">
+            <div class="card-header">
+                <h3 class="card-title font-weight-light">Add Data Customer</h3>
+            </div>
+            <form th:action="@{~/customer/save}" method="post">
+                <!-- card form start -->
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Customer Name</label>
+                        <input type="text" class="form-control" name="customerName" id="customerName">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Customer Phone</label>
+                        <input type="text" class="form-control" name="customerPhone" id="customerPhone">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Customer Email</label>
+                        <input type="text" class="form-control" name="customerEmail" id="customerEmail">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date Order</label>
+                        <input type="date" class="form-control" name="dateOrder" id="dateOrder">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Payment Details</label>
+                        <input type="text" class="form-control" name="paymentDetails" id="paymentDetails">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Customer Details</label>
+                        <input type="text" class="form-control" name="customerDetails" id="customerDetails">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Payment Method</label>
+                        <input type="text" class="form-control" name="paymentMethod" id="paymentMethod">
+                    </div>
+                    <!-- card form end -->
+
+                    <!-- card footer -->
+                    <div class="card-footer">
+                        <button class="btn btn-outline-danger" type="submit">submit</button> &nbsp;
+                        <a class="btn btn-outline-danger" th:href="@{~/customer}">back</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Address</title>
+</head>
+<body>
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0 font-weight-bolder">Address</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active font-weight-light">Address</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row" layout:fragment="content">
+    <!-- left column -->
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- general form element -->
+        <div class="card card-pink">
+            <div class="card-header">
+                <h3 class="card-title font-weight-light">Detail Data Address</h3>
+            </div>
+
+            <!-- /.card header -->
+            <form th:action="@{~/address/save}" method="post">
+                <!-- card form start -->
+                <!-- id hidden -->
+                <input type="hidden" name="id" th:value="${dataAddress.id}">
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>No Home</label>
+                        <input type="text" class="form-control" name="noHome" id="noHome" th:value="${dataAddress.noHome}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>On Street</label>
+                        <input type="text" class="form-control" name="onStreet" id="onStreet" th:value="${dataAddress.onStreet}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Village</label>
+                        <input type="text" class="form-control" name="village" id="village" th:value="${dataAddress.village}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Subdistrict</label>
+                        <input type="text" class="form-control" name="subdistrict" id="subdistrict" th:value="${dataAddress.subdistrict}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" class="form-control" name="city" id="city" th:value="${dataAddress.city}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Province</label>
+                        <input type="text" class="form-control" name="province" id="province" th:value="${dataAddress.province}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Country</label>
+                        <input type="text" class="form-control" name="country" id="country" th:value="${dataAddress.country}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Post Code</label>
+                        <input type="text" class="form-control" name="postCode" id="postCode" th:value="${dataAddress.postCode}">
+                    </div>
+
+                    <div class="card-footer">
+                        <a class="btn btn-outline-danger" th:href="@{~/address}">back</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer-title</title>
+</head>
+<body>
+<!-- row start -->
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0 font-weight-bolder">Address</h1>
+    </div>
+    <!-- /.col -->
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active font-weight-light">Address</li>
+        </ol>
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+
+<div class="row" layout:fragment="content">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- card start -->
+        <div class="card">
+            <!-- card header -->
+            <div class="card-header bg-gradient-pink">
+                <h3 class="card-title font-weight-light">Data Address</h3>
+                <!-- header tools -->
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 200px">
+                        <input type="text" name="table_search" class="form-control float-right btn-outline-dark" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-outline-dark">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <a th:href="@{~/address/add}" id="btn-add" class="btn btn-outline-dark">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- tools end -->
+            </div>
+            <!-- card header end -->
+
+            <!-- card body start -->
+            <div class="card-body">
+                <table id="table-data" class="table">
+                    <thead>
+                    <tr>
+                        <th>No Home</th>
+                        <th>On Street</th>
+                        <th>Village</th>
+                        <th>Subdistrict</th>
+                        <th>District</th>
+                        <th>City</th>
+                        <th>Province</th>
+                        <th>Country</th>
+                        <th>Post Code</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="data: ${listDataAddress}">
+                        <td th:text="${data.noHome}"></td>
+                        <td th:text="${data.onStreet}"></td>
+                        <td th:text="${data.village}"></td>
+                        <td th:text="${data.subdistrict}"></td>
+                        <td th:text="${data.city}"></td>
+                        <td th:text="${data.province}"></td>
+                        <td th:text="${data.country}"></td>
+                        <td th:text="${data.postCode}"></td>
+
+                        <!-- tombol action -->
+                        <td>
+                            <a th:href="@{address/detail/{id}(id=${data.id})}"
+                               class="btn btn-xs btn-outline-success btn-detail">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a th:href="@{address/edit/{id}(id=${data.id})}"
+                               class="btn btn-xs btn-outline-warning btn-edit">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a th:href="@{address/delete/{id}(id=${data.id})}"
+                               class="btn btn-xs btn-outline-danger">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
