@@ -1,11 +1,14 @@
 package com.bootcamp.pos.model.entity;
 
+import com.bootcamp.pos.model.request.ProductSuppliersModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -15,42 +18,31 @@ import java.util.Date;
 public class ProductSuppliersEntity {
     @Id
     @Column(name = "product_supplier_id")
-    private Long productSupplierId;
+    private String id;
 
     @Column(name = "product_id")
-    private Long productId;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_id", insertable = false, updatable = false)
-    private ProductsEntity productsEntity;
-
-    @Column(name = "supplier_code")
-    private String supplierCode;
+    private String productId;
 
     @Column(name = "supplier_id")
-    private Long supplierId;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "supplier_id", insertable = false, updatable = false)
-    private SuppliersEntity suppliersEntity;
+    private String supplierId;
 
     @Column(name = "supplied_to_date")
-    private Date suppliedToDate;
+    private LocalDate suppliedToDate;
 
-    @Column(name = "total_qty_sup_to_date")
+    @Column(name = "total_qty_supplied_to_date")
     private String totalQtySupToDate;
 
-    @Column(name = "first_item_sup_date")
+    @Column(name = "first_item_supplied_date")
     private String firstItemSupDate;
 
-    @Column(name = "last_item_sup_date")
+    @Column(name = "last_item_supplied_date")
     private String lastItemSupDate;
 
     @Column(name = "delivery_lead_time")
     private String deliveryLeadTime;
 
     @Column(name = "standard_price")
-    private Integer standardPrice;
+    private String standardPrice;
 
     @Column(name = "percent_discount")
     private String percentDiscount;
@@ -63,4 +55,9 @@ public class ProductSuppliersEntity {
 
     @Column(name = "item_suppliers_details")
     private String itemSuppliersDetails;
+
+    public ProductSuppliersEntity(ProductSuppliersModel model) {
+        BeanUtils.copyProperties(model, this);
+        this.id = UUID.randomUUID().toString();
+    }
 }

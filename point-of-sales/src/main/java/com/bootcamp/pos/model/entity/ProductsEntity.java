@@ -1,5 +1,6 @@
 package com.bootcamp.pos.model.entity;
 
+import com.bootcamp.pos.model.request.ProductsModel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -7,6 +8,9 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
+
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -16,13 +20,13 @@ import lombok.NoArgsConstructor;
 public class ProductsEntity {
     @Id
     @Column(name = "product_id")
-    private Long id;
+    private String id;
 
-    @Column(name = "product_code_id")
-    private Long productCodeId;
+    @Column(name = "product_code")
+    private String productCode;
 
     @Column(name = "product_details")
-    private String prodctDetails;
+    private String productDetails;
 
     @Column(name = "product_name")
     private String productName;
@@ -32,4 +36,9 @@ public class ProductsEntity {
 
     @Column(name = "product_description")
     private String productDescription;
+
+    public ProductsEntity(ProductsModel model) {
+        BeanUtils.copyProperties(model, this);
+        this.id = UUID.randomUUID().toString();
+    }
 }
