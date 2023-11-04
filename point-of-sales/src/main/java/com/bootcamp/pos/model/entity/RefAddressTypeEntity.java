@@ -1,9 +1,6 @@
 package com.bootcamp.pos.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +11,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "tbl_refAddressType")
 public class RefAddressTypeEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
     @Column(name ="address_code")
     private String code;

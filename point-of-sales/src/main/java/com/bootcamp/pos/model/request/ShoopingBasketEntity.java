@@ -1,4 +1,4 @@
-package com.bootcamp.pos.model.entity;
+package com.bootcamp.pos.model.request;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,7 +25,7 @@ public class ShoopingBasketEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id", insertable = false, updatable = false)
-    private CustomerEntity customer;
+    private Request customer;
     //------------------------------------//
 
 

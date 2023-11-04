@@ -11,22 +11,25 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name ="tbl_addresses")
 public class AddressesEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "address_id")
-    private Long id;
+    private Long Addressid;
 
-    @Column(name = "line_1")
-    private String line1;
 
-    @Column(name = "line_2")
-    private String line2;
 
-    @Column(name = "line_3")
-    private String line3;
+    @Column(name = "No_Rumh")
+    private String houseNumber;
 
-    @Column(name = "line_4")
-    private String line4;
+    @Column(name = "nama_jalan")
+    private String onStreet;
+
+    @Column(name = "nama_desa")
+    private String village;
+
+    @Column(name = "subdistrict")
+    private String subdistrict;
 
     @Column(name = "city")
     private String city;
