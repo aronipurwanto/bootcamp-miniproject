@@ -50,10 +50,10 @@ public class ProductsServiceImpl implements ProductService {
         ProductsEntity entity = new ProductsEntity(request);
         try {
             this.productsRepository.save(entity);
-            log.info("Save data customer to database success");
+            log.info("Save data product to database success");
             return Optional.of(new ProductsModel(entity));
         } catch (Exception er) {
-            log.warn("Save data customer failed, error: {}", er.getMessage());
+            log.warn("Save data product failed, error: {}", er.getMessage());
             return Optional.empty();
         }
     }
@@ -80,7 +80,7 @@ public class ProductsServiceImpl implements ProductService {
     public Optional<ProductsModel> delete(String id) {
         ProductsEntity result = this.productsRepository.findById(id).orElse(null);
         if (result == null) {
-            log.warn("customer with id: {} not found", id);
+            log.warn("product with id: {} not found", id);
             return Optional.empty();
         }
         try {

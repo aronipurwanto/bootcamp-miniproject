@@ -1,7 +1,6 @@
 package com.bootcamp.pos.model.request;
 
 import com.bootcamp.pos.model.entity.CustomerEntity;
-import com.bootcamp.pos.model.entity.ProductsEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

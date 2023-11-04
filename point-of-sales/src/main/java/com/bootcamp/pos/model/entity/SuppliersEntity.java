@@ -1,5 +1,6 @@
 package com.bootcamp.pos.model.entity;
 
+import com.bootcamp.pos.model.request.SuppliersModel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -7,6 +8,9 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
+
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -16,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class SuppliersEntity {
     @Id
     @Column(name = "supplier_id")
-    private Long id;
+    private String id;
 
     @Column(name = "supplier_code")
     private String supplierCode;
@@ -35,4 +39,9 @@ public class SuppliersEntity {
 
     @Column(name = "supplier_details")
     private String supplierDetails;
+
+    public SuppliersEntity(SuppliersModel model) {
+        BeanUtils.copyProperties(model, this);
+        this.id = UUID.randomUUID().toString();
+    }
 }

@@ -80,7 +80,7 @@ public class CustomerController {
         }
         // memanggil save dari service
         this.customerService.update(request, request.getId());
-        // redirect ke index
+        // data kirim ke view
         return new ModelAndView("redirect:/customer");
     }
 

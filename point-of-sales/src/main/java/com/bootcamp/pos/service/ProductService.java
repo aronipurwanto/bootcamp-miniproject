@@ -1,6 +1,5 @@
 package com.bootcamp.pos.service;
 
-import com.bootcamp.pos.model.request.CustomerRequest;
 import com.bootcamp.pos.model.request.ProductsModel;
 
 import java.util.List;

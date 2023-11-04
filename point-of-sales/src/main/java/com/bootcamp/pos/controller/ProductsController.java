@@ -1,7 +1,6 @@
 package com.bootcamp.pos.controller;
 
 import com.bootcamp.pos.model.request.ProductsModel;
-import com.bootcamp.pos.service.CustomerService;
 import com.bootcamp.pos.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
