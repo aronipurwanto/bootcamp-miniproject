@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+  <meta charset="UTF-8">
+  <title>Detail Address</title>
+</head>
+<body>
+<div class="row mb-2" layout:fragment="breadcrumb">
+  <div class="col-sm-6">
+    <h2 class="m-0">Detail Address</h2>
+  </div>
+  <div class="col-sm-6">
+    <ol class="breadcrumb float-sm-right">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active">Detail Address</li>
+    </ol>
+  </div>
+</div>
+<div class="row" layout:fragment="content">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="card card-blue">
+      <div class="card-header">
+        <h3 class="card-title">Detail Address</h3>
+      </div>
+      <form th:action="@{~/address/save}" method="post">
+        <div class="card-body">
+          <div class="form-group">
+            <label>No Home :</label><br>
+            <input type="text" class="form-control" name="noHome" th:value="${detailAddress.noHome}"><br>
+          </div>
+
+          <div class="form-group">
+            <label>On Street :</label><br>
+            <input type="text" class="form-control" name="onStreet" th:value="${detailAddress.onStreet}"><br>
+          </div>
+
+          <div class="form-group">
+            <label>Village :</label><br>
+            <input type="text" class="form-control" name="village" th:value="${detailAddress.village}"><br>
+          </div>
+
+          <div class="form-group">
+            <label>Subdistrict :</label><br>
+            <input type="text" class="form-control" name="subdistrict" th:value="${detailAddress.subdistrict}"><br>
+          </div>
+
+          <div class="form-group">
+            <label>City :</label><br>
+            <input type="text" class="form-control" name="city" th:value="${detailAddress.city}"><br>
+          </div>
+
+          <div class="form-group">
+            <label>Post Code :</label><br>
+            <input type="text" class="form-control" name="zipPostCode" th:value="${detailAddress.zipPostCode}"><br>
+          </div>
+
+          <div class="form-group">
+            <label>Province :</label><br>
+            <input type="text" class="form-control" name="stateProvinceCountry" th:value="${detailAddress.stateProvinceCountry}"><br>
+          </div>
+
+          <div class="form-group">
+            <label>Country :</label><br>
+            <input type="text" class="form-control" name="country" th:value="${detailAddress.country}"><br>
+          </div>
+
+          <div class="form-group">
+            <label>Other Address Detail :</label><br>
+            <input type="text" class="form-control" name="otherAddressDetail" th:value="${detailAddress.otherAddressDetail}"><br>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a class="btn btn-outline-dark" th:href="@{~/address}">Back</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

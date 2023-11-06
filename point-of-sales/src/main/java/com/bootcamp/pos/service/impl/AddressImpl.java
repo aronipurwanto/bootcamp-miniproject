@@ -7,6 +7,7 @@ import com.bootcamp.pos.repository.AddressRepository;
 import com.bootcamp.pos.service.AddressService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,11 +50,34 @@ public class AddressImpl implements AddressService {
 
     @Override
     public Optional<AddressRequest> update(AddressRequest request, String id) {
-        return Optional.empty();
+        AddressEntity entity = addressRepository.findById(id).orElse(null);
+        if (entity == null){
+            return Optional.empty();
+        }
+        BeanUtils.copyProperties(request, entity);
+        try {
+            addressRepository.save(entity);
+            log.info("Update address success");
+            return Optional.of(new AddressRequest());
+        }catch (Exception e){
+            log.error("Update address failed, error : {}", e.getMessage());
+            return Optional.empty();
+        }
     }
 
     @Override
     public Optional<AddressRequest> delete(String id) {
-        return Optional.empty();
+        AddressEntity entity = addressRepository.findById(id).orElse(null);
+        if (entity == null){
+            return Optional.empty();
+        }
+        try {
+            addressRepository.delete(entity);
+            log.info("Delete address success");
+            return Optional.of(new AddressRequest());
+        }catch (Exception e){
+            log.error("Delete address failed, error : {}", e.getMessage());
+            return Optional.empty();
+        }
     }
 }

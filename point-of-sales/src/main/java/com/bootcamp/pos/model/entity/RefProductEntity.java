@@ -13,9 +13,8 @@ import lombok.NoArgsConstructor;
 @Table(name = "tbl_ref_product")
 public class RefProductEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "id", length = 36)
+    private String id;
 
     @Column(name = "code")
     private String code;

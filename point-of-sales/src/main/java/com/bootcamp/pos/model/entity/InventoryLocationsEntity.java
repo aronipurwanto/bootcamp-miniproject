@@ -12,15 +12,14 @@ import lombok.NoArgsConstructor;
 @Table(name = "tbl_inventory_locations")
 public class InventoryLocationsEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "id", length = 36)
+    private String id;
 
-    @Column(name = "product_id")
-    private Long productId;
+    @Column(name = "product_id", length = 36)
+    private String productId;
 
-    @Column(name = "address_id")
-    private Long addressId;
+    @Column(name = "address_id", length = 36)
+    private String addressId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id", insertable = false, updatable = false)

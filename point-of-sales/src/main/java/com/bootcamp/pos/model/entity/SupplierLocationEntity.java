@@ -14,9 +14,8 @@ import java.util.Date;
 @Table(name = "tbl_supplier_location")
 public class SupplierLocationEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "id", length = 36)
+    private String id;
 
     @Column(name = "date_from")
     private Date dateFrom;
@@ -24,15 +23,15 @@ public class SupplierLocationEntity {
     @Column(name = "date_to")
     private Date dateTo;
 
-    @Column(name = "address_id")
-    private Long addressId;
+    @Column(name = "address_id", length = 36)
+    private String addressId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id", insertable = false, updatable = false)
     private AddressEntity address;
 
-    @Column(name = "supplier_id")
-    private Long supplierId;
+    @Column(name = "supplier_id", length = 36)
+    private String  supplierId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "supplier_id", insertable = false, updatable = false)

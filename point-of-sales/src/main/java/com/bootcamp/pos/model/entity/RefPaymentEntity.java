@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @Table(name = "tbl_ref_payment")
 public class RefPaymentEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id", length = 36)
+    private String id;
 
     @Column(name = "code")
     private String code;

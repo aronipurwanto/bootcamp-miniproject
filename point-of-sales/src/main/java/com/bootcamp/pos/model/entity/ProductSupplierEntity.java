@@ -1,12 +1,15 @@
 package com.bootcamp.pos.model.entity;
 
+import com.bootcamp.pos.model.request.ProductSupplierRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -15,9 +18,8 @@ import java.util.Date;
 @Table(name = "tbl_product_supplier")
 public class ProductSupplierEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "id", length = 36)
+    private String id;
 
     @Column(name = "code")
     private String code;
@@ -52,20 +54,23 @@ public class ProductSupplierEntity {
     @Column(name = "other_item_supplier_detail")
     private String otherItemSupplierDetail;
 
-    @Column(name = "product_id")
-    private Long productId;
+    @Column(name = "product_id", length = 36)
+    private String productId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id", insertable = false, updatable = false)
     private ProductEntity product;
 
-    @Column(name = "supplier_id")
-    private Long supplierId;
+    @Column(name = "supplier_id", length = 36)
+    private String supplierId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "supplier_id", insertable = false, updatable = false)
     private SupplierEntity supplier;
 
-
-
+    public ProductSupplierEntity(ProductSupplierRequest request, ProductEntity product) {
+        BeanUtils.copyProperties(request, this);
+        this.id = UUID.randomUUID().toString();
+        this.product = product;
+    }
 }

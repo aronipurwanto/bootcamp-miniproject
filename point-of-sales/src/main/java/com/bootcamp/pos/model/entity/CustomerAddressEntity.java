@@ -1,11 +1,15 @@
 package com.bootcamp.pos.model.entity;
 
+import com.bootcamp.pos.model.request.CustomerAddRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -32,10 +36,13 @@ public class CustomerAddressEntity {
     private AddressEntity address;
 
     @Column(name = "date_from")
-    private Date dateFrom;
+    private LocalDate dateFrom;
 
     @Column(name = "date_to")
-    private Date dateTo;
+    private LocalDate dateTo;
 
-
+    public CustomerAddressEntity(CustomerAddRequest request) {
+        BeanUtils.copyProperties(request, this);
+        this.id = UUID.randomUUID().toString();
+    }
 }
