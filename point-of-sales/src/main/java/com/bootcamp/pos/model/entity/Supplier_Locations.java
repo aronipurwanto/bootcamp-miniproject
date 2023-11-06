@@ -15,25 +15,7 @@ import java.util.Date;
 public class Supplier_Locations {
     @Id
     @Column(name = "id")
-    private Long id;
-    //--------Relasi ke SUPPLIERS--------//
-    @Column(name = "supplier_code")
-    private String supplierCode;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "supplier_code")
-    private SuppliersEntity suppliers;
-    //----------------//
-
-    //--------Relasi ke Address--------//
-    @Column(name = "address_id")
-    private Long addressId;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "address_id")
-    private AddressesEntity addresses;
-    //----------------//
-
+    private String id;
 
     @Column(name = "date_form")
     private Date dateFrom;

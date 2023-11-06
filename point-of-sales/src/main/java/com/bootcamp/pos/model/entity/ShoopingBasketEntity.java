@@ -14,21 +14,8 @@ import java.time.LocalDateTime;
 @Table(name ="tbl_shopping_basket")
 public class ShoopingBasketEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
-
-
-    //--------Relasi ke CUSTOMER--------//
-    @Column(name = "customer_id")
-    private Long customerId;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
-    private CustomerEntity customer;
-    //------------------------------------//
-
-
+    private String id;
 
     @Column(name = "basket_date")
     private LocalDateTime dateTime;

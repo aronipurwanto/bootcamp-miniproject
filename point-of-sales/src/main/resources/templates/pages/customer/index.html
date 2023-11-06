@@ -1,10 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>customer-index</title>
 </head>
 <body>
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0">Customer</h1>
+    </div>
+    <!-- .col -->
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Customer</li>
+        </ol>
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+
+<div class="row" layout:fragment="content">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- card mulai-->
+        <div class="card">
+            <!-- header -->
+            <div class="card-header bg-orange">
+                <h3 class="card-title">Customer</h3>
+
+                <!-- header tools -->
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 200px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <a th:href="@{~/customer/add}" id="btn-add" class="btn btn-info">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- tools end -->
+            </div>
+            <!-- headet end -->
+
+            <div class="card-body">
+                <table id="table-data" class="table">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Date</th>
+                        <th>Payment Details</th>
+                        <th>Customer Details</th>
+                    </tr>
+                    </thead>
+                    <tr th:each="data : ${dataList}">
+                        <td th:text="${data.id}"></td>
+                        <td th:text="${data.name}"></td>
+                        <td th:text="${data.phone}"></td>
+                        <td th:text="${data.email}"></td>
+                        <td th:text="${data.date}"></td>
+                        <td th:text="${data.paymentDetails}"></td>
+                        <td th:text="${data.customerDetails}"></td>
+                        <td>
+                            <a th:href="@{~/customer/detail/{id}(id=${data.id})}"
+                               class="btn btn-xs btn-info btn-detail">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a th:href="@{~/customer/edit/{id}(id=${data.id})}"
+                               class="btn btn-xs btn-warning btn-edit">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a th:href="@{~/customer/delete/{id}(id=${data.id})}"
+                               class="btn btn-xs btn-outline-danger">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 </body>
 </html>

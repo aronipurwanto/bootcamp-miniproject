@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 
 public class RefProductTypeEntity {
 
-    private Long id;
+    private String id;
 
     private String code;
 

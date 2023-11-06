@@ -15,27 +15,7 @@ public class ProductSuppliersEntity {
 
     @Id
     @Column(name = "id")
-    private Long id;
-
-
-    //--------Relasi ke Product--------//
-    @Column(name = "product_id")
-    private Long productId;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_id")
-    private ProductEntity product;
-    //----------------//
-
-
-    //--------Relasi ke Suppliers--------//
-    @Column(name = "supplier_code")
-    private String supplierCode;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "supplier_code")
-    private SuppliersEntity suppliers;
-    //----------------//
+    private String id;
 
     @Column(name = "value_supplied_to_date")
     private Date valueSupplierToDate;

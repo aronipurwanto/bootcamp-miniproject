@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ProductRequest {
 
-    private Long id;
-
-    private String code;
+    private String id;
 
     private String details;
 

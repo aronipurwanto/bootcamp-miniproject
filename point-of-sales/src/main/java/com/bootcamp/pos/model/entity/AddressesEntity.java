@@ -1,9 +1,13 @@
 package com.bootcamp.pos.model.entity;
 
+import com.bootcamp.pos.model.response.AddressesResponse;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
+
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -13,11 +17,8 @@ import lombok.NoArgsConstructor;
 public class AddressesEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "address_id")
-    private Long Addressid;
-
-
+    private String id;
 
     @Column(name = "No_Rumh")
     private String houseNumber;
@@ -45,4 +46,9 @@ public class AddressesEntity {
 
     @Column(name = "other_address_details")
     private String addressDetails;
+
+    public AddressesEntity(AddressesResponse response) {
+        BeanUtils.copyProperties(response, this);
+        this.id = UUID.randomUUID().toString();
+    }
 }

@@ -1,9 +1,13 @@
 package com.bootcamp.pos.model.entity;
 
+import com.bootcamp.pos.model.response.ProductResponse;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
+
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -13,16 +17,7 @@ import lombok.NoArgsConstructor;
 public class ProductEntity {
     @Id
     @Column(name = "product_id")
-    private Long id;
-
-    //--------Relasi ke Ref Product Types--------//
-    @Column(name = "product_type_code")
-    private String code;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_type_code")
-    private RefProductTypeEntity refProductType;
-    //------------------------------//
+    private String id;
 
     @Column(name = "product_details")
     private String details;
@@ -35,4 +30,9 @@ public class ProductEntity {
 
     @Column(name = "product_description")
     private String description;
+
+    public ProductEntity(ProductResponse response) {
+        BeanUtils.copyProperties(response, this);
+        this.id = UUID.randomUUID().toString();
+    }
 }

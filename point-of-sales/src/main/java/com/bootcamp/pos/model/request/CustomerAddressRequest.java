@@ -4,20 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class CustomerAddressRequest {
 
-    private Long id;
+    private String id;
 
-    private Long customerId;
+    private LocalDate dateFrom;
 
-    private Long addressId;
-
-    private Date dateFrom;
-
-    private Date dateTo;
+    private LocalDate dateTo;
 
 }

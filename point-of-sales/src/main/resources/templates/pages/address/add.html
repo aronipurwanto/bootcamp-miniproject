@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>add-address</title>
+</head>
+<body>
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0">Add Address</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+        </ol>
+    </div>
+</div>
+<div class="row" layout:fragment="content">
+    <!-- LEFT COLUMN   -->
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- GENERAN FORM ELEMENTS   -->
+        <div class="card card-orange">
+            <div class="card-header">
+                <h3 class="card-title">New Address</h3>
+            </div>
+            <!-- CARD - HEADER -->
+            <form th:action="@{~/address/save}" method="post">
+                <!-- FORM START   -->
+                <input type="hidden" name="id" id="id">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="houseNumber">House Number</label>
+                        <input type="text" class="form-control" name="houseNumber" id="houseNumber" placeholder="Enter House Number">
+                    </div>
+                    <div class="form-group">
+                        <label for="onStreet">OnStreet</label>
+                        <input type="text" class="form-control" name="onStreet" id="onStreet" placeholder="Enter OnStreet">
+                    </div>
+                    <div class="form-group">
+                        <label for="village">Village</label>
+                        <input type="text" class="form-control" name="village" id="village" placeholder="Enter Village">
+                    </div>
+                    <div class="form-group">
+                        <label for="subdistrict">Sub District</label>
+                        <input type="date" class="form-control" name="subdistrict" id="subdistrict" placeholder="Enter Sub District">
+                    </div>
+                    <div class="form-group">
+                            <label for="city">City</label>
+                        <input type="text" class="form-control" name="city" id="city" placeholder="Enter City">
+                    </div>
+                    <div class="form-group">
+                        <label for="postcode">Post Code</label>
+                        <input type="text" class="form-control" name="postcode" id="postcode" placeholder="Enter Customer Details">
+                    </div>
+                    <div class="form-group">
+                        <label for="province">Province</label>
+                        <input type="text" class="form-control" name="province" id="province" placeholder="Enter Province">
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" class="form-control" name="country" id="country" placeholder="Enter Country">
+                    </div>
+                    <div class="form-group">
+                        <label for="addressDetails">Address Details</label>
+                        <input type="text" class="form-control" name="addressDetails" id="addressDetails" placeholder="Enter Aaddress Details">
+                    </div>
+                </div>
+                <!-- CARD BODY  -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-outline-success">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,11 +1,16 @@
 package com.bootcamp.pos.model.entity;
 
+import com.bootcamp.pos.model.response.CustomerAddressResponse;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.UUID;
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -14,39 +19,37 @@ import java.util.Date;
 public class CustomerAddressEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
-
-
-    //--------Relasi ke Customer--------//
-    @Column(name = "customer_id")
-    private Long customerId;
+    private String id;
+    //---------------Relasi ke customer------------//
+    @Column(name = "customer_Id")
+    private String customerId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
+    @JoinColumn(name = "customer_id",insertable = false,updatable = false )
     private CustomerEntity customer;
-    //------------------//
+    //---------------------------//
 
-    //--------Relasi ke Address--------//
+
+
+  //---------------Relasi ke address------------//
     @Column(name = "address_id")
-    private Long addressId;
+    private String addressId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "address_id")
+    @JoinColumn(name = "address_id",insertable = false, updatable = false)
     private AddressesEntity addresses;
-    //------------------//
+    //---------------------------//
 
 
     @Column(name = "date_from")
-    private Date dateFrom;
+    private LocalDate dateFrom;
 
     @Column(name = "date_to")
-    private Date dateTo;
+    private LocalDate dateTo;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @Column(name = "address_type_code")
-    private RefAddressTypeEntity refAddressType;
-
-
+    public CustomerAddressEntity(CustomerAddressResponse response) {
+        BeanUtils.copyProperties(response, this);
+        this.id = UUID.randomUUID().toString();
+    }
 }

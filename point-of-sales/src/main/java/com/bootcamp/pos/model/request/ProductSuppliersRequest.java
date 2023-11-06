@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 @Data
 @NoArgsConstructor
@@ -11,13 +12,11 @@ import java.util.Date;
 
 public class ProductSuppliersRequest {
 
-    private Long id;
-
-    private Long productId;
+    private String id;
 
     private String supplierCode;
 
-    private Date valueSupplierToDate;
+    private LocalDate valueSupplierToDate;
 
     private String totalQtySupplier;
 

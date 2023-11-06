@@ -9,13 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class InventoryLocationRequest {
 
-    private Long locationId;
-
-    private Long productId;
+    private String locationId;
 
     private ProductRequest product;
-
-    private Long addressId;
 
     private Integer quantity;
 

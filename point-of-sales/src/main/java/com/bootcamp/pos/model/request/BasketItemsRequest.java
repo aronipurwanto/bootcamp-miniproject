@@ -13,13 +13,9 @@ import java.time.LocalDateTime;
 
 public class BasketItemsRequest {
 
-    private Long id;
-
-    private Long customerId;
+    private String id;
 
     private LocalDateTime dateTime;
-
-    private Long productId;
 
     private Integer quantity;
 
