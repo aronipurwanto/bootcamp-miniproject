@@ -65,13 +65,11 @@ public class AddressesController {
     }
 
     @GetMapping("/delete/{id}")
-    public ModelAndView delete(@ModelAttribute AddressesResponse request) {
-        Optional<AddressesResponse> response = addressesService.getById(request.getId());
-        if (response == null) {
-            return new ModelAndView("redirect:/address");
-        }
-        addressesService.delete(request.getId());
-        return new ModelAndView("redirect:/address");
+    public ModelAndView delete(@PathVariable("id")String id) {
+        AddressesResponse response = addressesService.getById(id).orElse(null);
+        addressesService.delete(id);
+
+        return new ModelAndView("redirect:/inlocal");
     }
 
     @GetMapping("/detail/{id}")

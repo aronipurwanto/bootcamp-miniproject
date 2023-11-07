@@ -3,6 +3,7 @@ package com.bootcamp.pos.controller;
 import com.bootcamp.pos.model.response.AddressesResponse;
 import com.bootcamp.pos.model.response.CustomerAddressResponse;
 import com.bootcamp.pos.model.response.CustomerResponse;
+import com.bootcamp.pos.model.response.InventoryLocationResponse;
 import com.bootcamp.pos.repository.CustomerAddressRepo;
 import com.bootcamp.pos.service.AddressesService;
 import com.bootcamp.pos.service.CustomerAddressService;
@@ -79,13 +80,10 @@ public class CustomerAddressController {
   }
 
   @GetMapping("/delete/{id}")
-    public ModelAndView delete(@ModelAttribute CustomerAddressResponse request){
-      Optional<CustomerAddressResponse> response = customerAddressService.getById(request.getId());
-      if(response == null){
+    public ModelAndView delete(@PathVariable("id")String id){
+      CustomerAddressResponse response = this.customerAddressService.getById(id).orElse(null);
+      customerAddressService.delete(id);
           return new ModelAndView("redirect:/cusaddress");
-      }
-      customerAddressService.delete(request.getId());
-      return new ModelAndView("redirect:/cusaddress");
   }
 
   @GetMapping("/detail/{id}")

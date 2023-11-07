@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit-Product Supplier</title>
+</head>
+<body>
+<div class="row-mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0">Edit Product Supplier</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+        </ol>
+    </div>
+</div>
+<div class="row" layout:fragment="content">
+    <!-- left column -->
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- general form elements -->
+        <div class="card card-orange">
+            <div class="card-header">
+                <h3 class="card-title">Edit Product Supplier</h3>
+            </div>
+            <!-- card header -->
+            <form th:action="@{~/productsupplier/update}" method="post">
+                <!-- id di hidden -->
+                <input type="hidden" id="id" th:field="*{data.id}">
+                <!-- form start -->
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="valueSupplierToDate">Value Sup</label>
+                        <input type="text" class="form-control" name="valueSupplierToDate" id="valueSupplierToDate" placeholder="Enter Value Sup" th:value="${data.valueSupplierToDate}">
+                    </div>
+                    <div class="form-group">
+                        <label for="totalQtySupplier">Total Quantity</label>
+                        <input type="text" class="form-control" name="totalQtySupplier" id="totalQtySupplier" placeholder="Enter Total Quantity" th:value="${data.totalQtySupplier}">
+                    </div>
+                    <div class="form-group">
+                        <label for="fitsItemSupDate">Frst Item Sup Date</label>
+                        <input type="text" class="form-control" name="fitsItemSupDate" id="fitsItemSupDate" placeholder="Enter Frst Item Sup Date" th:value="${data.fitsItemSupDate}">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastItemSupDate">Last Item Sup Date</label>
+                        <input type="text" class="form-control" name="lastItemSupDate" id="lastItemSupDate" placeholder="Enter Last Item Sup Date" th:value="${data.lastItemSupDate}">
+                    </div>
+                    <div class="form-group">
+                        <label for="deliveryLeadTime">Delivery LeadTime</label>
+                        <input type="text" class="form-control" name="deliveryLeadTime" id="deliveryLeadTime" placeholder="Enter Delivery LeadTime" th:value="${data.deliveryLeadTime}">
+                    </div>
+                    <div class="form-group">
+                        <label for="standartPrice">Standar Price</label>
+                        <input type="text" class="form-control" name="standartPrice" id="standartPrice" placeholder="Enter Standar Price" th:value="${data.standartPrice}">
+                    </div>
+                    <div class="form-group">
+                        <label for="percentDiscount">Percent Discount</label>
+                        <input type="text" class="form-control" name="percentDiscount" id="percentDiscount" placeholder="Enter Percent Discount" th:value="${data.percentDiscount}">
+                    </div>
+                    <div class="form-group">
+                        <label for="maxOrderQty">Max Quantity</label>
+                        <input type="text" class="form-control" name="maxOrderQty" id="maxOrderQty" placeholder="Enter Max Quantity" th:value="${data.maxOrderQty}">
+                    </div>
+                    <div class="form-group">
+                        <label for="minOrderQty">Min Quantity</label>
+                        <input type="text" class="form-control" name="minOrderQty" id="minOrderQty" placeholder="Enter Min Quantity" th:value="${data.minOrderQty}">
+                    </div>
+                    <div class="form-group">
+                        <label for="itemSupDetails">Item Sup Details</label>
+                        <input type="text" class="form-control" name="itemSupDetails" id="itemSupDetails" placeholder="Enter Item Sup Details" th:value="${data.itemSupDetails}">
+                    </div>
+                </div>
+                <!-- CARD BODY  -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-outline-success">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

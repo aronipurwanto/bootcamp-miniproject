@@ -1,20 +1,19 @@
-package com.bootcamp.pos.model.request;
+package com.bootcamp.pos.model.response;
 
+import com.bootcamp.pos.model.entity.ProductSuppliersEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class ProductSuppliersRequest {
+public class ProductSuppliersResponse {
 
     private String id;
-
-    private String supplierCode;
 
     private String valueSupplierToDate;
 
@@ -35,4 +34,8 @@ public class ProductSuppliersRequest {
     private String minOrderQty;
 
     private String itemSupDetails;
+
+    public ProductSuppliersResponse(ProductSuppliersEntity entity) {
+        BeanUtils.copyProperties(entity, this);
+    }
 }

@@ -71,12 +71,10 @@ public class CustomerController {
     }
 
     @GetMapping("/delete/{id}")
-    public ModelAndView delete(@ModelAttribute CustomerResponse request) {
-        Optional<CustomerResponse> response = customerService.getById(request.getId());
-        if (response == null) {
-            return new ModelAndView("redirect:/customer");
-        }
-        customerService.delete(request.getId());
+    public ModelAndView delete(@PathVariable("id")String id) {
+        CustomerResponse response = customerService.getById(id).orElse(null);
+        customerService.delete(id);
+
         return new ModelAndView("redirect:/customer");
     }
 

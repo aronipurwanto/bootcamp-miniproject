@@ -1,11 +1,16 @@
 package com.bootcamp.pos.model.entity;
 
+import com.bootcamp.pos.model.response.ProductSuppliersResponse;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.UUID;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,7 +23,7 @@ public class ProductSuppliersEntity {
     private String id;
 
     @Column(name = "value_supplied_to_date")
-    private Date valueSupplierToDate;
+    private String valueSupplierToDate;
 
     @Column(name = "total_quantity_supplied_to_date")
     private String totalQtySupplier;
@@ -33,17 +38,22 @@ public class ProductSuppliersEntity {
     private String deliveryLeadTime;
 
     @Column(name = "standart_price")
-    private Integer standartPrice;
+    private String standartPrice;
 
     @Column(name = "percentage_discount")
     private String percentDiscount;
 
     @Column(name = "min_order_quantity")
-    private Integer maxOrderQty;
+    private String maxOrderQty;
 
     @Column(name = "max_order_quantity")
-    private Integer minOrderQty;
+    private String minOrderQty;
 
     @Column(name = "other_ite,_suppliers_details")
     private String itemSupDetails;
+
+    public ProductSuppliersEntity(ProductSuppliersResponse response) {
+        BeanUtils.copyProperties(response, this);
+        this.id = UUID.randomUUID().toString();
+    }
 }

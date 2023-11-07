@@ -1,0 +1,68 @@
+    <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>RefAddress-Detail</title>
+</head>
+<body>
+<div class="row-mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0">Detail RefAddress</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+        </ol>
+    </div>
+</div>
+<div class="row" layout:fragment="content">
+    <!-- left column -->
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- general form elements -->
+        <div class="card card-orange">
+            <div class="card-header">
+                <h3 class="card-title">Edit RefAddress</h3>
+            </div>
+            <!-- card header -->
+            <form th:action="@{~/refaddress/detail}" method="post">
+                <!-- id di hidden -->
+
+                <!-- form start -->
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Location Id</label>
+                        <input type="text" class="form-control" name="locationId" id="locationId" placeholder="Enter LocatioN Id" th:value="${data.locationId}">
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="text" class="form-control" name="quantity" id="quantity" placeholder="Enter Quantity" th:value="${data.quantity}">
+                    </div>
+                    <div class="form-group">
+                        <label>Reorder Level</label>
+                        <input type="text" class="form-control" name="reorderLevel" id="reorderLevel" placeholder="Enter Reorder Level" th:value="${data.reorderLevel}">
+                    </div>
+                    <div class="form-group">
+                        <label>Reorder Quantity</label>
+                        <input type="text" class="form-control" name="reorderQuantity" id="reorderQuantity" placeholder="Enter Reorder Quantity" th:value="${data.reorderQuantity}">
+                    </div>
+                    <div class="form-group">
+                        <label>Total Average</label>
+                        <input type="text" class="form-control" name="totalAverage" id="totalAverage" placeholder="Enter Total Avarage" th:value="${data.totalAverage}">
+                    </div>
+                    <div class="form-group">
+                        <label>Inventory Details</label>
+                        <input type="text" class="form-control" name="inventoryDetails" id="inventoryDetails" placeholder="Enter InventoryDetail" th:value="${data.inventoryDetails}">
+                    </div>
+
+                </div>
+                <!-- card body -->
+                <div class="card-footer">
+                    <a th:href="@{~/inlocal}" type="submit" class="btn btn-outline-success">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
