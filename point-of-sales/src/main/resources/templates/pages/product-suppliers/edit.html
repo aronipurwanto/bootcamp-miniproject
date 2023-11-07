@@ -8,12 +8,12 @@
 <body>
 <div class="row mb-2" layout:fragment="breadcrumb">
     <div class="col-sm-6">
-        <h1 class="m-0">Add ProductSupplier</h1>
+        <h1 class="m-0">Edit ProductSupplier</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a th:href="@{~/home}">Home</a> </li>
-            <li class="breadcrumb-item active">Add ProductSupplier</li>
+            <li class="breadcrumb-item active">Edit ProductSupplier</li>
         </ol>
     </div>
 </div>
@@ -23,10 +23,10 @@
         <!-- general form elements -->
         <div class="card card-success">
             <div class="card-header">
-                <h3 class="card-title">Add ProductSupplier</h3>
+                <h3 class="card-title">Edit Product Supplier</h3>
             </div>
             <!-- /. card header -->
-            <form th:action="@{~/ProductSuppliers/save}" method="post">
+            <form th:action="@{~/Product-suppliers/update}" method="post">
                 <!-- id di hidden -->
                 <input type="hidden" name="id" th:value="${productSupplier.id}">
                 <!-- form start -->
@@ -113,7 +113,7 @@
                 <!-- card body -->
                 <div class="card-footer">
                     <button type="submit" class="btn btn-outline-success">Submit</button>
-                    <a class="btn btn-outline-success" th:href="@{~/ProductSupplierupplierupplier}">Back</a>
+                    <a class="btn btn-outline-success" th:href="@{~/product-supplier}">Back</a>
                 </div>
             </form>
         </div>

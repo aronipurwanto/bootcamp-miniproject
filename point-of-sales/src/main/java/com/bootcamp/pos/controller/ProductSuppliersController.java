@@ -14,18 +14,18 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping("/productSuppliers")
+@RequestMapping("/product-suppliers")
 @RequiredArgsConstructor
 public class ProductSuppliersController {
 
-    private final ProductSupplierService ProductSupplierService;
+    private final ProductSupplierService productSupplierService;
     private final ProductsService productsService;
     private final SupplierService supplierService;
 
     @GetMapping
     public ModelAndView index(){
-        ModelAndView view = new ModelAndView("/pages/productSuppliers/index");
-        List<ProductSupplierRequest> products = this.ProductSupplierService.getAll();
+        ModelAndView view = new ModelAndView("/pages/product-suppliers/index");
+        List<ProductSupplierRequest> products = this.productSupplierService.getAll();
 
         view.addObject("productSupplierList", products);
         return view;
@@ -33,7 +33,7 @@ public class ProductSuppliersController {
 
     @GetMapping("/add")
     public ModelAndView add(){
-        ModelAndView view = new ModelAndView("pages/productSuppliers/add");
+        ModelAndView view = new ModelAndView("pages/product-suppliers/add");
         List<ProductsRequest> product = this.productsService.getAll();
         List<SupplierRequest> supplier = this.supplierService.getAll();
 
@@ -44,22 +44,22 @@ public class ProductSuppliersController {
 
     @PostMapping("/save")
     public ModelAndView save (@ModelAttribute ProductSupplierRequest request){
-        ModelAndView view = new ModelAndView("pages/productSuppliers/add");
+        ModelAndView view = new ModelAndView("pages/product-suppliers/add");
         List<ProductsRequest> product = this.productsService.getAll();
         List<SupplierRequest> supplier = this.supplierService.getAll();
 
         view.addObject("productList", product);
         view.addObject("supplierList", supplier);
-        this.ProductSupplierService.save(request);
-        return new ModelAndView("redirect:/productSuppliers");
+        this.productSupplierService.save(request);
+        return new ModelAndView("redirect:/product-suppliers");
     }
 
     @GetMapping("/edit/{id}")
     public ModelAndView edit(@PathVariable("id") String id){
-        ModelAndView view = new ModelAndView("pages/productSuppliers/edit");
-        ProductSupplierRequest products = this.ProductSupplierService.getById(id).orElse(null);
+        ModelAndView view = new ModelAndView("pages/product-suppliers/edit");
+        ProductSupplierRequest products = this.productSupplierService.getById(id).orElse(null);
         if (products == null){
-            return new ModelAndView("redirect:/productSuppliers");
+            return new ModelAndView("redirect:/product-suppliers");
         }
 
         List<ProductsRequest> product = this.productsService.getAll();
@@ -73,22 +73,22 @@ public class ProductSuppliersController {
 
     @PostMapping("/update")
     public ModelAndView update(@ModelAttribute ProductSupplierRequest request){
-        this.ProductSupplierService.update(request, request.getId());
-        return new ModelAndView("redirect:/productSuppliers");
+        this.productSupplierService.update(request, request.getId());
+        return new ModelAndView("redirect:/product-suppliers");
     }
 
     @GetMapping("/delete/{id}")
     public ModelAndView delete(@PathVariable("id") String id){
-        this.ProductSupplierService.delete(id);
-        return new ModelAndView("redirect:/productSuppliers");
+        this.productSupplierService.delete(id);
+        return new ModelAndView("redirect:/product-suppliers");
     }
 
     @GetMapping("/detail/{id}")
     public ModelAndView detail(@PathVariable("id") String id){
-        ModelAndView view = new ModelAndView("pages/productSuppliers/detail");
-        ProductSupplierRequest products = this.ProductSupplierService.getById(id).orElse(null);
+        ModelAndView view = new ModelAndView("pages/product-suppliers/detail");
+        ProductSupplierRequest products = this.productSupplierService.getById(id).orElse(null);
         if (products == null){
-            return new ModelAndView("redirect:/productSuppliers");
+            return new ModelAndView("redirect:/product-suppliers");
         }
 
         view.addObject("productSuppliers", products);

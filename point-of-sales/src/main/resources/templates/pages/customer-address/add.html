@@ -8,12 +8,12 @@
 <body>
 <div class="row mb-2" layout:fragment="breadcrumb">
     <div class="col-sm-6">
-        <h1 class="m-0">Add CustomerAddress</h1>
+        <h1 class="m-0">Add Customer Address</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a> </li>
-            <li class="breadcrumb-item active">Add CustomerAddress</li>
+            <li class="breadcrumb-item active">Add Customer Address</li>
         </ol>
     </div>
 </div>
@@ -23,10 +23,10 @@
         <!-- general form elements -->
         <div class="card card-success">
             <div class="card-header">
-                <h3 class="card-title">Add CustomerAddress</h3>
+                <h3 class="card-title">Add Customer Address</h3>
             </div>
             <!-- /. card header -->
-            <form th:action="@{~/customerAddress/save}" method="post">
+            <form th:action="@{~/customer-address/save}" method="post">
                 <!-- form start -->
                 <div class="card-body">
                     <div class="form-group">
@@ -51,6 +51,14 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="addressTypeId">Address Type</label>
+                        <select id="addressTypeId" name="addressTypeId" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="addressType :${addressTypeList}" th:value="${addressType.id}" th:text="${addressType.addressCodeType}"></option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label for="dateTo">Date To</label><br>
                         <input type="date" name="dateTo" id="dateTo" class="form-control">
                     </div>
@@ -58,7 +66,7 @@
                 <!-- card body -->
                 <div class="card-footer">
                     <button type="submit" class="btn btn-outline-success">Submit</button>
-                    <a class="btn btn-outline-success" th:href="@{~/customerAddress}">Back</a>
+                    <a class="btn btn-outline-success" th:href="@{~/customer-address}">Back</a>
                 </div>
             </form>
         </div>

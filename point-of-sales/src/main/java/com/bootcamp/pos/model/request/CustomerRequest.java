@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class CustomerRequest {
     private String id;
+    private String paymentMethodCodeId;
     private String customerName;
     private String customerPhone;
     private String customerEmail;
@@ -21,8 +22,14 @@ public class CustomerRequest {
     private LocalDate dateCustomer;
     private String paymentDetails;
     private String otherCustomerDetails;
+    private String paymentMethodCodeName;
 
     public CustomerRequest(CustomerEntity entity) {
         BeanUtils.copyProperties(entity, this);
+
+        if (entity.getPaymentMethod() != null){
+            this.paymentMethodCodeId = entity.getPaymentMethod().getId();
+            this.paymentMethodCodeName = entity.getPaymentMethod().getPaymentMethodCode();
+        }
     }
 }

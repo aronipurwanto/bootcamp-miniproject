@@ -21,6 +21,9 @@ public class CustomerEntity {
     @Column(name = "id")
     private String id;
 
+    @Column(name = "pay_method_code_id")
+    private String paymentMethodCodeId;
+
     @Column(name = "customer_name", length = 200)
     private String customerName;
 
@@ -38,6 +41,10 @@ public class CustomerEntity {
 
     @Column(name = "other_details")
     private String otherCustomerDetails;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "pay_method_code_id", insertable = false, updatable = false)
+    private PaymentMethodEntity paymentMethod;
 
     public CustomerEntity(CustomerRequest request) {
         BeanUtils.copyProperties(request, this);

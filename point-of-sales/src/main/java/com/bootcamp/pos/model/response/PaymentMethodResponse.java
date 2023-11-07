@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RefAddressTypeResponse {
+public class PaymentMethodResponse {
 
     private String id;
-    private String addressTypeCode;
-    private String addressDescType;
+    private String paymentCode;
+    private String paymentDesc;
+    private String creditCard;
 }
