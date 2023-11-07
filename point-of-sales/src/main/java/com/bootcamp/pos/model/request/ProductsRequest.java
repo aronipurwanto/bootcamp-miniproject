@@ -9,7 +9,7 @@ import org.springframework.beans.BeanUtils;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductRequest {
+public class ProductsRequest {
 
     private String id;
     private String productTypeCode;
@@ -18,7 +18,7 @@ public class ProductRequest {
     private Double productPrice;
     private String description;
 
-    public ProductRequest(ProductsEntity entity) {
+    public ProductsRequest(ProductsEntity entity) {
         BeanUtils.copyProperties(entity, this);
     }
 

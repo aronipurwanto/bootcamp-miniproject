@@ -27,7 +27,7 @@ public class CustomerController {
 
     @GetMapping("/add")
     public ModelAndView add(){
-        return new ModelAndView("/pages/customer/add");
+        return new ModelAndView("pages/customer/add");
     }
 
     @PostMapping("/save")

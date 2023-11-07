@@ -48,6 +48,10 @@
                         <label for="dateTo">Date To</label><br>
                         <input type="date" name="dateTo" id="dateTo" class="form-control" th:value="${customerAddress.dateTo}">
                     </div>
+
+                    <div class="card-footer">
+                        <a class="btn btn-outline-success" th:href="@{~/customerAddress}">Back</a>
+                    </div>
                 </div>
             </form>
         </div>

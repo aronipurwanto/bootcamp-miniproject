@@ -1,10 +1,14 @@
 package com.bootcamp.pos.model.entity;
 
 
+import com.bootcamp.pos.model.request.ProductSupplierRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
+
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -15,13 +19,13 @@ public class ProductSuppliersEntity {
 
     @Id
     @Column(name = "id")
-    private Long id;
+    private String id;
 
     @Column(name = "product_id")
-    private Long productId;
+    private String productId;
 
-    @Column(name = "supplier_code")
-    private Long supplierCode;
+    @Column(name = "supplier_id")
+    private String supplierId;
 
     @Column(name = "value_supplied")
     private String valueSupplied;
@@ -38,7 +42,7 @@ public class ProductSuppliersEntity {
     @Column(name = "delivery")
     private String delivery;
 
-    @Column(name = "standart_price")
+    @Column(name = "standard_price")
     private Double standardPrice;
 
     @Column(name = "discount")
@@ -53,4 +57,16 @@ public class ProductSuppliersEntity {
     @Column(name = "item_supplier_details")
     private String itemSupplierDetails;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    private ProductsEntity product;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "supplier_id", insertable = false, updatable = false)
+    private SuppliersEntity supplier;
+
+    public ProductSuppliersEntity(ProductSupplierRequest request) {
+        BeanUtils.copyProperties(request, this);
+        this.id = UUID.randomUUID().toString();
+    }
 }

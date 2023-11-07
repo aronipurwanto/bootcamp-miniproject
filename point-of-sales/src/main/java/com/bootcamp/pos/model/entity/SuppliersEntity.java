@@ -1,9 +1,13 @@
 package com.bootcamp.pos.model.entity;
 
+import com.bootcamp.pos.model.request.SupplierRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
+
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -14,10 +18,10 @@ public class SuppliersEntity {
 
     @Id
     @Column(name = "id")
-    private Long id;
+    private String id;
 
     @Column(name = "supplier_code")
-    private Long supplierCode;
+    private String supplierCode;
 
     @Column(name = "supplier_name")
     private String supplierName;
@@ -29,8 +33,13 @@ public class SuppliersEntity {
     private String supplierEmail;
 
     @Column(name = "supplier_phone")
-    private Integer supplierPhone;
+    private String supplierPhone;
 
     @Column(name = "other_supplier")
     private String otherSupplier;
+
+    public SuppliersEntity(SupplierRequest request) {
+        BeanUtils.copyProperties(request, this);
+        this.id = UUID.randomUUID().toString();
+    }
 }

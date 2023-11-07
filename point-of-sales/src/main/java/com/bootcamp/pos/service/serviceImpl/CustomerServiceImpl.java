@@ -77,7 +77,7 @@ public class CustomerServiceImpl implements CustomerService {
     public Optional<CustomerRequest> delete(String id) {
         CustomerEntity entity = this.customerRepo.findById(id).orElse(null);
         if (entity == null){
-            log.warn("Csutomer With id :{}, not Found", id);
+            log.warn("Customer With id :{}, not Found", id);
             return Optional.empty();
         }
 
