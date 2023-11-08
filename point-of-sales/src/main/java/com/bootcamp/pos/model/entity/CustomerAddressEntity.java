@@ -31,7 +31,6 @@ public class CustomerAddressEntity {
     //---------------------------//
 
 
-
   //---------------Relasi ke address------------//
     @Column(name = "address_id")
     private String addressId;
@@ -39,6 +38,15 @@ public class CustomerAddressEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id",insertable = false, updatable = false)
     private AddressesEntity addresses;
+    //---------------------------//
+
+    //---------------Relasi ke ref Address Type------------//
+    @Column(name = "address_type_code")
+    private String addressTypeCode;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "address_type_code", insertable = false, updatable = false)
+    private RefAddressTypeEntity refAddressType;
     //---------------------------//
 
 

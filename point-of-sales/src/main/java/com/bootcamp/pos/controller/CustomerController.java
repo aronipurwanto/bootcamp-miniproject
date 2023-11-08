@@ -1,5 +1,6 @@
 package com.bootcamp.pos.controller;
 
+import com.bootcamp.pos.model.entity.RefPaymentEntity;
 import com.bootcamp.pos.model.response.CustomerResponse;
 import com.bootcamp.pos.model.response.RefPaymentResponse;
 import com.bootcamp.pos.service.CustomerService;
@@ -17,7 +18,7 @@ import java.util.Optional;
 @RequestMapping("/customer")
 public class CustomerController {
     private final CustomerService customerService;
-   // private final RefPaymentService refPaymentService;
+    private final RefPaymentService refPaymentService;
 
     @GetMapping
     public ModelAndView index(){
@@ -35,8 +36,13 @@ public class CustomerController {
 
         List<CustomerResponse> customer = customerService.getAll();
 
-        view.addObject("data",customer);
+        view.addObject("dataCus",customer);
+
+
+        List<RefPaymentResponse> refPayment = refPaymentService.getAll();
+        view.addObject("dataPay", refPayment);
         return view;
+
     }
 
     @PostMapping("/save")
@@ -58,8 +64,10 @@ public class CustomerController {
         if(response == null){
             return new ModelAndView("redirect:/customer");
         }
-       // List<RefPaymentResponse> dataPayment = this..getAll();
-      //  view.addObject("dataPayment",dataPayment);
+
+        List<RefPaymentResponse> ref = this.refPaymentService.getAll();
+        view.addObject("dataref",ref);
+
 
         view.addObject("customer", response);
         return view;

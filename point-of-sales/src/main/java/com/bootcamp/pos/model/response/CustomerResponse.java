@@ -19,7 +19,9 @@ public class CustomerResponse {
 
     private String id;
     //---------------Relasi ke Payment------------//
-    //private String paymentCode;
+    private String paymentId;
+
+    private String code;
 
     //---------------------------//
 
@@ -38,6 +40,11 @@ public class CustomerResponse {
 
     public CustomerResponse(CustomerEntity entity) {
         BeanUtils.copyProperties(entity, this);
-       // this.paymentCode = getPaymentCode();
+        if(entity.getRefPayment() != null){
+            paymentId = entity.getPaymentId();
+            code = entity.getRefPayment().getCode();
+        }
+
+
     }
 }

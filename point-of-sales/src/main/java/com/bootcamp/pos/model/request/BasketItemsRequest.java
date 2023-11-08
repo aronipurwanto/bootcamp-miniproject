@@ -15,9 +15,7 @@ public class BasketItemsRequest {
 
     private String id;
 
-    private LocalDateTime dateTime;
+    private String quantity;
 
-    private Integer quantity;
-
-    private Integer cost;
+    private String cost;
 }

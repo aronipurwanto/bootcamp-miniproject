@@ -12,7 +12,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class  CustomerAddressResponse {
+public class    CustomerAddressResponse {
 
     private String id;
 
@@ -29,6 +29,13 @@ public class  CustomerAddressResponse {
     private String houseNumber;
     //---------------------------//
 
+    //---------------Relasi ke ref address type------------//
+    private String addressTypeCode;
+
+    private String code;
+    //---------------Relasi ke ref address type------------//
+
+
     @DateTimeFormat(pattern = "yy-mm-dd")
     private LocalDate dateFrom;
     @DateTimeFormat(pattern = "yy-mm-dd")
@@ -36,6 +43,8 @@ public class  CustomerAddressResponse {
 
     public CustomerAddressResponse(CustomerAddressEntity entity) {
         BeanUtils.copyProperties(entity, this);
+        addressTypeCode = entity.getAddressTypeCode();
+        code = entity.getRefAddressType().getCode();
         addressId = entity.getAddressId();
         houseNumber = entity.getAddresses().getHouseNumber();
         customerId = entity.getCustomerId();

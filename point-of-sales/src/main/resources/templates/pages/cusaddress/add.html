@@ -42,6 +42,13 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="addressTypeCode">Ref Addres Code</label>
+                        <select id="addressTypeCode" name="addressTypeCode" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="ref :${dataref}" th:value="${ref.id}" th:text="${ref.code}">Select One</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="dateFrom">Date From</label>
                         <input type="date" class="form-control" name="dateFrom" id="dateFrom" placeholder="Enter Name dateFrom">
                     </div>

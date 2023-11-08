@@ -1,13 +1,11 @@
 package com.bootcamp.pos.controller;
 
-import com.bootcamp.pos.model.response.AddressesResponse;
-import com.bootcamp.pos.model.response.CustomerAddressResponse;
-import com.bootcamp.pos.model.response.CustomerResponse;
-import com.bootcamp.pos.model.response.InventoryLocationResponse;
+import com.bootcamp.pos.model.response.*;
 import com.bootcamp.pos.repository.CustomerAddressRepo;
 import com.bootcamp.pos.service.AddressesService;
 import com.bootcamp.pos.service.CustomerAddressService;
 import com.bootcamp.pos.service.CustomerService;
+import com.bootcamp.pos.service.RefAddressTypeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +21,7 @@ public class CustomerAddressController {
     private final CustomerAddressService customerAddressService;
     private final AddressesService addressesService;
     private final CustomerService customerService;
+    private final RefAddressTypeService refAddressTypeService;
 
   @GetMapping
   public ModelAndView index() {
@@ -40,8 +39,10 @@ public class CustomerAddressController {
       ModelAndView view = new ModelAndView("pages/cusaddress/add");
        // get data address
       List<AddressesResponse> data = this.addressesService.getAll();
-
       view.addObject("dataAddress", data);
+
+      List<RefAddressTypeResponse> ref = this.refAddressTypeService.getAll();
+      view.addObject("dataref", ref);
 
        // get data customer
      List<CustomerResponse> response = this.customerService.getAll();
@@ -64,10 +65,14 @@ public class CustomerAddressController {
       if(response == null){
           return new ModelAndView("redirect:/cusaddress");
       }
+      view.addObject("cusaddress", response);
+
       List<AddressesResponse> dataAddress = this.addressesService.getAll();
       view.addObject("dataAddress", dataAddress);
 
-      view.addObject("cusaddress", response);
+
+      List<RefAddressTypeResponse> ref = this.refAddressTypeService.getAll();
+      view.addObject("datarefAaddrs", ref);
 
       List<CustomerResponse> dataCustomer = this.customerService.getAll();
       view.addObject("dataCustomer", dataCustomer);

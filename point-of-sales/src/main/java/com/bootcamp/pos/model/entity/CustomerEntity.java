@@ -20,15 +20,14 @@ public class CustomerEntity {
     @Id
     @Column(name = "customer_id")
     private String id;
+    //---------------Relasi ke ref payment method------------//
+    @Column(name = "ref_payment_id")
+    private String paymentId;
 
-//    //---------------Relasi ke Ref Payment------------//
-//    @Column(name = "payment_code")
-//    private String paymentCode;
-//
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name ="payment_code",insertable = false,updatable = false)
-//    private RefPaymentEntity payment;
-//    //---------------------------//
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ref_payment_id", insertable = false, updatable = false)
+    private RefPaymentEntity refPayment;
+
 
     @Column(name = "customer_name")
     private String name;

@@ -30,6 +30,14 @@
                 <!-- form start -->
                 <div class="card-body">
                     <div class="form-group">
+                        <label for="paymentId">Payment Code</label>
+                        <select id="paymentId" name="paymentId" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="refPay :${dataref}" th:value="${refPay.id}" th:text="${refPay.code}"
+                                    th:selected="${customer.paymentId == refPay.id}">Select One</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label>Name Customer</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter Code" th:value="${customer.name}">
                     </div>

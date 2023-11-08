@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>RefAddress-Detail</title>
+</head>
+<body>
+<div class="row-mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0">Detail RefAddress</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+        </ol>
+    </div>
+</div>
+<div class="row" layout:fragment="content">
+    <!-- left column -->
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- general form elements -->
+        <div class="card card-orange">
+            <div class="card-header">
+                <h3 class="card-title">Edit RefAddress</h3>
+            </div>
+            <!-- card header -->
+            <form th:action="@{~/refaddress/detail}" method="post">
+                <!-- id di hidden -->
+
+                <!-- form start -->
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="id">Id</label>
+                        <input type="text" class="form-control" name="id" id="id" placeholder="Enter dateTime" th:value="${detail.id}">
+                    </div>
+                    <div class="form-group">
+                        <label for="customerId">Id</label>
+                        <input type="text" class="form-control" name="customerId" id="customerId" placeholder="Enter dateTime" th:value="${detail.name}">
+                    </div>
+                    <div class="form-group">
+                        <label for="dateTime">date time</label>
+                        <input type="text" class="form-control" name="dateTime" id="dateTime" placeholder="Enter dateTime" th:value="${detail.dateTime}">
+                    </div>
+                    <div class="form-group">
+                        <label for="totalCost">total cost</label>
+                        <input type="text" class="form-control" name="totalCost" id="totalCost" placeholder="Enter totalCost" th:value="${detail.totalCost}">
+                    </div>
+                    <div class="form-group">
+                        <label for="details">Details</label>
+                        <input type="text" class="form-control" name="details" id="details" placeholder="Enter Details" th:value="${detail.details}">
+                    </div>
+                </div>
+                <!-- card body -->
+                <div class="card-footer">
+                    <a th:href="@{~/shopbasket}" type="submit" class="btn btn-outline-success">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
