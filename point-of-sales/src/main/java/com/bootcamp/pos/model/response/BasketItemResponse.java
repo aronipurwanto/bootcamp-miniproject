@@ -12,8 +12,9 @@ import java.time.LocalDate;
 public class BasketItemResponse {
 
     private String id;
+    private String customerId;
     private String  productId;
-    private LocalDate basketDateTime;
+    private String basketDateTimeId;
     private Double quantity;
     private Double cost;
 }

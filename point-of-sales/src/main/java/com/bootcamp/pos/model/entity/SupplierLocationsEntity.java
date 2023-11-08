@@ -11,21 +11,21 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tbl_suppliers_locations")
+@Table(name = "tbl_suppliers_loc")
 public class SupplierLocationsEntity {
 
     @Id
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "supplier_code")
-    private Long supplierCode;
+    @Column(name = "supplier_code_id")
+    private Long supplierCodeId;
 
     @Column(name = "address_id")
     private Long addressId;
 
-    @Column(name = "date_from")
-    private Date dateFrom;
+    @Column(name = "date_from_id")
+    private Date dateFromId;
 
     @Column(name = "date_to")
     private Date dateTo;

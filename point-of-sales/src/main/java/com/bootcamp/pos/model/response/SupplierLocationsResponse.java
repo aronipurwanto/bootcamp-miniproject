@@ -11,8 +11,8 @@ import java.util.Date;
 @NoArgsConstructor
 public class SupplierLocationsResponse {
     private String id;
-    private String supplierCode;
+    private String supplierCodeId;
     private String addressId;
-    private Date dateFrom;
+    private Date dateFromId;
     private Date dateTo;
 }
