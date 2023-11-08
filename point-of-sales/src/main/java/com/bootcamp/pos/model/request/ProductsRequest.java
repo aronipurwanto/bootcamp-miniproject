@@ -12,14 +12,20 @@ import org.springframework.beans.BeanUtils;
 public class ProductsRequest {
 
     private String id;
-    private String productTypeCode;
+    private String productTypeCodeId;
     private String productDetails;
     private String productName;
     private Double productPrice;
     private String description;
+    private String productTypeCodeName;
 
     public ProductsRequest(ProductsEntity entity) {
         BeanUtils.copyProperties(entity, this);
+
+        if (entity.getProductType() != null){
+            this.productTypeCodeId = entity.getProductType().getId();
+            this.productTypeCodeName = entity.getProductType().getProductTypeCode();
+        }
     }
 
 }

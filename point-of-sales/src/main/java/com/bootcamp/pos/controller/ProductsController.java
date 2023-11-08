@@ -1,6 +1,8 @@
 package com.bootcamp.pos.controller;
 
+import com.bootcamp.pos.model.request.ProductTypeRequest;
 import com.bootcamp.pos.model.request.ProductsRequest;
+import com.bootcamp.pos.service.ProductTypeService;
 import com.bootcamp.pos.service.ProductsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductsController {
     private final ProductsService productsService;
+    private final ProductTypeService productTypeService;
 
     @GetMapping
     public ModelAndView index(){
@@ -26,11 +29,19 @@ public class ProductsController {
 
     @GetMapping("/add")
     public ModelAndView add(){
-        return new ModelAndView("pages/products/add");
+        ModelAndView view = new ModelAndView("pages/products/add");
+        List<ProductTypeRequest> productType = this.productTypeService.getAll();
+
+        view.addObject("productTypeList", productType);
+        return view;
     }
 
     @PostMapping("/save")
     public ModelAndView save (@ModelAttribute ProductsRequest request){
+        ModelAndView view = new ModelAndView("pages/products/add");
+        List<ProductTypeRequest> productType = this.productTypeService.getAll();
+
+        view.addObject("productTypeList", productType);
         this.productsService.save(request);
         return new ModelAndView("redirect:/products");
     }
@@ -43,6 +54,9 @@ public class ProductsController {
                 return new ModelAndView("redirect:/products");
             }
 
+            List<ProductTypeRequest> productType = this.productTypeService.getAll();
+
+            view.addObject("productTypeList", productType);
             view.addObject("products", products);
             return view;
     }

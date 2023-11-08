@@ -20,8 +20,8 @@ public class ProductsEntity {
     @Column(name = "id")
     private String id;
 
-    @Column(name = "product_code")
-    private String productTypeCode;
+    @Column(name = "product_type_code_id")
+    private String productTypeCodeId;
 
     @Column(name = "product_details")
     private String productDetails;
@@ -34,6 +34,10 @@ public class ProductsEntity {
 
     @Column(name = "description")
     private String description;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_type_code_id", insertable = false, updatable = false)
+    private ProductTypeEntity productType;
 
     public ProductsEntity(ProductsRequest request) {
         BeanUtils.copyProperties(request, this);

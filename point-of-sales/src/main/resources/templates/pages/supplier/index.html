@@ -55,13 +55,15 @@
                         <td>Supplier Email</td>
                         <td>Supplier Phone</td>
                         <td>OtherSupplier</td>
+                        <td>Actions</td>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="supplier :${supplierList}">
                         <td th:text="${supplier.supplierCode}"></td>
-                        <td th:text="${supplier.supplierAddress}"></td>
                         <td th:text="${supplier.supplierName}"></td>
+                        <td th:text="${supplier.supplierAddress}"></td>
+                        <td th:text="${supplier.supplierEmail}"></td>
                         <td th:text="${supplier.supplierPhone}"></td>
                         <td th:text="${supplier.otherSupplier}"></td>
                         <td>

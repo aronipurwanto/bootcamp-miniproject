@@ -11,8 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ShoppingBasketResponse {
     private String id;
-    private String customerId;
-    private LocalDate basketDateTime;
+    private String basketDateTime;
     private Double totalCost;
     private String otherDetails;
 }

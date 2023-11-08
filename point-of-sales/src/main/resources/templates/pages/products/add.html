@@ -30,9 +30,11 @@
                 <!-- form start -->
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="productTypeCode">Products Code</label>
-                        <input type="text" class="form-control" name="productTypeCode" id="productTypeCode"
-                               placeholder="Enter Products Code">
+                        <label for="productTypeCodeId">Product Type Code</label>
+                        <select class="form-control" name="productTypeCodeId" id="productTypeCodeId">
+                            <option value="">Select One</option>
+                            <option th:each="productTypeCode :${productTypeList}" th:value="${productTypeCode.id}" th:text="${productTypeCode.productTypeCode}"></option>
+                        </select>
                     </div>
 
                     <div class="form-group">
