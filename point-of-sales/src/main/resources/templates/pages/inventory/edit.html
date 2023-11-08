@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Inventory Location</title>
+</head>
+<body>
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h2 class="m-0">Edit Inventory Location</h2>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Edit Inventory Location</li>
+        </ol>
+    </div>
+</div>
+<div class="row" layout:fragment="content">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card card-blue">
+            <div class="card-header">
+                <h3 class="card-title">Edit Inventory Location</h3>
+            </div>
+            <form th:action="@{~/inventory/update}" method="post">
+                <input type="hidden" name="id" th:value="${inventory.id}">
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Product Name :</label>
+                        <select class="form-control" name="productId">
+                            <option value="">Select one</option>
+                            <option th:each="product :${editProduct}"
+                                    th:value="${product.id}"
+                                    th:text="|${product.name}|"
+                                    th:selected="${inventory.productId == product.id}">
+                            </option>
+                        </select><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Address :</label>
+                        <select class="form-control" name="addressId">
+                            <option value="">Select one</option>
+                            <option th:each="address :${editAddress}"
+                                    th:value="${address.id}"
+                                    th:text="|${address.noHome} - ${address.onStreet} - ${address.city} - ${address.stateProvinceCountry}|"
+                                    th:selected="${inventory.addressId == address.id}">
+                            </option>
+                        </select><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quantity In Stock :</label><br>
+                        <input type="text" class="form-control" name="quantityInStock" th:value="${inventory.quantityInStock}" placeholder="Enter Quantity Stock"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Reorder Level :</label><br>
+                        <input type="text" class="form-control" name="reorderLevel" th:value="${inventory.reorderLevel}" placeholder="Enter Reorder Level"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Reorder Quantity :</label><br>
+                        <input type="text" class="form-control" name="reorderQuantity" th:value="${inventory.reorderQuantity}" placeholder="Enter Reorder Quantity"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Total Average Monthly Usage :</label><br>
+                        <input type="date" class="form-control" name="totalAverageMonthlyUsage" th:value="${inventory.totalAverageMonthlyUsage}" placeholder="Enter Total Average Monthly"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Other Inventory Detail :</label><br>
+                        <input type="text" class="form-control" name="otherInventoryDetail" th:value="${inventory.otherInventoryDetail}" placeholder="Enter Other Inventory Detail"><br>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-outline-dark" type="submit">Save</button>
+                    <a class="btn btn-outline-dark" th:href="@{~/inventory}">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

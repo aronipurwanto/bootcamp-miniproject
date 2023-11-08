@@ -39,6 +39,7 @@
                 <table id="table-data" class="table">
                     <thead>
                     <tr>
+                        <th>Ref Address Code</th>
                         <th>Customer Name</th>
                         <th>Address</th>
                         <th>Date From</th>
@@ -48,6 +49,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="customerAddress :${dataCustomer}">
+                        <td th:text="${customerAddress.refAddress.code}"></td>
                         <td th:text="|${customerAddress.customer.name} - ${customerAddress.customer.email} - ${customerAddress.customer.phone}|"></td>
                         <td th:text="|${customerAddress.address.noHome} - ${customerAddress.address.onStreet} - ${customerAddress.address.city} - ${customerAddress.address.stateProvinceCountry}|"></td>
                         <td th:text="${customerAddress.dateFrom}"></td>

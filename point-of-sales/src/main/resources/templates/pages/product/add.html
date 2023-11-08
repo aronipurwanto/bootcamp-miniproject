@@ -26,6 +26,16 @@
             <form th:action="@{~/product/save}" method="post">
                 <div class="card-body">
                     <div class="form-group">
+                        <label>Ref Product Code :</label>
+                        <select class="form-control" name="refProductId">
+                            <option value="">Select one</option>
+                            <option th:each="product :${refProduct}"
+                                    th:value="${product.id}"
+                                    th:text="${product.code}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label>Name :</label><br>
                         <input type="text" class="form-control" name="name" placeholder="Enter Name"><br>
                     </div>

@@ -1,8 +1,10 @@
 package com.bootcamp.pos.service.impl;
 
 import com.bootcamp.pos.model.entity.CustomerAddressEntity;
+import com.bootcamp.pos.model.entity.RefAddressEntity;
 import com.bootcamp.pos.model.request.CustomerAddRequest;
 import com.bootcamp.pos.repository.CustomerAddRepository;
+import com.bootcamp.pos.repository.RefAddressRepository;
 import com.bootcamp.pos.service.CustomerAddService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +20,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CustomerAddImpl implements CustomerAddService {
     private final CustomerAddRepository customerAddRepository;
+    private final RefAddressRepository refAddressRepository;
+
     @Override
     public List<CustomerAddRequest> getAll() {
         return customerAddRepository.findAll().stream().map(CustomerAddRequest::new).collect(Collectors.toList());
@@ -37,7 +41,12 @@ public class CustomerAddImpl implements CustomerAddService {
             return Optional.empty();
         }
 
-        CustomerAddressEntity entity = new CustomerAddressEntity(request);
+        RefAddressEntity refAddress = refAddressRepository.findById(request.getRefAddressId()).orElse(null);
+        if (refAddress == null){
+            return Optional.empty();
+        }
+
+        CustomerAddressEntity entity = new CustomerAddressEntity(request, refAddress);
         try {
             customerAddRepository.save(entity);
             log.info("Save customerAdd success");

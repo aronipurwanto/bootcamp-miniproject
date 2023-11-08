@@ -41,8 +41,16 @@ public class CustomerAddressEntity {
     @Column(name = "date_to")
     private LocalDate dateTo;
 
-    public CustomerAddressEntity(CustomerAddRequest request) {
+    @Column(name = "ref_address_id")
+    private String refAddressId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ref_address_id", insertable = false, updatable = false)
+    private RefAddressEntity refAddress;
+
+    public CustomerAddressEntity(CustomerAddRequest request, RefAddressEntity refAddress) {
         BeanUtils.copyProperties(request, this);
         this.id = UUID.randomUUID().toString();
+        this.refAddress = refAddress;
     }
 }

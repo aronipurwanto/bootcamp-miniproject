@@ -20,8 +20,15 @@ public class CustomerRequest {
     private LocalDate dateBecame;
     private String paymentDetail;
     private String otherCustomerDetail;
+    private String paymentId;
+    private RefPaymentRequest payment;
 
     public CustomerRequest(CustomerEntity entity) {
         BeanUtils.copyProperties(entity, this);
+
+        if (entity.getPayment() != null){
+            this.paymentId = entity.getPaymentId();
+            this.payment = new RefPaymentRequest(entity.getPayment());
+        }
     }
 }

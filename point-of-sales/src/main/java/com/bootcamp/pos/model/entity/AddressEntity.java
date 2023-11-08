@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -45,6 +47,9 @@ public class AddressEntity {
 
     @Column(name = "other_address_detail")
     private String otherAddressDetail;
+
+    @OneToMany(mappedBy = "address", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<InventoryLocationsEntity> inventory = new ArrayList<>();
 
     public AddressEntity(AddressRequest request) {
         BeanUtils.copyProperties(request, this);

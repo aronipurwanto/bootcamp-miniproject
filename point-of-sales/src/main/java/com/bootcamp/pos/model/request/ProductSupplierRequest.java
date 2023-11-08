@@ -11,9 +11,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductSupplierRequest {
-    private  String id;
-    private String code;
-    private Date valueSupplied;
+    private String id;
+    private String valueSupplied;
     private String totalQuantitySupplied;
     private String firstItemSupplied;
     private String lastItemSupplied;

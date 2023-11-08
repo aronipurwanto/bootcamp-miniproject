@@ -35,20 +35,33 @@
                 <!-- card form start -->
                 <div class="card-body">
                     <div class="form-group">
-                        <label>Customer Name</label>
+                        <label>Ref Address Code :</label>
+                        <select class="form-control" name="refAddressId">
+                            <option value="">Select one</option>
+                            <option th:each="refAddress :${editRefAddress}"
+                                    th:value="${refAddress.id}"
+                                    th:text="|${refAddress.code}|"
+                                    th:selected="${editCustomerAdd.refAddressId == refAddress.id}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Customer Name :</label>
                         <select class="form-control" name="customerId">
-                            <option value="">select one</option>
+                            <option value="">Select one</option>
                             <option th:each="customer: ${addCustomer}"
                                     th:value="${customer.id}"
                                     th:text="|${customer.name} - ${customer.email} - ${customer.phone}|"
                                     th:selected="${editCustomerAdd.customerId == customer.id}">
                             </option>
-                        </select></div>
+                        </select>
+                    </div>
 
                     <div class="form-group">
-                        <label>Address</label>
+                        <label>Address :</label>
                         <select class="form-control" name="addressId">
-                            <option value="">select one</option>
+                            <option value="">Select one</option>
                             <option th:each="customerAddress: ${addAddress}"
                                     th:value="${customerAddress.id}"
                                     th:text="|${customerAddress.noHome} - ${customerAddress.onStreet} - ${customerAddress.city} - ${customerAddress.stateProvinceCountry}|"
@@ -57,12 +70,12 @@
                         </select></div>
 
                     <div class="form-group">
-                        <label>Date From</label>
+                        <label>Date From :</label>
                         <input type="date" class="form-control" name="dateFrom" th:value="${editCustomerAdd.dateFrom}">
                     </div>
 
                     <div class="form-group">
-                        <label>Date To</label>
+                        <label>Date To :</label>
                         <input class="form-control" type="date" name="dateTo" th:value="${editCustomerAdd.dateTo}">
                     </div>
                     <!-- card form end -->

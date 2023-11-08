@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Location Index</title>
+</head>
+<body>
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0">INVENTORY LOCATION</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a th:href="@{~/home}">Home</a></li>
+            <li class="breadcrumb-item active">Inventory Location</li>
+        </ol>
+    </div>
+</div>
+<div class="row" layout:fragment="content">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header bg-gradient-blue">
+                <h3 class="card-title">Inventory Location</h3>
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 200px;">
+                        <input type="text" name="table_search" class="form-control float-lg-left btn-outline-dark" placeholder="Search">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-outline-dark">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <a th:href="@{~/inventory/add}" id="btn-add" class="btn btn-outline-dark">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table id="table-data" class="table">
+                    <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Address</th>
+                        <th>Quantity In Stock</th>
+                        <th>Reorder Level</th>
+                        <th>Reorder Quantity</th>
+                        <th>Total Average Monthly Usage</th>
+                        <th>Other Inventory Detail</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="inventory :${inventoryList}">
+                        <td th:text="${inventory.product.name}"></td>
+                        <td th:text="|${inventory.address.noHome} - ${inventory.address.onStreet} - ${inventory.address.city} - ${inventory.address.stateProvinceCountry}|"></td>
+                        <td th:text="${inventory.quantityInStock}"></td>
+                        <td th:text="${inventory.reorderLevel}"></td>
+                        <td th:text="${inventory.reorderQuantity}"></td>
+                        <td th:text="${inventory.totalAverageMonthlyUsage}"></td>
+                        <td th:text="${inventory.otherInventoryDetail}"></td>
+                        <td>
+                            <a th:href="@{~/inventory/edit/{id}(id=${inventory.id})}"
+                               class="btn btn-xs btn-outline-success">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a th:href="@{~/inventory/delete/{id}(id=${inventory.id})}"
+                               class="btn btn-xs btn-outline-danger">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                            <a th:href="@{~/inventory/detail/{id}(id=${inventory.id})}"
+                               class="btn btn-xs btn-outline-info">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

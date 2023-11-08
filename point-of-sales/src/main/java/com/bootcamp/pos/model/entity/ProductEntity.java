@@ -28,7 +28,7 @@ public class ProductEntity {
     private String name;
 
     @Column(name = "product_price")
-    private String price;
+    private Double price;
 
     @Column(name = "product_description")
     private String desc;
@@ -43,9 +43,10 @@ public class ProductEntity {
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductSupplierEntity> productSupplier = new ArrayList<>();
 
-    public ProductEntity(ProductRequest request) {
+    public ProductEntity(ProductRequest request, RefProductEntity refProduct) {
         BeanUtils.copyProperties(request, this);
         this.id = UUID.randomUUID().toString();
+        this.refProduct = refProduct;
 
     }
 }

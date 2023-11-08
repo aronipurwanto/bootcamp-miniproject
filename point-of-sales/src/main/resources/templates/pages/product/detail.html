@@ -26,6 +26,11 @@
             <form th:action="@{~/product/update}" method="post">
                 <div class="card-body">
                     <div class="form-group">
+                        <label>Ref Product Code :</label><br>
+                        <input type="text" class="form-control" name="refProduct.code" th:value="${detailProduct.refProduct.code}" placeholder="Enter Code"><br>
+                    </div>
+
+                    <div class="form-group">
                         <label>Name :</label><br>
                         <input type="text" class="form-control" name="name" th:value="${detailProduct.name}" placeholder="Enter Name"><br>
                     </div>

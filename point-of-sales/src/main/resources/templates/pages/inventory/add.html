@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Inventory Location</title>
+</head>
+<body>
+<div class="row mb-2" layout:fragment="breadcrumb">
+  <div class="col-sm-6">
+    <h2 class="m-0">Add Inventory Location</h2>
+  </div>
+  <div class="col-sm-6">
+    <ol class="breadcrumb float-sm-right">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active">Add Inventory Location</li>
+    </ol>
+  </div>
+</div>
+<div class="row" layout:fragment="content">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="card card-blue">
+      <div class="card-header">
+        <h3 class="card-title">New Inventory Location</h3>
+      </div>
+      <form th:action="@{~/inventory/save}" method="post">
+        <div class="card-body">
+          <div class="form-group">
+            <label>Product Name :</label><br>
+            <select class="form-control" name="productId">
+              <option value="">Select one</option>
+              <option th:each="product :${addProduct}"
+                      th:value="${product.id}"
+                      th:text="|${product.name}|">
+              </option>
+            </select><br>
+          </div>
+
+          <div class="form-group">
+            <label>Address :</label><br>
+            <select class="form-control" name="addressId">
+              <option value="">Select one</option>
+              <option th:each="address :${addAddress}"
+                      th:value="${address.id}"
+                      th:text="|${address.noHome} - ${address.onStreet} - ${address.city} - ${address.stateProvinceCountry}|">
+              </option>
+            </select><br>
+          </div>
+
+          <div class="form-group">
+            <label>Quantity In Stock :</label><br>
+            <input type="text" class="form-control" name="quantityInStock" placeholder="Enter Quantity Stock"><br>
+          </div>
+
+          <div class="form-group">
+            <label>Reorder Level :</label><br>
+            <input type="text" class="form-control" name="reorderLevel" placeholder="Enter Reorder Level"><br>
+          </div>
+
+          <div class="form-group">
+            <label>Reorder Quantity :</label><br>
+            <input type="text" class="form-control" name="reorderQuantity" placeholder="Enter Reorder Quantity"><br>
+          </div>
+
+          <div class="form-group">
+            <label>Total Average Monthly Usage :</label><br>
+            <input type="date" class="form-control" name="totalAverageMonthlyUsage" placeholder="Enter Total Average Monthly"><br>
+          </div>
+
+          <div class="form-group">
+            <label>Other Inventory Detail :</label><br>
+            <input type="text" class="form-control" name="otherInventoryDetail" placeholder="Enter Other Inventory Detail"><br>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-outline-dark" type="submit">Save</button>
+          <a class="btn btn-outline-dark" th:href="@{~/inventory}">Back</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -40,6 +40,7 @@
                 <table id="table-data" class="table">
                     <thead>
                     <tr>
+                        <th>Payment Code</th>
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Email</th>
@@ -51,6 +52,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="customer :${customerList}">
+                        <td th:text="${customer.payment.code}"></td>
                         <td th:text="${customer.name}"></td>
                         <td th:text="${customer.phone}"></td>
                         <td th:text="${customer.email}"></td>

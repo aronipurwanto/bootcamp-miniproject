@@ -22,6 +22,8 @@ public class CustomerAddRequest {
     private LocalDate dateFrom;
     @DateTimeFormat(pattern = "yyyy-mm-dd")
     private LocalDate dateTo;
+    private String refAddressId;
+    private RefAddressRequest refAddress;
 
     public CustomerAddRequest(CustomerAddressEntity entity) {
         BeanUtils.copyProperties(entity, this);
@@ -34,6 +36,11 @@ public class CustomerAddRequest {
         if (entity.getAddress() != null){
             this.addressId = entity.getAddressId();
             this.address = new AddressRequest(entity.getAddress());
+        }
+
+        if (entity.getRefAddress() != null){
+            this.refAddressId = entity.getRefAddressId();
+            this.refAddress = new RefAddressRequest(entity.getRefAddress());
         }
     }
 }

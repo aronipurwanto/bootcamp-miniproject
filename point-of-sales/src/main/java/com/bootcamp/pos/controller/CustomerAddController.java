@@ -3,9 +3,11 @@ package com.bootcamp.pos.controller;
 import com.bootcamp.pos.model.request.AddressRequest;
 import com.bootcamp.pos.model.request.CustomerAddRequest;
 import com.bootcamp.pos.model.request.CustomerRequest;
+import com.bootcamp.pos.model.request.RefAddressRequest;
 import com.bootcamp.pos.service.AddressService;
 import com.bootcamp.pos.service.CustomerAddService;
 import com.bootcamp.pos.service.CustomerService;
+import com.bootcamp.pos.service.RefAddressService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,7 @@ public class CustomerAddController {
     private final CustomerAddService customerAddService;
     private final AddressService addressService;
     private final CustomerService customerService;
+    private final RefAddressService refAddressService;
 
     @GetMapping
     public ModelAndView index() {
@@ -35,9 +38,13 @@ public class CustomerAddController {
         ModelAndView view = new ModelAndView("pages/customerAddress/add");
         List<AddressRequest> requests = addressService.getAll();
         List<CustomerRequest> customer = customerService.getAll();
+        List<RefAddressRequest> refAddress = refAddressService.getAll();
 
         view.addObject("addAddress", requests);
+
         view.addObject("addCustomer", customer);
+
+        view.addObject("addRefAddress", refAddress);
         return view;
     }
 
@@ -63,9 +70,15 @@ public class CustomerAddController {
         }
         List<AddressRequest> requests = addressService.getAll();
         List<CustomerRequest> customer = customerService.getAll();
+        List<RefAddressRequest> refAddress = refAddressService.getAll();
+
 
         view.addObject("addAddress", requests);
+
         view.addObject("addCustomer", customer);
+
+        view.addObject("editRefAddress", refAddress);
+
         view.addObject("editCustomerAdd", request);
         return view;
     }

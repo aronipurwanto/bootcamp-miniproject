@@ -25,7 +25,7 @@ public class ProductSupplierEntity {
     private String code;
 
     @Column(name = "value_supplied")
-    private Date valueSupplied;
+    private String valueSupplied;
 
     @Column(name = "total_quantity_supplied")
     private String totalQuantitySupplied;
@@ -73,4 +73,5 @@ public class ProductSupplierEntity {
         this.id = UUID.randomUUID().toString();
         this.product = product;
     }
+
 }

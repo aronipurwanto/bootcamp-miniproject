@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+  <meta charset="UTF-8">
+  <title>Detail Inventory Location</title>
+</head>
+<body>
+<div class="row mb-2" layout:fragment="breadcrumb">
+  <div class="col-sm-6">
+    <h2 class="m-0">Detail Inventory Location</h2>
+  </div>
+  <div class="col-sm-6">
+    <ol class="breadcrumb float-sm-right">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active">Detail Inventory Location</li>
+    </ol>
+  </div>
+</div>
+<div class="row" layout:fragment="content">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="card card-blue">
+      <div class="card-header">
+        <h3 class="card-title">Detail Inventory Location</h3>
+      </div>
+      <form th:action="@{~/inventory/update}" method="post">
+        <div class="card-body">
+          <div class="form-group">
+            <label>Product Name :</label>
+            <input type="text" class="form-control" name="product.name" th:value="${inventory.product.name}" placeholder="Enter Product"><br>
+          </div>
+
+            <div class="form-group">
+              <label>Address :</label>
+              <input type="text" class="form-control" name="address.noHome" th:value="${inventory.address.noHome}" placeholder="Enter Address"><br>
+            </div>
+
+            <div class="form-group">
+              <label>Quantity In Stock :</label><br>
+              <input type="text" class="form-control" name="quantityInStock" th:value="${inventory.quantityInStock}" placeholder="Enter Quantity Stock"><br>
+            </div>
+
+            <div class="form-group">
+              <label>Reorder Level :</label><br>
+              <input type="text" class="form-control" name="reorderLevel" th:value="${inventory.reorderLevel}" placeholder="Enter Reorder Level"><br>
+            </div>
+
+            <div class="form-group">
+              <label>Reorder Quantity :</label><br>
+              <input type="text" class="form-control" name="reorderQuantity" th:value="${inventory.reorderQuantity}" placeholder="Enter Reorder Quantity"><br>
+            </div>
+
+            <div class="form-group">
+              <label>Total Average Monthly Usage :</label><br>
+              <input type="date" class="form-control" name="totalAverageMonthlyUsage" th:value="${inventory.totalAverageMonthlyUsage}" placeholder="Enter Total Average Monthly"><br>
+            </div>
+
+            <div class="form-group">
+              <label>Other Inventory Detail :</label><br>
+              <input type="text" class="form-control" name="otherInventoryDetail" th:value="${inventory.otherInventoryDetail}" placeholder="Enter Other Inventory Detail"><br>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="btn btn-outline-dark" th:href="@{~/inventory}">Back</a>
+          </div>
+      </form>
+    </div>
+    </div>
+  </div>
+</body>
+</html>

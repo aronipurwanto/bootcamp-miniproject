@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Product Supplier</title>
+</head>
+<body>
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h2 class="m-0">Edit Product Supplier</h2>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Edit Product Supplier</li>
+        </ol>
+    </div>
+</div>
+<div class="row" layout:fragment="content">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card card-blue">
+            <div class="card-header">
+                <h3 class="card-title">Edit Product Supplier</h3>
+            </div>
+            <form th:action="@{~/productSupplier/update}" method="post">
+                <input type="hidden" name="id" th:value="${editProductSupp.id}">
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Product Name :</label>
+                        <select class="form-control" name="productId">
+                            <option value="">Select one</option>
+                            <option th:each="product :${editProduct}"
+                                    th:value="${product.id}"
+                                    th:text="|${product.name}|"
+                                    th:selected="${editProductSupp.productId == product.id}">
+
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Supplier Code :</label><br>
+                        <select class="form-control" name="supplierId">
+                            <option value="">Select one</option>
+                            <option th:each="supplier :${editSupplier}"
+                                    th:value="${supplier.id}"
+                                    th:text="|${supplier.code}|"
+                                    th:selected="${editProductSupp.supplierId == supplier.id}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Value Supplied :</label><br>
+                        <input type="text" class="form-control" name="valueSupplied" th:value="${editProductSupp.valueSupplied}" placeholder="Enter Value Supplier"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Total Quantity :</label><br>
+                        <input type="text" class="form-control" name="totalQuantitySupplied" th:value="${editProductSupp.totalQuantitySupplied}" placeholder="Enter Total Quantity"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fist Item Supplier :</label><br>
+                        <input type="text" class="form-control" name="firstItemSupplied" th:value="${editProductSupp.firstItemSupplied}" placeholder="Enter First Item"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Last Item Supplier :</label><br>
+                        <input type="text" class="form-control" name="lastItemSupplied" th:value="${editProductSupp.lastItemSupplied}" placeholder="Enter Last Item"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Delivery Lead :</label><br>
+                        <input type="text" class="form-control" name="deliveryLead" th:value="${editProductSupp.deliveryLead}" placeholder="Enter Delivery"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Standard Price :</label><br>
+                        <input type="text" class="form-control" name="standardPrice" th:value="${editProductSupp.standardPrice}" placeholder="Enter Standard Price"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Percentage Discount :</label><br>
+                        <input type="text" class="form-control" name="percentageDiscount" th:value="${editProductSupp.percentageDiscount}" placeholder="Enter percentage"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Minimum Order Quantity :</label><br>
+                        <input type="text" class="form-control" name="minimumOrderQuantity" th:value="${editProductSupp.minimumOrderQuantity}" placeholder="Enter Mini Quantity"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Maximum Order Quantity :</label>
+                        <input type="text" class="form-control" name="maximumOrderQuantity" th:value="${editProductSupp.maximumOrderQuantity}" placeholder="Enter Max Quantity"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Other Item Supplier Detail :</label>
+                        <input type="text" class="form-control" name="otherItemSupplierDetail" th:value="${editProductSupp.otherItemSupplierDetail}" placeholder="Enter Other Item"><br>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-outline-dark" type="submit">Save</button>
+                    <a class="btn btn-outline-dark" th:href="@{~/productSupplier}">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

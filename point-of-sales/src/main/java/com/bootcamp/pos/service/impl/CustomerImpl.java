@@ -1,8 +1,10 @@
 package com.bootcamp.pos.service.impl;
 
 import com.bootcamp.pos.model.entity.CustomerEntity;
+import com.bootcamp.pos.model.entity.RefPaymentEntity;
 import com.bootcamp.pos.model.request.CustomerRequest;
 import com.bootcamp.pos.repository.CustomerRepository;
+import com.bootcamp.pos.repository.RefPaymentRepository;
 import com.bootcamp.pos.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CustomerImpl implements CustomerService {
     private final CustomerRepository customerRepo;
+    private final RefPaymentRepository refPaymentRepository;
     @Override
     public List<CustomerRequest> getAll() {
         return customerRepo.findAll()
@@ -38,8 +41,11 @@ public class CustomerImpl implements CustomerService {
         if (request == null){
             return Optional.empty();
         }
-
-        CustomerEntity entity = new CustomerEntity(request);
+        RefPaymentEntity payment = refPaymentRepository.findById(request.getPaymentId()).orElse(null);
+        if (payment == null){
+            return Optional.empty();
+        }
+        CustomerEntity entity = new CustomerEntity(request, payment);
         try {
             customerRepo.save(entity);
             log.info("Save customer success");

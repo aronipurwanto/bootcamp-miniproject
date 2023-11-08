@@ -1,7 +1,10 @@
 package com.bootcamp.pos.controller;
 
 import com.bootcamp.pos.model.request.ProductRequest;
+import com.bootcamp.pos.model.request.RefPaymentRequest;
+import com.bootcamp.pos.model.request.RefProductRequest;
 import com.bootcamp.pos.service.ProductService;
+import com.bootcamp.pos.service.RefProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,7 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
     private final ProductService productService;
+    private final RefProductService refProductService;
 
     @GetMapping
     public ModelAndView index(){
@@ -27,6 +31,10 @@ public class ProductController {
     @GetMapping("/add")
     public ModelAndView add(){
         ModelAndView view = new ModelAndView("pages/product/add");
+
+        List<RefProductRequest> product = refProductService.getAll();
+
+        view.addObject("refProduct", product);
         return view;
     }
 
@@ -50,6 +58,10 @@ public class ProductController {
         if (request == null){
             return new ModelAndView("redirect:/product");
         }
+
+        List<RefProductRequest> refProduct = refProductService.getAll();
+
+        view.addObject("refProduct", refProduct);
         view.addObject("editProduct", request);
         return view;
     }

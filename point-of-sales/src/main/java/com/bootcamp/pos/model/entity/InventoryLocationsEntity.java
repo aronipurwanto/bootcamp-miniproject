@@ -1,9 +1,13 @@
 package com.bootcamp.pos.model.entity;
 
+import com.bootcamp.pos.model.request.InventoryLocationRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
+
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -44,7 +48,9 @@ public class InventoryLocationsEntity {
     @Column(name = "other_Inventory_detail")
     private String otherInventoryDetail;
 
-
-
-
+    public InventoryLocationsEntity(InventoryLocationRequest request, AddressEntity address) {
+        BeanUtils.copyProperties(request, this);
+        this.id = UUID.randomUUID().toString();
+        this.address = address;
+    }
 }

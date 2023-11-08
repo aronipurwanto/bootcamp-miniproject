@@ -1,8 +1,10 @@
 package com.bootcamp.pos.service.impl;
 
 import com.bootcamp.pos.model.entity.ProductEntity;
+import com.bootcamp.pos.model.entity.RefProductEntity;
 import com.bootcamp.pos.model.request.ProductRequest;
 import com.bootcamp.pos.repository.ProductRepository;
+import com.bootcamp.pos.repository.RefProductRepository;
 import com.bootcamp.pos.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ProductImpl implements ProductService {
     private final ProductRepository productRepository;
+    private final RefProductRepository refProductRepository;
     @Override
     public List<ProductRequest> getAll() {
         return productRepository.findAll().stream().map(ProductRequest::new).collect(Collectors.toList());
@@ -36,7 +39,12 @@ public class ProductImpl implements ProductService {
         if (request == null){
             return Optional.empty();
         }
-        ProductEntity entity = new ProductEntity(request);
+
+        RefProductEntity refProduct = refProductRepository.findById(request.getRefProductId()).orElse(null);
+        if (refProduct == null){
+            return Optional.empty();
+        }
+        ProductEntity entity = new ProductEntity(request, refProduct);
         try {
             productRepository.save(entity);
             log.info("Save Product success");

@@ -1,7 +1,9 @@
 package com.bootcamp.pos.controller;
 
 import com.bootcamp.pos.model.request.CustomerRequest;
+import com.bootcamp.pos.model.request.RefPaymentRequest;
 import com.bootcamp.pos.service.CustomerService;
+import com.bootcamp.pos.service.RefPaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,7 @@ import java.util.List;
 @RequestMapping("/customer")
 public class CustomerController {
     private final CustomerService customerService;
+    private final RefPaymentService refPaymentService;
 
     @GetMapping
     public ModelAndView index(){
@@ -27,6 +30,9 @@ public class CustomerController {
     @GetMapping("/add")
     public ModelAndView add(){
         ModelAndView view = new ModelAndView("pages/customer/add");
+        List<RefPaymentRequest> requests = refPaymentService.getAll();
+
+        view.addObject("addPayment", requests);
         return view;
     }
 
@@ -51,6 +57,11 @@ public class CustomerController {
         if (request == null){
             return new ModelAndView("redirect:/customer");
         }
+
+        List<RefPaymentRequest> requests = refPaymentService.getAll();
+
+        view.addObject("editRefPayment", requests);
+
         view.addObject("customer", request);
         return view;
     }

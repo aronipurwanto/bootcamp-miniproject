@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Product Supplier</title>
+</head>
+<body>
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h2 class="m-0">Detail Product Supplier</h2>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Detail Product Supplier</li>
+        </ol>
+    </div>
+</div>
+<div class="row" layout:fragment="content">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card card-blue">
+            <div class="card-header">
+                <h3 class="card-title">Detail Product Supplier</h3>
+            </div>
+            <form th:action="@{~/productSupplier/update}" method="post">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Product Name :</label>
+                        <input type="text" class="form-control" name="product.name" th:value="${detailProductSupp.product.name}" placeholder="Enter Code Supplier"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Supplier Code :</label><br>
+                        <input type="text" class="form-control" name="supplier.code" th:value="${detailProductSupp.supplier.code}" placeholder="Enter Code Supplier"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Value Supplied :</label><br>
+                        <input type="text" class="form-control" name="valueSupplied" th:value="${detailProductSupp.valueSupplied}" placeholder="Enter Value Supplier"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Total Quantity :</label><br>
+                        <input type="text" class="form-control" name="totalQuantitySupplied" th:value="${detailProductSupp.totalQuantitySupplied}" placeholder="Enter Total Quantity"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fist Item Supplier :</label><br>
+                        <input type="text" class="form-control" name="firstItemSupplied" th:value="${detailProductSupp.firstItemSupplied}" placeholder="Enter First Item"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Last Item Supplier :</label><br>
+                        <input type="text" class="form-control" name="lastItemSupplied" th:value="${detailProductSupp.lastItemSupplied}" placeholder="Enter Last Item"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Delivery Lead :</label><br>
+                        <input type="text" class="form-control" name="deliveryLead" th:value="${detailProductSupp.deliveryLead}" placeholder="Enter Delivery"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Standard Price :</label><br>
+                        <input type="text" class="form-control" name="standardPrice" th:value="${detailProductSupp.standardPrice}" placeholder="Enter Standard Price"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Percentage Discount :</label><br>
+                        <input type="text" class="form-control" name="percentageDiscount" th:value="${detailProductSupp.percentageDiscount}" placeholder="Enter percentage"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Minimum Order Quantity :</label><br>
+                        <input type="text" class="form-control" name="minimumOrderQuantity" th:value="${detailProductSupp.minimumOrderQuantity}" placeholder="Enter Mini Quantity"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Maximum Order Quantity :</label>
+                        <input type="text" class="form-control" name="maximumOrderQuantity" th:value="${detailProductSupp.maximumOrderQuantity}" placeholder="Enter Max Quantity"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Other Item Supplier Detail :</label>
+                        <input type="text" class="form-control" name="otherItemSupplierDetail" th:value="${detailProductSupp.otherItemSupplierDetail}" placeholder="Enter Other Item"><br>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-outline-dark" th:href="@{~/productSupplier}">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -15,11 +15,18 @@ public class ProductRequest {
     private String id;
     private String details;
     private String name;
-    private String price;
+    private Double price;
     private String desc;
+    private String refProductId;
+    private RefProductRequest refProduct;
     private List<ProductSupplierRequest> productSupplier = new ArrayList<>();
 
     public ProductRequest(ProductEntity entity){
         BeanUtils.copyProperties(entity, this);
+
+        if (entity.getRefProduct() != null){
+            this.refProductId = entity.getRefProductId();
+            this.refProduct = new RefProductRequest(entity.getRefProduct());
+        }
     }
 }

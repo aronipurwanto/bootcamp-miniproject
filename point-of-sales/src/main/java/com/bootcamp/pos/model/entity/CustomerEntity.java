@@ -15,7 +15,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerEntity {
+public class  CustomerEntity {
     @Id
     @Column(name = "customer_id", length = 36)
     private String id;
@@ -38,8 +38,16 @@ public class CustomerEntity {
     @Column(name = "other_customer_detail")
     private String otherCustomerDetail;
 
-    public CustomerEntity(CustomerRequest request) {
+    @Column(name = "payment_id", length = 36)
+    private String paymentId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "payment_id", insertable = false, updatable = false)
+    private RefPaymentEntity payment;
+
+    public CustomerEntity(CustomerRequest request, RefPaymentEntity payment) {
         BeanUtils.copyProperties(request, this);
         this.id = UUID.randomUUID().toString();
+        this.payment = payment;
     }
 }

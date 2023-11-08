@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -33,6 +35,9 @@ public class SupplierEntity {
 
     @Column(name = "other_supplier_detail")
     private String otherSupplierDetail;
+
+    @OneToMany(mappedBy = "supplier", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SupplierLocationEntity> supplierLocation = new ArrayList<>();
 
     public SupplierEntity(SupplierRequest request) {
         BeanUtils.copyProperties(request, this);
