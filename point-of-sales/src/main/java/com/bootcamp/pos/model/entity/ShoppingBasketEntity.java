@@ -1,11 +1,14 @@
 package com.bootcamp.pos.model.entity;
 
+import com.bootcamp.pos.model.request.ShoppingBasketRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -32,4 +35,10 @@ public class ShoppingBasketEntity {
 
     @Column(name = "other_basket_detail")
     private String otherBasketDetail;
+
+    public ShoppingBasketEntity(ShoppingBasketRequest request, CustomerEntity customer) {
+        BeanUtils.copyProperties(request, this);
+        this.id = UUID.randomUUID().toString();
+        this.customer = customer;
+    }
 }

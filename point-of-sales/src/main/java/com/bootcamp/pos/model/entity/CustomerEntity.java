@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -44,6 +46,9 @@ public class  CustomerEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "payment_id", insertable = false, updatable = false)
     private RefPaymentEntity payment;
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<ShoppingBasketEntity> shopping = new ArrayList<>();
 
     public CustomerEntity(CustomerRequest request, RefPaymentEntity payment) {
         BeanUtils.copyProperties(request, this);
