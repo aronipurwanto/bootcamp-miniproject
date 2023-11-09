@@ -4,36 +4,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class ProductSuppliersRequest {
-
-    private Long id;
-
-    private Long productId;
-
+    private String productId;
     private String supplierCode;
-
-    private Date valueSupplierToDate;
-
-    private String totalQtySupplier;
-
-    private String fitsItemSupDate;
-
-    private String lastItemSupDate;
-
+    private String valueSuppliedToDate;
+    private String totalQuantitySuppliedDate;
+    private String firstItemSuppliedDate;
+    private String lastItemSuppliedDate;
     private String deliveryLeadTime;
-
-    private Integer standartPrice;
-
-    private String percentDiscount;
-
-    private Integer maxOrderQty;
-
-    private Integer minOrderQty;
-
-    private String itemSupDetails;
+    private String standardPrice;
+    private String percentageDiscount;
+    private String minimumOrderQuantity;
+    private String maximumOrderQuantity;
+    private String otherItemSuppliersDetails;
 }

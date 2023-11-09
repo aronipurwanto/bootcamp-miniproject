@@ -1,6 +1,9 @@
 package com.bootcamp.pos.model.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,30 +12,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tbl_products")
+@Table(name = "tbl_product")
 public class ProductEntity {
     @Id
     @Column(name = "product_id")
-    private Long id;
+    private String productId;
 
-    //--------Relasi ke Ref Product Types--------//
     @Column(name = "product_type_code")
-    private String code;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_type_code")
-    private RefProductTypeEntity refProductType;
-    //------------------------------//
+    private String productTypeCode;
 
     @Column(name = "product_details")
-    private String details;
+    private String productDetails;
 
     @Column(name = "product_name")
-    private String name;
+    private String productName;
 
-    @Column(name ="product_price")
-    private String price;
+    @Column(name = "product_price")
+    private String productPrice;
 
     @Column(name = "product_description")
-    private String description;
+    private String productDescription;
 }

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Address - Index</title>
+</head>
+<body>
+<div class="row mb-2" layout:fragment="breadcrumb">
+  <div class="col-sm-6">
+    <h1 class="m-0">Address Index</h1>
+  </div>
+
+  <div class="col-sm-6">
+    <ol class="breadcrumb float-sm-right">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active">Address</li>
+    </ol>
+  </div>
+</div>
+
+<div class="row" layout:fragment="content">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="card">
+      <!-- menampilkan warna-->
+      <div class="card-header bg-orange">
+        <h3 class="card-title">New Address</h3>
+
+        <div class="card-tools">
+          <div class="input-group input-group-sm" style="width: 200px;">
+            <input type="text" name="table-search" class="form-control float-right btn-outline-dark" placeholder="Search">
+
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-outline-dark">
+                <i class="fas fa-search"></i>
+              </button>
+              <a th:href="@{~/address/add}" id="btn-add" class="btn btn-outline-dark">
+                <i class="fas fa-plus"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- membuat table -->
+      <div class="card-body">
+        <table id="table-data" class="table">
+          <!-- table header -->
+          <h1>Customer Index</h1>
+          <a th:href="@{~/home}">Home</a> &nbsp;
+          <a th:href="@{~/address/add}">Add New</a>
+            <thead>
+            <tr>
+              <th>Code Pos</th>
+              <th>Nama Jalan</th>
+              <th>Nomor Rumah</th>
+              <th>Kelurahan</th>
+              <th>City</th>
+              <th>ZipPostCode</th>
+              <th>StateProvinceCountry</th>
+              <th>Country</th>
+              <th>OtherAddressDetail</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- data yang akan di looping -->
+            <tr th:each="address :${addressList}">
+              <td class="font-weight-bold" th:text="${address.codePos}"></td>
+              <td class="font-weight-bold" th:text="${address.namaJalan}"></td>
+              <td class="font-weight-bold" th:text="${address.nomorRumah}"></td>
+              <td class="font-weight-bold" th:text="${address.kelurahan}"></td>
+              <td class="font-weight-bold" th:text="${address.city}"></td>
+              <td class="font-weight-bold" th:text="${address.zipPostCode}"></td>
+              <td class="font-weight-bold" th:text="${address.stateProvinceCountry}"></td>
+              <td class="font-weight-bold" th:text="${address.country}"></td>
+              <td class="font-weight-bold" th:text="${address.otherAddressDetail}"></td>
+
+              <td>
+                <a th:href="@{~/address/edit/{id}(id=${address.id})}" class="btn btn-xs btn-warning btn-edit btn-outline-dark">
+                  <i class="fas fa-edit"></i>
+                </a>
+                <a th:href="@{~/address/delete/{id}(id=${address.id})}" class="btn btn-xs btn-danger btn-delete btn-outline-dark">
+                  <i class="fas fa-trash"></i>
+                </a>
+                <a th:href="@{~/address/detail/{id}(id=${address.id})}" class="btn btn-xs btn-success btn-detail btn-outline-dark">
+                  <i class="fas fa-eye"></i>
+                </a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

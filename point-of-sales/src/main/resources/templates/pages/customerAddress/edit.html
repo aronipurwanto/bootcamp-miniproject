@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CustomerAddress - Edit</title>
+</head>
+<body>
+<h1>CustomerAddress - Edit</h1><br>
+<form th:action="@{/customerAddress/update}" method="post">
+<input type="hidden" name="id" th:value="${customerAddress.id}"><br/>
+
+<label>Customer</label><br>
+<select name="customerId">
+    <option value="">CustomerName</option>
+    <option th:each="customer: ${dataCustomer}"
+            th:value="${customer.id}"
+            th:text="|${customer.customerName}|"
+            th:selected="${customerAddress.customerId == customer.id}"></option>
+</select><br/>
+
+<label>Address</label><br>
+<select name="addressId">
+    <option value="">Address</option>
+    <option th:each="address: ${dataAddress}"
+            th:value="${address.id}"
+            th:text="|${address.namaJalan}|"
+            th:selected="${customerAddress.addressId == address.id}"></option>
+</select><br/>
+
+<label>Date From</label><br>
+<input type="text" name="dateFrom" th:value="${customerAddress.dateFrom}"><br/>
+
+<label>AddressTypeCodeDateTo</label><br>
+<input type="text" name="addressTypeCodeDateTo" th:value="${customerAddress.addressTypeCodeDateTo}"><br/>
+
+<button type="submit">Update</button>
+<a th:href="@{~/customerAddress}">Back</a>
+
+</form>
+</body>
+</html>

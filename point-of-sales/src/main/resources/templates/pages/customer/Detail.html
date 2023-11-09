@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer - Detail</title>
+</head>
+<body>
+<div class="row mb-2" layout:fragment="breadcrumb">
+  <div class="col-sm-6">
+    <h1 class=m-0"">Customer Detail</h1>
+  </div>
+  <div class="col-sm-6">
+    <ol class="breadcrumb float-sm-right">
+      <li class="breadcrumb-item"><a href="#">Home</a> </li>
+      <li class="breadcrumb-item active">Customer Detail</li>
+    </ol>
+  </div>
+</div>
+<div class="row" layout:fragment="content">
+  <!-- left column -->
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <!-- general form element -->
+    <div class="card card-primary">
+      <div class="card-header bg-orange">
+        <h3 class="card-title">Customer Detail</h3>
+      </div>
+      <!-- /.card-header -->
+      <form th:action="@{~/customer/save}" method="post">
+        <!-- form start -->
+        <div class="card-body">
+          <div class="form-group">
+            <label for="paymentMethodCode">Code</label>
+            <input type="text" class="form-control" name="paymentMethodCode" id="paymentMethodCode" placeholder="Enter paymentMethodCode" th:value="${customer.paymentMethodCode}">
+          </div>
+          <div class="form-group">
+            <label for="customerName">Customer Name</label>
+            <input type="text" class="form-control" name="customerName" id="customerName" placeholder="Enter customerName" th:value="${customer.customerName}">
+          </div>
+          <div class="form-group">
+            <label for="customerPhone">Phone</label>
+            <input type="text" class="form-control" name="customerPhone" id="customerPhone" placeholder="Enter customerPhone" th:value="${customer.customerPhone}">
+          </div>
+          <div class="form-group">
+            <label for="customerEmail">Email</label>
+            <input type="text" class="form-control" name="customerEmail" id="customerEmail" placeholder="Enter customerEmail" th:value="${customer.customerEmail}">
+          </div>
+          <div class="form-group">
+            <label for="dateBecameCustomer">DateBecameCustomer</label>
+            <input type="text" class="form-control" name="dateBecameCustomer" id="dateBecameCustomer" placeholder="Enter dateBecameCustomer" th:value="${customer.dateBecameCustomer}">
+          </div>
+          <div class="form-group">
+            <label for="paymentDetails">PaymentDetails</label>
+            <input type="text" class="form-control" name="paymentDetails" id="paymentDetails" placeholder="Enter paymentDetails" th:value="${customer.paymentDetails}">
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <a class="btn btn-outline-dark" th:href="@{~/customer}">Back</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

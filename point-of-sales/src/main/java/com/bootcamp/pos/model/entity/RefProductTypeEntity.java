@@ -12,16 +12,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tbl_ref_product_types")
+@Table(name = "tbl_ref_product_type")
 public class RefProductTypeEntity {
-
     @Id
-    @Column(name = "id")
-    private Long id;
-
     @Column(name = "product_type_code")
-    private String code;
+    private String productTypeCode;
 
     @Column(name = "product_type_description")
-    private String desc;
+    private String productTypeDescription;
+
+    @Column(name = "egFruit_Toy")
+    private String egFruitToy;
 }

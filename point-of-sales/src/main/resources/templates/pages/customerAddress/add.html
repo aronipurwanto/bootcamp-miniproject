@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>CustomerAddress - Add</title>
+</head>
+<body>
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0">CustomerAddress Add</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">CustomerAddress Add</li>
+        </ol>
+    </div>
+</div>
+<div class="row" layout:fragment="content">
+    <!-- left column -->
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <!-- menampilkan warna fakultas-->
+            <div class="card-header bg-orange">
+                <h3 class="card-title">New CustomerAddress</h3>
+            </div>
+            <!-- /.card-header -->
+            <form th:action="@{~/customerAddress/save}" method="post"></form>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="dateFrom">Date From</label>
+                        <input type="text" class="form-control" name="dateFrom" id="dateFrom" placeholder="Enter dateFrom">
+                    </div>
+                    <div class="form-group">
+                        <label for="addressTypeCodeDateTo">AddressTypeCodeDateTo</label>
+                        <input type="text" class="form-control" name="addressTypeCodeDateTo" id="addressTypeCodeDateTo" placeholder="Enter addressTypeCodeDateTo">
+                    </div>
+                    <div class="form-group">
+                        <label for="customerId">Customer</label>
+                        <select id="customerId" name="customerId" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="option: ${dataCustomer}"
+                                    th:value="${option.id}"
+                                    th:text="|${option.customerName}|"></option>
+                        </select>
+
+                        <div class="form-group">
+                            <label for="addressId">Address</label>
+                            <select id="addressId" name="addressId" class="form-control">
+                                <option value="">Select One</option>
+                                <option th:each="option: ${dataAddress}"
+                                        th:value="${option.id}"
+                                        th:text="|${option.namaJalan}|">Select One</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-outline-dark">Submit</button>
+                        <a class="btn btn-outline-dark" th:href="@{~/customerAddress}">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

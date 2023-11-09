@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CustomerAddress - Detail</title>
+</head>
+<body>
+  <h1>CustomerAddress Detail</h1><br>
+  <form th:action="@{~/customerAddress/save}" method="post"><br/>
+    <label>Customer</label><br>
+    <input type="text" name="customer" th:value="${customerAddress.customerId}"><br/>
+
+    <label>Address</label><br>
+    <input type="text" name="address" th:value="${customerAddress.addressId}"><br/>
+
+    <label>AddressTypeCodeDateTo</label><br>
+    <input type="text" name="addressTypeCodeDateTo" th:value="${customerAddress.getAddressTypeCodeDateTo()}"><br/>
+
+    <label>AddressTypeCodeDateTo</label><br>
+    <input type="text" name="addressTypeCodeDateTo" th:value="${customerAddress.getAddressTypeCodeDateTo()}"><br/>
+
+    <a th:href="@{~/customerAddress}">Back</a>
+  </form>
+</body>
+</html>

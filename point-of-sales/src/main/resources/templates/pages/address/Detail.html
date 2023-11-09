@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Address - Detail</title>
+</head>
+<body>
+<div class="row mb-2" layout:fragment="breadcrumb">
+  <div class="col-sm-6">
+    <h1 class=m-0"">Address Detail</h1>
+  </div>
+  <div class="col-sm-6">
+    <ol class="breadcrumb float-sm-right">
+      <li class="breadcrumb-item"><a href="#">Home</a> </li>
+      <li class="breadcrumb-item active">Address Detail</li>
+    </ol>
+  </div>
+</div>
+<div class="row" layout:fragment="content">
+  <!-- left column -->
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <!-- general form element -->
+    <div class="card card-primary">
+      <div class="card-header bg-orange">
+        <h3 class="card-title">Address Detail</h3>
+      </div>
+
+        <!-- form start -->
+        <div class="card-body">
+          <div class="form-group">
+            <label for="codePos">CodePos</label>
+            <input type="text" class="form-control" name="codePos" id="codePos" placeholder="Enter codePos" th:value="${address.codePos}">
+          </div>
+          <div class="form-group">
+            <label for="nomorRumah">Nomor Rumah</label>
+            <input type="text" class="form-control" name="nomorRumah" id="nomorRumah" placeholder="Enter nomorRumah" th:value="${address.nomorRumah}">
+          </div>
+          <div class="form-group">
+            <label for="kelurahan">Kelurahan</label>
+            <input type="text" class="form-control" name="kelurahan" id="kelurahan" placeholder="Enter kelurahan" th:value="${address.kelurahan}">
+          </div>
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" class="form-control" name="city" id="city" placeholder="Enter city" th:value="${address.city}">
+          </div>
+          <div class="form-group">
+            <label for="zipPostCode">ZipPostCode</label>
+            <input type="text" class="form-control" name="zipPostCode" id="zipPostCode" placeholder="Enter zipPostCode" th:value="${address.zipPostCode}">
+          </div>
+          <div class="form-group">
+            <label for="stateProvinceCountry">StateProvinceCountry</label>
+            <input type="text" class="form-control" name="stateProvinceCountry" id="stateProvinceCountry" placeholder="Enter stateProvinceCountry" th:value="${address.stateProvinceCountry}">
+          </div>
+          <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" class="form-control" name="country" id="country" placeholder="Enter country" th:value="${address.country}">
+          </div>
+          <div class="form-group">
+            <label for="otherAddressDetail">OtherAddressDetail</label>
+            <input type="text" class="form-control" name="otherAddressDetail" id="otherAddressDetail" placeholder="Enter otherAddressDetail" th:value="${address.otherAddressDetail}">
+          </div>
+        </div>
+
+      <div class="card-footer">
+        <a class="btn btn-outline-dark" th:href="@{~/customer}">Back</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
