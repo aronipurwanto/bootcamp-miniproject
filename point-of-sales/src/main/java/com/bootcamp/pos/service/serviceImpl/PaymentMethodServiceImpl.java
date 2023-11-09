@@ -46,10 +46,10 @@ public class PaymentMethodServiceImpl implements PaymentMethodService {
 
         try {
             this.paymentMethodRepo.save(result);
-            log.info("Save Address To database Success");
+            log.info("Save Payment Method To database Success");
             return Optional.of(new PaymentMethodRequest(result));
         } catch (Exception e){
-            log.error("Save Address to database failed, error{}",e.getMessage());
+            log.error("Save Payment Method to database failed, error{}",e.getMessage());
             return Optional.empty();
         }
     }
@@ -66,10 +66,10 @@ public class PaymentMethodServiceImpl implements PaymentMethodService {
 
         try {
             this.paymentMethodRepo.save(entity);
-            log.info("Update Address to database success");
+            log.info("Update Payment Method to database success");
             return Optional.of(new PaymentMethodRequest(entity));
         } catch (Exception e){
-            log.error("Update Address to database failed, error:{}", e.getMessage());
+            log.error("Update Payment Method to database failed, error:{}", e.getMessage());
             return Optional.empty();
         }
     }
@@ -78,16 +78,16 @@ public class PaymentMethodServiceImpl implements PaymentMethodService {
     public Optional<PaymentMethodRequest> delete(String id) {
         PaymentMethodEntity entity = this.paymentMethodRepo.findById(id).orElse(null);
         if (entity == null){
-            log.warn("Address With id :{}, not Found", id);
+            log.warn("Payment Method With id :{}, not Found", id);
             return Optional.empty();
         }
 
         try {
             this.paymentMethodRepo.delete(entity);
-            log.info("Delete Address from database success");
+            log.info("Delete Data Payment Method from database success");
             return Optional.of(new PaymentMethodRequest(entity));
         } catch (Exception e){
-            log.info("Delete Address From database failed, error:{}",e.getMessage());
+            log.info("Delete Data Payment Method From database failed, error:{}",e.getMessage());
             return Optional.empty();
         }
 

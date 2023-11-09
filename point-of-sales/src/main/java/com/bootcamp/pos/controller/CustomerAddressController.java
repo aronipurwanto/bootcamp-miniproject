@@ -1,13 +1,7 @@
 package com.bootcamp.pos.controller;
 
-import com.bootcamp.pos.model.request.AddressRequest;
-import com.bootcamp.pos.model.request.AddressTypeRequest;
-import com.bootcamp.pos.model.request.CustomerAddressRequest;
-import com.bootcamp.pos.model.request.CustomerRequest;
-import com.bootcamp.pos.service.AddressService;
-import com.bootcamp.pos.service.AddressTypeService;
-import com.bootcamp.pos.service.CustomerAddressService;
-import com.bootcamp.pos.service.CustomerService;
+import com.bootcamp.pos.model.request.*;
+import com.bootcamp.pos.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +18,7 @@ public class CustomerAddressController {
     private final CustomerService customerService;
     private final AddressService addressService;
     private final AddressTypeService addressTypeService;
+    private final SupplierLocService supplierLocService;
 
     @GetMapping
     public ModelAndView index(){
@@ -40,10 +35,12 @@ public class CustomerAddressController {
         List<CustomerRequest> customer = this.customerService.getAll();
         List<AddressRequest> address = this.addressService.getAll();
         List<AddressTypeRequest> addressType = this.addressTypeService.getAll();
+        List<SupplierLocRequest> supplierLoc = this.supplierLocService.getAll();
 
         view.addObject("customerList", customer);
         view.addObject("addressList", address);
         view.addObject("addressTypeList", addressType);
+        view.addObject("supplierLocList", supplierLoc);
         return view;
     }
 
@@ -53,10 +50,12 @@ public class CustomerAddressController {
         List<CustomerRequest> customer = this.customerService.getAll();
         List<AddressRequest> address = this.addressService.getAll();
         List<AddressTypeRequest> addressTypeRequests = this.addressTypeService.getAll();
+        List<SupplierLocRequest> supplierLoc = this.supplierLocService.getAll();
 
         view.addObject("customerList", customer);
         view.addObject("addressList", address);
         view.addObject("addressTypeList", addressTypeRequests);
+        view.addObject("supplierLocList", supplierLoc);
         this.customerAddressService.save(request);
         return new ModelAndView("redirect:/customer-address");
     }
@@ -72,10 +71,12 @@ public class CustomerAddressController {
         List<CustomerRequest> customer = this.customerService.getAll();
         List<AddressRequest> address = this.addressService.getAll();
         List<AddressTypeRequest> addressTypeRequests = this.addressTypeService.getAll();
+        List<SupplierLocRequest> supplierLocRequests = this.supplierLocService.getAll();
 
         view.addObject("customerList", customer);
         view.addObject("addressList", address);
         view.addObject("addressTypeList", addressTypeRequests);
+        view.addObject("supplierLocList", supplierLocRequests);
         view.addObject("customerAddress", data);
         return view;
     }

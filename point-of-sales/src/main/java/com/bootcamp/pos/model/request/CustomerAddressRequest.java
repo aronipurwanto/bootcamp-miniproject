@@ -16,14 +16,14 @@ public class CustomerAddressRequest {
     private String id;
     private String customerId;
     private String addressId;
-    @DateTimeFormat(pattern = "dd-mm-yyyy")
-    private LocalDate dateFrom;
+    private String dateFromId;
     private String addressTypeId;
     @DateTimeFormat(pattern = "dd-mm-yyyy")
     private LocalDate dateTo;
     private String customerName;
     private String addressName;
     private String addressTypeName;
+    private String dateFromName;
 
     public CustomerAddressRequest(CustomerAddressEntity entity) {
         BeanUtils.copyProperties(entity , this);
@@ -41,6 +41,11 @@ public class CustomerAddressRequest {
         if (entity.getAddressType() != null){
             this.addressTypeId = entity.getAddressType().getId();
             this.addressTypeName = entity.getAddressType().getAddressCodeType();
+        }
+
+        if (entity.getSupplierLoc() != null){
+            this.dateFromId = entity.getSupplierLoc().getId();
+            this.dateFromName = entity.getSupplierLoc().getDateFrom();
         }
     }
 }

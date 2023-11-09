@@ -84,10 +84,10 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
 
         try {
             this.ProductSupplierRepo.delete(entity);
-            log.info("Delete Product Supplier from database success");
+            log.info("Delete Data Product Supplier from database success");
             return Optional.of(new ProductSupplierRequest(entity));
         } catch (Exception e){
-            log.info("Delete Product Supplier From database failed, error:{}",e.getMessage());
+            log.info("Delete Data Product Supplier From database failed, error:{}",e.getMessage());
             return Optional.empty();
         }
 

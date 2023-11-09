@@ -45,10 +45,10 @@ public class AddressTypeServiceImpl implements AddressTypeService {
 
         try {
             this.AddressTypeRepo.save(result);
-            log.info("Save Address To database Success");
+            log.info("Save Address Type To database Success");
             return Optional.of(new AddressTypeRequest(result));
         } catch (Exception e){
-            log.error("Save Address to database failed, error{}",e.getMessage());
+            log.error("Save Address Type to database failed, error{}",e.getMessage());
             return Optional.empty();
         }
     }
@@ -65,10 +65,10 @@ public class AddressTypeServiceImpl implements AddressTypeService {
 
         try {
             this.AddressTypeRepo.save(entity);
-            log.info("Update Address to database success");
+            log.info("Update Address Type to database success");
             return Optional.of(new AddressTypeRequest(entity));
         } catch (Exception e){
-            log.error("Update Address to database failed, error:{}", e.getMessage());
+            log.error("Update Address Type to database failed, error:{}", e.getMessage());
             return Optional.empty();
         }
     }
@@ -77,16 +77,16 @@ public class AddressTypeServiceImpl implements AddressTypeService {
     public Optional<AddressTypeRequest> delete(String id) {
         AddressTypeEntity entity = this.AddressTypeRepo.findById(id).orElse(null);
         if (entity == null){
-            log.warn("Address With id :{}, not Found", id);
+            log.warn("Address Type With id :{}, not Found", id);
             return Optional.empty();
         }
 
         try {
             this.AddressTypeRepo.delete(entity);
-            log.info("Delete Address from database success");
+            log.info("Delete Address Type from database success");
             return Optional.of(new AddressTypeRequest(entity));
         } catch (Exception e){
-            log.info("Delete Address From database failed, error:{}",e.getMessage());
+            log.info("Delete Address Type From database failed, error:{}",e.getMessage());
             return Optional.empty();
         }
     }

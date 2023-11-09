@@ -44,10 +44,10 @@ public class InventoryLocServiceImpl implements InventoryLocService {
 
         try {
             this.inventoryLocRepo.save(result);
-            log.info("Save Supplier To Database Success");
+            log.info("Save Inventory Loc To Database Success");
             return Optional.of(new InventoryLocRequest(result));
         } catch (Exception e){
-            log.error("Save Supplier to database failed, error:{}",e.getMessage());
+            log.error("Save Inventory Loc to database failed, error:{}",e.getMessage());
             return Optional.empty();
         }
     }
@@ -64,10 +64,10 @@ public class InventoryLocServiceImpl implements InventoryLocService {
 
         try {
             this.inventoryLocRepo.save(entity);
-            log.info("Update Supplier Success");
+            log.info("Update Inventory Loc Success");
             return Optional.of(new InventoryLocRequest(entity));
         } catch (Exception e) {
-            log.error("Update Supplier failed, error:{}",e.getMessage());
+            log.error("Update Inventory Loc failed, error:{}",e.getMessage());
             return Optional.empty();
         }
     }
@@ -76,16 +76,16 @@ public class InventoryLocServiceImpl implements InventoryLocService {
     public Optional<InventoryLocRequest> delete(String id) {
         InventoryLocEntity result = this.inventoryLocRepo.findById(id).orElse(null);
         if (result == null){
-            log.warn("Supplier With id :{}, Not Found", id);
+            log.warn("Inventory Loc With id :{}, Not Found", id);
             return Optional.empty();
         }
 
         try {
             this.inventoryLocRepo.delete(result);
-            log.info("Delete Data Supplier From Database Success");
+            log.info("Delete Data Inventory Loc From Database Success");
             return Optional.of(new InventoryLocRequest(result));
         } catch (Exception e){
-            log.error("Delete Data Supplier From Database Failed, error:{}",e.getMessage());
+            log.error("Delete Data Inventory Loc From Database Failed, error:{}",e.getMessage());
             return Optional.empty();
         }
     }

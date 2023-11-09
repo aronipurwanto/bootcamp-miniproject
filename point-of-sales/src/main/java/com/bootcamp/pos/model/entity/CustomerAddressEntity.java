@@ -27,8 +27,8 @@ public class CustomerAddressEntity {
     @Column(name = "address_id")
     private String addressId;
 
-    @Column(name = "date_from")
-    private LocalDate dateFrom;
+    @Column(name = "date_from_id")
+    private String dateFromId;
 
     @Column(name = "address_type_id")
     private String addressTypeId;
@@ -47,6 +47,10 @@ public class CustomerAddressEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "address_type_id", insertable = false, updatable = false)
     private AddressTypeEntity addressType;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "date_from_id", insertable = false, updatable = false)
+    private SupplierLocEntity supplierLoc;
 
     public CustomerAddressEntity(CustomerAddressRequest request) {
         BeanUtils.copyProperties(request, this);

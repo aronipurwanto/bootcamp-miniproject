@@ -46,10 +46,10 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
 
         try {
             this.shoppingBasketRepo.save(result);
-            log.info("Save Products To Database Success");
+            log.info("Save Shopping Basket To Database Success");
             return Optional.of(new ShoppingBasketRequest(result));
         } catch ( Exception e){
-            log.error("Save Products To Database failed, error:{}", e.getMessage());
+            log.error("Save Shopping Basket To Database failed, error:{}", e.getMessage());
             return Optional.empty();
         }
 
@@ -67,10 +67,10 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
 
         try {
             this.shoppingBasketRepo.save(entity);
-            log.info("Update Products to Database success");
+            log.info("Update Shopping Basket to Database success");
             return Optional.of(new ShoppingBasketRequest(entity));
         } catch (Exception e){
-            log.error("Update Products to database failed, error:{}",e.getMessage());
+            log.error("Update Shopping Basket to database failed, error:{}",e.getMessage());
             return Optional.empty();
         }
     }
@@ -79,17 +79,17 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
     public Optional<ShoppingBasketRequest> delete(String id) {
         ShoppingBasketEntity entity = this.shoppingBasketRepo.findById(id).orElse(null);
         if (entity == null){
-            log.warn("Products with id :{}, not found", id);
+            log.warn("Shopping Basket with id :{}, not found", id);
             return Optional.empty();
         }
 
 
         try {
             this.shoppingBasketRepo.delete(entity);
-            log.info("Delete Products from database success");
+            log.info("Delete Data Shopping Basket from database success");
             return Optional.of(new ShoppingBasketRequest(entity));
         } catch (Exception e){
-            log.error("Delete products From database failed, error:{}", e.getMessage());
+            log.error("Delete Data Shopping Basket From database failed, error:{}", e.getMessage());
             return Optional.empty();
         }
     }

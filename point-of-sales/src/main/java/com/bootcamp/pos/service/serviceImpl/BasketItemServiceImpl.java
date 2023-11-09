@@ -45,10 +45,10 @@ public class BasketItemServiceImpl implements BasketItemService {
 
         try {
             this.basketItemsRepo.save(result);
-            log.info("Save Address To database Success");
+            log.info("Save Basket Items To database Success");
             return Optional.of(new BasketItemsRequest(result));
         } catch (Exception e){
-            log.error("Save Address to database failed, error{}",e.getMessage());
+            log.error("Save Basket Items to database failed, error{}",e.getMessage());
             return Optional.empty();
         }
     }
@@ -65,10 +65,10 @@ public class BasketItemServiceImpl implements BasketItemService {
 
         try {
             this.basketItemsRepo.save(entity);
-            log.info("Update Address to database success");
+            log.info("Update Basket Items to database success");
             return Optional.of(new BasketItemsRequest(entity));
         } catch (Exception e){
-            log.error("Update Address to database failed, error:{}", e.getMessage());
+            log.error("Update Basket Items to database failed, error:{}", e.getMessage());
             return Optional.empty();
         }
     }
@@ -77,16 +77,16 @@ public class BasketItemServiceImpl implements BasketItemService {
     public Optional<BasketItemsRequest> delete(String id) {
         BasketItemsEntity entity = this.basketItemsRepo.findById(id).orElse(null);
         if (entity == null){
-            log.warn("Address With id :{}, not Found", id);
+            log.warn("Basket Items With id :{}, not Found", id);
             return Optional.empty();
         }
 
         try {
             this.basketItemsRepo.delete(entity);
-            log.info("Delete Address from database success");
+            log.info("Delete Basket Items from database success");
             return Optional.of(new BasketItemsRequest(entity));
         } catch (Exception e){
-            log.info("Delete Address From database failed, error:{}",e.getMessage());
+            log.info("Delete Basket Items From database failed, error:{}",e.getMessage());
             return Optional.empty();
         }
 

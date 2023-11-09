@@ -1,4 +1,4 @@
-package com.bootcamp.pos.model.request;
+package com.bootcamp.pos.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,9 +9,9 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SupplierLocationsRequest {
+public class SupplierLocResponse {
     private String id;
-    private String supplierCode;
+    private String supplierCodeId;
     private String addressId;
     private Date dateFromId;
     private Date dateTo;

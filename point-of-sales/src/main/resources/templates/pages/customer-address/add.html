@@ -33,7 +33,8 @@
                         <label for="customerId">Customer</label>
                         <select id="customerId" name="customerId" class="form-control">
                             <option value="">Select One</option>
-                            <option th:each="customer :${customerList}" th:value="${customer.id}" th:text="${customer.customerName}"></option>
+                            <option th:each="customer :${customerList}" th:value="${customer.id}"
+                                    th:text="${customer.customerName}"></option>
                         </select>
                     </div>
 
@@ -41,20 +42,26 @@
                         <label for="addressId">Address</label>
                         <select id="addressId" name="addressId" class="form-control">
                             <option value="">Select One</option>
-                            <option th:each="address :${addressList}" th:value="${address.id}" th:text="${address.street}"></option>
+                            <option th:each="address :${addressList}" th:value="${address.id}"
+                                    th:text="${address.street}"></option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="dateFrom">Date From</label><br>
-                        <input type="date" name="dateFrom" id="dateFrom" class="form-control">
+                        <label for="dateFromId">Date From</label><br>
+                        <select name="dateFromId" id="dateFromId" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="datefrom :${supplierLocList}" th:value="${datefrom.id}"
+                                    th:text="${datefrom.dateFrom}"></option>
+                        </select>
                     </div>
 
                     <div class="form-group">
                         <label for="addressTypeId">Address Type</label>
                         <select id="addressTypeId" name="addressTypeId" class="form-control">
                             <option value="">Select One</option>
-                            <option th:each="addressType :${addressTypeList}" th:value="${addressType.id}" th:text="${addressType.addressCodeType}"></option>
+                            <option th:each="addressType :${addressTypeList}" th:value="${addressType.id}"
+                                    th:text="${addressType.addressCodeType}"></option>
                         </select>
                     </div>
 
