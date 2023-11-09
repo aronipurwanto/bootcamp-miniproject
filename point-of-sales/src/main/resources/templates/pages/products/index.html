@@ -53,16 +53,17 @@
                 <table id="table-data" class="table">
                     <thead>
                     <tr>
-                        <th>Product Code</th>
+                        <th>Product Type</th>
                         <th>Product Details</th>
                         <th>Product Name</th>
                         <th>Product Price</th>
                         <th>Product Desctription</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="data: ${listDataProducts}">
-                        <td th:text="${data.productCode}"></td>
+                        <td th:text="${data.productType.productTypeCode}"></td>
                         <td th:text="${data.productDetails}"></td>
                         <td th:text="${data.productName}"></td>
                         <td th:text="${data.productPrice}"></td>
@@ -87,6 +88,7 @@
                     </tbody>
                 </table>
             </div>
+            <!-- card footer -->
         </div>
     </div>
 </div>

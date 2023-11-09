@@ -23,8 +23,16 @@ public class ProductSuppliersEntity {
     @Column(name = "product_id")
     private String productId;
 
-    @Column(name = "supplier_id")
-    private String supplierId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    private ProductsEntity products;
+
+    @Column(name = "suppliers_id")
+    private String suppliersId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "suppliers_id", insertable = false, updatable = false)
+    private SuppliersEntity suppliers;
 
     @Column(name = "supplied_to_date")
     private LocalDate suppliedToDate;

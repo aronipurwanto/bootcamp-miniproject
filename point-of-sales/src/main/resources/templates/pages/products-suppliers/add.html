@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Product-Suppliers</title>
+</head>
+<body>
+<!-- header -->
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0 font-weight-bolder">Products Suppliers</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active font-weight-light">Products Suppliers</li>
+        </ol>
+    </div>
+</div>
+<!-- header end -->
+
+<!-- card -->
+<div class="row" layout:fragment="content">
+    <!-- left column -->
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- general form elements -->
+        <!-- /.card-header -->
+        <div class="card card-pink">
+            <div class="card-header">
+                <h3 class="card-title font-weight-light">Add Data Products Suppliers</h3>
+            </div>
+            <form th:action="@{~/products-suppliers/save}" method="post">
+                <!-- card form start -->
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="productId">Products</label>
+                        <select class="form-control" name="productId" id="productId">
+                            <option value="">select one</option>
+                            <option th:each="products: ${dataProducts}"
+                                    th:value="${products.id}"
+                                    th:text="${products.productName}"></option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="suppliersId">Suppliers</label>
+                        <select class="form-control" name="suppliersId" id="suppliersId">
+                            <option value="">select one</option>
+                            <option th:each="suppliers: ${dataSuppliers}"
+                                    th:value="${suppliers.id}"
+                                    th:text="${suppliers.supplierCode}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Supplied To Date</label>
+                        <input type="date" class="form-control" name="suppliedToDate" id="suppliedToDate" placeholder="enter supplied to date">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Total Qty Supplied To Date</label>
+                        <input type="text" class="form-control" name="totalQtySupToDate" id="totalQtySupToDate" placeholder="enter total qty supplied to date">
+                    </div>
+
+                    <div class="form-group">
+                        <label>First Item Supplied Date</label>
+                        <input type="text" class="form-control" name="firstItemSupDate" id="firstItemSupDate" placeholder="enter  1st item supplied date">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Last Item Supplied Date</label>
+                        <input type="text" class="form-control" name="lastItemSupDate" id="lastItemSupDate" placeholder="enter last item supplied date">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Delivery Lead Time</label>
+                        <input type="text" class="form-control" name="deliveryLeadTime" id="deliveryLeadTime" placeholder="enter delivery lead time">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Standart Price</label>
+                        <input type="text" class="form-control" name="standardPrice" id="standardPrice" placeholder="enter standard price">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Percent Discount</label>
+                        <input type="text" class="form-control" name="percentDiscount" id="percentDiscount" placeholder="enter percent discount">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Min Order Qty</label>
+                        <input type="text" class="form-control" name="minOrderQty" id="minOrderQty" placeholder="enter min order qty">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Max Order Qty</label>
+                        <input type="text" class="form-control" name="maxOrderQty" id="maxOrderQty" placeholder="enter max order qty">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Item Suppliers Details</label>
+                        <input type="text" class="form-control" name="itemSuppliersDetails" id="itemSuppliersDetails" placeholder="enter suppliers details">
+                    </div>
+                    <!-- card form end -->
+
+                    <!-- card footer -->
+                    <div class="card-footer">
+                        <button class="btn btn-outline-danger" type="submit">submit</button> &nbsp;
+                        <a class="btn btn-outline-danger" th:href="@{~/products-suppliers}">back</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

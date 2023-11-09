@@ -60,6 +60,7 @@
                         <th>Payment Details</th>
                         <th>Customer Details</th>
                         <th>Payment Method</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -70,7 +71,7 @@
                         <td th:text="${data.dateOrder}"></td>
                         <td th:text="${data.paymentDetails}"></td>
                         <td th:text="${data.customerDetails}"></td>
-                        <td th:text="${data.paymentMethod}"></td>
+                        <td th:text="${data.paymentMethods.creditCardName}"></td>
 
                         <!-- tombol action -->
                         <td>
@@ -91,6 +92,7 @@
                     </tbody>
                 </table>
             </div>
+            <!-- card body end -->
         </div>
     </div>
 </div>

@@ -61,10 +61,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Payment Method</label>
-                    <input type="text" class="form-control" name="paymentMethod" id="paymentMethod" th:value="${dataCustomer.paymentMethod}">
-                </div>
+                    <label for="paymentMethodId">Payment Methods</label>
+                    <select class="form-control" name="paymentMethodId" id="paymentMethodId">
+                        <option value="">select one</option>
+                        <option th:each="paymentMethods: ${dataPaymentMethods}"
+                                th:value="${paymentMethods.id}"
+                                th:text="${paymentMethods.creditCardName}"
+                                th:selected="${dataCustomer.paymentMethodId == paymentMethods.id}">
+                        </option>
+                    </select></div>
+                <!-- card form end -->
 
+                <!-- card footer -->
                 <div class="card-footer">
                     <button type="submit" class="btn btn-outline-danger">submit</button>
                     <a class="btn btn-outline-danger" th:href="@{~/customer}">back</a>

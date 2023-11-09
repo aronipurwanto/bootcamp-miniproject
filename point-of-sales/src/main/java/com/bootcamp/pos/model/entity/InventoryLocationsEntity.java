@@ -1,12 +1,13 @@
 package com.bootcamp.pos.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.bootcamp.pos.model.request.InventoryLocationsModel;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
+
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -16,19 +17,27 @@ import lombok.NoArgsConstructor;
 public class InventoryLocationsEntity {
     @Id
     @Column(name = "inventory_location_id")
-    private Long invLocId;
+    private String id;
 
     @Column(name = "product_id")
-    private Long productId;
+    private String productId;
 
-    @Column(name = "location_address_id")
-    private Long locAddressId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    private ProductsEntity products;
+
+    @Column(name = "address_id")
+    private String addressId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "address_id", insertable = false, updatable = false)
+    private AddressEntity address;
 
     @Column(name = "quantity_in_stock")
     private Integer qtyInStock;
 
     @Column(name = "reorder_level")
-    private Integer reorderLevel;
+    private String reorderLevel;
 
     @Column(name = "reorder_qty")
     private Integer reorderQty;
@@ -38,4 +47,9 @@ public class InventoryLocationsEntity {
 
     @Column(name = "inventory_details")
     private String inventoryDetails;
+
+    public InventoryLocationsEntity(InventoryLocationsModel model) {
+        BeanUtils.copyProperties(model, this);
+        this.id = UUID.randomUUID().toString();
+    }
 }

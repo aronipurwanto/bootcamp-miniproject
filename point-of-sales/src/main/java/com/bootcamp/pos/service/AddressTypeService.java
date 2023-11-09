@@ -10,5 +10,5 @@ public interface AddressTypeService {
     Optional<AddressTypeModel> getById(String id);
     Optional<AddressTypeModel> save(AddressTypeModel request);
     Optional<AddressTypeModel> update(AddressTypeModel request, String id);
-    Optional<AddressTypeModel> delete(AddressTypeModel id);
+    Optional<AddressTypeModel> delete(String id);
 }

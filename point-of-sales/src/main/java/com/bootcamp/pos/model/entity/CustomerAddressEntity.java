@@ -26,8 +26,12 @@ public class CustomerAddressEntity {
     @Column(name = "date_to")
     private LocalDate dateTo;
 
-    @Column(name = "address_type")
-    private String addressType;
+    @Column(name = "address_type_id")
+    private String addressTypeId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "address_type_id", insertable = false, updatable = false)
+    private AddressTypeEntity addressType;
 
     @Column(name = "customer_id")
     private String customerId;

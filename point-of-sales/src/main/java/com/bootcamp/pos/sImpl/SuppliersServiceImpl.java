@@ -79,7 +79,7 @@ public class SuppliersServiceImpl implements SuppliersService {
     public Optional<SuppliersModel> delete(String id) {
         SuppliersEntity result = this.suppliersRepository.findById(id).orElse(null);
         if (result == null) {
-            log.warn("supplier with id: {} not found", id);
+            log.warn("data supplier with id: {} not found", id);
             return Optional.empty();
         }
         try {

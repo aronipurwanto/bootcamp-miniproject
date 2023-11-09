@@ -28,7 +28,6 @@
             <!-- card header -->
             <form th:action="@{~/address/update}" method="post">
                 <!-- card form start -->
-                <!-- id hidden -->
                 <input type="hidden" name="id" th:value="${dataAddress.id}">
                 <div class="card-body">
                     <div class="form-group">
@@ -70,7 +69,9 @@
                         <label>Post Code</label>
                         <input type="text" class="form-control" name="postCode" id="postCode" th:value="${dataAddress.postCode}">
                     </div>
+                    <!-- card form end -->
 
+                    <!-- card footer -->
                     <div class="card-footer">
                         <button class="btn btn-outline-danger" type="submit">submit</button>
                         <a class="btn btn-outline-danger" th:href="@{~/address}">back</a>

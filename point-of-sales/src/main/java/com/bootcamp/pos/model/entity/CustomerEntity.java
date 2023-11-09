@@ -1,10 +1,7 @@
 package com.bootcamp.pos.model.entity;
 
 import com.bootcamp.pos.model.request.CustomerRequest;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -41,8 +38,12 @@ public class CustomerEntity {
     @Column(name = "customer_details")
     private String customerDetails;
 
-    @Column(name = "payment_method")
-    private String paymentMethod;
+    @Column(name = "payment_methods_id")
+    private String paymentMethodId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "payment_methods_id", insertable = false, updatable = false)
+    private PaymentMethodsEntity paymentMethods;
 
     public CustomerEntity(CustomerRequest request) {
         BeanUtils.copyProperties(request, this);

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Supplier Locations</title>
+</head>
+<body>
+<!-- header -->
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0 font-weight-bolder">Supplier Locations</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active font-weight-light">Supplier Locations</li>
+        </ol>
+    </div>
+</div>
+<!-- header end -->
+
+<!-- card -->
+<div class="row" layout:fragment="content">
+    <!-- left column -->
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- general form elements -->
+        <!-- /.card-header -->
+        <div class="card card-pink">
+            <div class="card-header">
+                <h3 class="card-title font-weight-light">Add Data Supplier Loctions</h3>
+            </div>
+            <form th:action="@{~/supplier-locations/save}" method="post">
+                <!-- card form start -->
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="supplierId">Supplier Code</label>
+                        <select class="form-control" name="supplierId" id="supplierId">
+                            <option value="">select one</option>
+                            <option th:each="suppliers: ${dataSuppliers}"
+                                    th:value="${suppliers.id}"
+                                    th:text="${suppliers.supplierCode}">
+                            </option>
+                        </select></div>
+
+                    <div class="form-group">
+                        <label for="addressId">Address</label>
+                        <select class="form-control" name="addressId" id="addressId">
+                            <option value="">select one</option>
+                            <option th:each="address: ${dataAddressLoc}"
+                                    th:value="${address.id}"
+                                    th:text="${address.onStreet}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date From</label>
+                        <input type="date" class="form-control" name="dateFrom" id="dateFrom" placeholder="enter date from">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date To</label>
+                        <input type="date" class="form-control" name="dateTo" id="dateTo" placeholder="enter date to">
+                    </div>
+                    <!-- card form end -->
+
+                    <!-- card footer -->
+                    <div class="card-footer">
+                        <button class="btn btn-outline-danger" type="submit">submit</button> &nbsp;
+                        <a class="btn btn-outline-danger" th:href="@{~/supplier-locations}">back</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

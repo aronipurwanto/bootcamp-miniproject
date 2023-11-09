@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Products Type</title>
+</head>
+<body>
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0 font-weight-bolder">Products Type</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active font-weight-light">Products Type</li>
+        </ol>
+    </div>
+</div>
+<div class="row" layout:fragment="content">
+    <!-- left column -->
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- general form elements -->
+        <div class="card card-pink">
+            <div class="card-header">
+                <h3 class="card-title font-weight-light">Edit Data Products Type</h3>
+            </div>
+            <!-- card header -->
+            <form th:action="@{~/product-type/update}" method="post">
+            <!-- card form start -->
+            <input type="hidden" name="id" th:value="${dataProductType.id}">
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Product Type Code</label>
+                    <input type="text" class="form-control" name="productTypeCode" id="productTypeCode" th:value="${dataProductType.productTypeCode}">
+                </div>
+
+                <div class="form-group">
+                    <label>Descriptions</label>
+                    <input type="text" class="form-control" name="description" id="description" th:value="${dataProductType.description}">
+                </div>
+                <!-- card form end -->
+
+                <!-- card footer -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-outline-danger">submit</button>
+                    <a class="btn btn-outline-danger" th:href="@{~/product-type}">back</a>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

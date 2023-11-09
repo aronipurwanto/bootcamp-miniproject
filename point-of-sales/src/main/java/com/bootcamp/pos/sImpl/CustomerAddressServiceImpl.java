@@ -56,11 +56,12 @@ public class CustomerAddressServiceImpl implements CustomerAddressService {
         if (entity == null){
             return Optional.empty();
         }
+
         BeanUtils.copyProperties(request, entity);
         try {
             customerAddressRepository.save(entity);
             log.info("Update Customer Address success");
-            return Optional.of(new CustomerAddressModel());
+            return Optional.of(new CustomerAddressModel(entity));
         }catch (Exception e){
             log.error("Update Customer Address failed, error: {}", e.getMessage());
             return Optional.empty();
@@ -71,6 +72,7 @@ public class CustomerAddressServiceImpl implements CustomerAddressService {
     public Optional<CustomerAddressModel> delete(String id) {
         CustomerAddressEntity result = this.customerAddressRepository.findById(id).orElse(null);
         if (result == null){
+            log.warn("data customer address with id: {} not found", id);
             return Optional.empty();
         }
 

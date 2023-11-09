@@ -20,13 +20,15 @@ public class CustomerAddressModel {
     private LocalDate dateFrom;
     @DateTimeFormat(pattern = "yyyy-mm-dd")
     private LocalDate dateTo;
-    private String addressType;
 
     private String customerId;
     private CustomerRequest customer;
 
     private String addressId;
     private AddressModel address;
+
+    private String addressTypeId;
+    private AddressTypeModel addressType;
 
     public CustomerAddressModel(CustomerAddressEntity entity) {
         BeanUtils.copyProperties(entity, this);
@@ -38,6 +40,10 @@ public class CustomerAddressModel {
         if (entity.getAddress() != null){
             this.addressId = entity.getAddress().getId();
             this.address = new AddressModel(entity.getAddress());
+        }
+        if (entity.getAddressType() != null){
+            this.addressTypeId = entity.getAddressType().getId();
+            this.addressType = new AddressTypeModel(entity.getAddressType());
         }
     }
 }

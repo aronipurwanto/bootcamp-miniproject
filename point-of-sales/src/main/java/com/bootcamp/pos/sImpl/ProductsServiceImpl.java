@@ -4,7 +4,7 @@ package com.bootcamp.pos.sImpl;
 import com.bootcamp.pos.model.entity.ProductsEntity;
 import com.bootcamp.pos.model.request.ProductsModel;
 import com.bootcamp.pos.repository.ProductsRepository;
-import com.bootcamp.pos.service.ProductService;
+import com.bootcamp.pos.service.ProductsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class ProductsServiceImpl implements ProductService {
+public class ProductsServiceImpl implements ProductsService {
     private final ProductsRepository productsRepository;
 
     @Override

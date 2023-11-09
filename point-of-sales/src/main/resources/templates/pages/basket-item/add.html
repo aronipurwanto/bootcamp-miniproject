@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Basket-Item</title>
+</head>
+<body>
+<!-- header -->
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0 font-weight-bolder">Basket Item</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active font-weight-light">Basket Item</li>
+        </ol>
+    </div>
+</div>
+<!-- header end -->
+
+<!-- card -->
+<div class="row" layout:fragment="content">
+    <!-- left column -->
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- general form elements -->
+        <!-- /.card-header -->
+        <div class="card card-pink">
+            <div class="card-header">
+                <h3 class="card-title font-weight-light">Add Data Basket Item</h3>
+            </div>
+    <form th:action="@{~/basket-item/save}" method="post">
+        <!-- card form start -->
+        <div class="card-body">
+            <div class="form-group">
+                <label>Basket Date & Time</label>
+                <input type="datetime-local" class="form-control" name="basketDatetime" id="basketDatetime" placeholder="enter date & time">
+            </div>
+
+            <div class="form-group">
+                <label>Quantity</label>
+                <input type="text" class="form-control" name="quantity" id="quantity" placeholder="enter quantity">
+            </div>
+
+            <div class="form-group">
+                <label>Cost</label>
+                <input type="text" class="form-control" name="cost" id="cost" placeholder="enter cost">
+            </div>
+
+            <div class="form-group">
+                <label for="customerId">Customer Name</label>
+                <select class="form-control" name="customerId" id="customerId">
+                    <option value="">select one</option>
+                    <option th:each="customer: ${dataCustomer}"
+                            th:value="${customer.id}"
+                            th:text="${customer.customerName}">
+                    </option>
+                </select></div>
+
+            <div class="form-group">
+                <label for="productId">Products</label>
+                <select class="form-control" name="productId" id="productId">
+                    <option value="">select one</option>
+                    <option th:each="product: ${dataProducts}"
+                            th:value="${product.id}"
+                            th:text="${product.productName}">
+                    </option>
+                </select></div>
+            <!-- card form end -->
+
+            <!-- card footer -->
+            <button class="btn btn-outline-danger" type="submit">submit</button> &nbsp;
+            <a class="btn btn-outline-danger" th:href="@{~/basket-item}">back</a>
+        </div>
+        </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

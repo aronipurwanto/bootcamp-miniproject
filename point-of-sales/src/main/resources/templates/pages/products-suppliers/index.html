@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Products-Suppliers-title</title>
+</head>
+<body>
+<!-- row start -->
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0 font-weight-bolder">Products Suppliers</h1>
+    </div>
+    <!-- /.col -->
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active font-weight-light">Products Suppliers</li>
+        </ol>
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+
+<div class="row" layout:fragment="content">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- card start -->
+        <div class="card">
+            <!-- card header -->
+            <div class="card-header bg-gradient-pink">
+                <h3 class="card-title font-weight-light">Data Products Suppliers</h3>
+                <!-- header tools -->
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 200px">
+                        <input type="text" name="table_search" class="form-control float-right btn-outline-dark" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-outline-dark">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <a th:href="@{~/products-suppliers/add}" id="btn-add" class="btn btn-outline-dark">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- tools end -->
+            </div>
+            <!-- card header end -->
+
+            <!-- card body start -->
+            <div class="card-body">
+                <table id="table-data" class="table">
+                    <thead>
+                    <tr>
+                        <th>Products</th>
+                        <th>Suppliers</th>
+                        <th>Supplied To Date</th>
+                        <th>Total Qty Supplied To Date</th>
+                        <th>First Item Supplied To Date</th>
+                        <th>Last Item Supplied To Date</th>
+                        <th>Delivery Lead Time</th>
+                        <th>Standart Price</th>
+                        <th>Percent Discount</th>
+                        <th>Min Order Qty</th>
+                        <th>Max Order Qty</th>
+                        <th>Item Suppliers Details</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="data: ${listDataProductsSuppliers}">
+                        <td th:text="${data.products.productName}"></td>
+                        <td th:text="${data.suppliers.supplierCode}"></td>
+                        <td th:text="${data.suppliedToDate}"></td>
+                        <td th:text="${data.totalQtySupToDate}"></td>
+                        <td th:text="${data.firstItemSupDate}"></td>
+                        <td th:text="${data.lastItemSupDate}"></td>
+                        <td th:text="${data.deliveryLeadTime}"></td>
+                        <td th:text="${data.standardPrice}"></td>
+                        <td th:text="${data.percentDiscount}"></td>
+                        <td th:text="${data.minOrderQty}"></td>
+                        <td th:text="${data.maxOrderQty}"></td>
+                        <td th:text="${data.itemSuppliersDetails}"></td>
+
+                        <!-- tombol action -->
+                        <td>
+                            <a th:href="@{products-suppliers/detail/{id}(id=${data.id})}"
+                            class="btn btn-xs btn-outline-success btn-detail">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a th:href="@{products-suppliers/edit/{id}(id=${data.id})}"
+                            class="btn btn-xs btn-outline-warning btn-edit">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a th:href="@{products-suppliers/delete/{id}(id=${data.id})}"
+                            class="btn btn-xs btn-outline-danger">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- card body end -->
+        </div>
+    </div>
+</div>
+</body>
+</html>

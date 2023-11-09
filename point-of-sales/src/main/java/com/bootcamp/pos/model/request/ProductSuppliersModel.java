@@ -1,8 +1,6 @@
 package com.bootcamp.pos.model.request;
 
 import com.bootcamp.pos.model.entity.ProductSuppliersEntity;
-import com.bootcamp.pos.model.entity.ProductsEntity;
-import com.bootcamp.pos.model.entity.SuppliersEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,10 +17,10 @@ public class ProductSuppliersModel {
     private String id;
 
     private String productId;
-    private ProductsEntity products;
+    private ProductsModel products;
 
-    private String supplierId;
-    private SuppliersEntity suppliers;
+    private String suppliersId;
+    private SuppliersModel suppliers;
 
     @DateTimeFormat(pattern = "yyyy-mm-dd")
     private LocalDate suppliedToDate;
@@ -38,5 +36,14 @@ public class ProductSuppliersModel {
 
     public ProductSuppliersModel(ProductSuppliersEntity entity){
         BeanUtils.copyProperties(entity, this);
+
+        if (entity.getProducts() != null){
+            this.productId = entity.getProducts().getId();
+            this.products = new ProductsModel(entity.getProducts());
+        }
+        if (entity.getSuppliers() != null){
+            this.suppliersId = entity.getSuppliers().getId();
+            this.suppliers = new SuppliersModel(entity.getSuppliers());
+        }
     }
 }

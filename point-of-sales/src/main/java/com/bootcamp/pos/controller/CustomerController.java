@@ -1,7 +1,9 @@
 package com.bootcamp.pos.controller;
 
 import com.bootcamp.pos.model.request.CustomerRequest;
+import com.bootcamp.pos.model.request.PaymentMethodsModel;
 import com.bootcamp.pos.service.CustomerService;
+import com.bootcamp.pos.service.PaymentMethodsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,7 @@ import java.util.List;
 @RequestMapping("/customer")
 public class CustomerController {
     private final CustomerService customerService;
+    private final PaymentMethodsService paymentMethodsService;
 
     @GetMapping
     public ModelAndView index(){
@@ -27,6 +30,12 @@ public class CustomerController {
     @GetMapping("/add")
     public ModelAndView add(){
         ModelAndView view = new ModelAndView("pages/customer/add");
+        // ambil data dari service payment methods
+        List<PaymentMethodsModel> paymentMethods = this.paymentMethodsService.getAll();
+
+        // kirim data ke view
+        view.addObject("dataPaymentMethods", paymentMethods);
+
         return view;
     }
 
@@ -58,6 +67,11 @@ public class CustomerController {
         if (data == null){
             return new ModelAndView("redirect:/customer");
         }
+        // ambil data dari service payment methods
+        List<PaymentMethodsModel> paymentMethods = this.paymentMethodsService.getAll();
+
+        // kirim data ke view
+        view.addObject("dataPaymentMethods", paymentMethods);
         // data kirim ke view
         view.addObject("dataCustomer", data);
         return view;

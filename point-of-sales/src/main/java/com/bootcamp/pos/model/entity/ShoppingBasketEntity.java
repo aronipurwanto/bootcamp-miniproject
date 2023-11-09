@@ -1,14 +1,14 @@
 package com.bootcamp.pos.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.bootcamp.pos.model.request.ShoppingBasketModel;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class ShoppingBasketEntity {
     @Id
     @Column(name = "shopping_basket_id")
-    private Long id;
+    private String id;
 
     @Column(name = "basket_datetime")
     private LocalDateTime basketDatetime;
@@ -30,5 +30,14 @@ public class ShoppingBasketEntity {
     private String basketDetail;
 
     @Column(name = "customer_id")
-    private Long customerId;
+    private String customerId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
+    private CustomerEntity customer;
+
+    public ShoppingBasketEntity(ShoppingBasketModel model) {
+        BeanUtils.copyProperties(model, this);
+        this.id = UUID.randomUUID().toString();
+    }
 }

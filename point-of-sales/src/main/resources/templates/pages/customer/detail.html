@@ -63,9 +63,11 @@
 
                     <div class="form-group">
                         <label>Payment Method</label>
-                        <input type="text" class="form-control" name="paymentMethod" id="paymentMethod" th:value="${dataCustomer.paymentMethod}">
+                        <input type="text" class="form-control" name="paymentMethod" id="paymentMethod" th:value="${dataCustomer.paymentMethods.creditCardName}">
                     </div>
+                    <!-- card form end -->
 
+                    <!-- card footer -->
                     <div class="card-footer">
                         <a class="btn btn-outline-danger" th:href="@{~/customer}">back</a>
                     </div>

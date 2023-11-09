@@ -21,9 +21,16 @@ public class CustomerRequest {
     private LocalDate dateOrder;
     private Integer paymentDetails;
     private String customerDetails;
-    private String paymentMethod;
+
+    private String paymentMethodId;
+    private PaymentMethodsModel paymentMethods;
 
     public CustomerRequest(CustomerEntity entity) {
         BeanUtils.copyProperties(entity, this);
+
+        if (entity.getPaymentMethods() != null){
+            this.paymentMethodId = entity.getPaymentMethods().getId();
+            this.paymentMethods = new PaymentMethodsModel(entity.getPaymentMethods());
+        }
     }
 }

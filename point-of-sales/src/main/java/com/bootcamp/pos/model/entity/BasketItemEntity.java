@@ -1,14 +1,14 @@
 package com.bootcamp.pos.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.bootcamp.pos.model.request.BasketItemModel;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -18,20 +18,33 @@ import java.time.LocalDateTime;
 public class BasketItemEntity {
     @Id
     @Column(name = "basket_item_id")
-    private Long basketId;
-
-    @Column(name = "customer_id")
-    private Long customerId;
+    private String id;
 
     @Column(name = "basket_datetime")
     private LocalDateTime basketDatetime;
-
-    @Column(name = "product_id")
-    private Long productId;
 
     @Column(name = "basket_quantity")
     private Integer quantity;
 
     @Column(name = "cost")
-    private Double cost;
+    private String cost;
+
+    @Column(name = "product_id")
+    private String productId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    private ProductsEntity products;
+
+    @Column(name = "customer_id")
+    private String customerId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
+    private CustomerEntity customer;
+
+    public BasketItemEntity(BasketItemModel model) {
+        BeanUtils.copyProperties(model, this);
+        this.id = UUID.randomUUID().toString();
+    }
 }

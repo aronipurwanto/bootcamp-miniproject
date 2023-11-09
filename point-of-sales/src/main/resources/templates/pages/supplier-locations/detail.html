@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Supplier Locations</title>
+</head>
+<body>
+<div class="row mb-2" layout:fragment="breadcrumb">
+    <div class="col-sm-6">
+        <h1 class="m-0 font-weight-bolder">Supplier Locations</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active font-weight-light">Supplier Locations</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row" layout:fragment="content">
+    <!-- left column -->
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- general form element -->
+        <div class="card card-pink">
+            <div class="card-header">
+                <h3 class="card-title font-weight-light">Detail Data Supplier Locations</h3>
+            </div>
+
+            <!-- /.card header -->
+            <form th:action="@{/supplier-locations/save}" method="post">
+                <!-- card form start -->
+                <input type="hidden" name="id" th:value="${dataSupplierLocs.id}">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Supplier Code</label>
+                        <input type="text" class="form-control" name="supplierCode" id="supplierCode" th:value="${dataSupplierLocs.suppliers.supplierCode}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" class="form-control" name="addressId" id="addressId" th:value="${dataSupplierLocs.address.onStreet}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date From</label>
+                        <input type="date" class="form-control" name="dateFrom" id="dateFrom" th:value="${dataSupplierLocs.dateFrom}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date To</label>
+                        <input type="date" class="form-control" name="dateTo" id="dateTo" th:value="${dataSupplierLocs.dateTo}">
+                    </div>
+                    <!-- card form end -->
+
+                    <!-- card footer -->
+                    <div class="card-footer">
+                        <a class="btn btn-outline-danger" th:href="@{~/supplier-locations}">back</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,10 +1,7 @@
 package com.bootcamp.pos.model.entity;
 
 import com.bootcamp.pos.model.request.ProductsModel;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,8 +19,12 @@ public class ProductsEntity {
     @Column(name = "product_id")
     private String id;
 
-    @Column(name = "product_code")
-    private String productCode;
+    @Column(name = "product_type_id")
+    private String productTypeId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_type_id", insertable = false, updatable = false)
+    private ProductTypeEntity productType;
 
     @Column(name = "product_details")
     private String productDetails;

@@ -11,7 +11,10 @@ import org.springframework.beans.BeanUtils;
 @AllArgsConstructor
 public class ProductsModel {
     private String id;
-    private String productCode;
+
+    private String productTypeId;
+    private ProductTypeModel productType;
+
     private String productDetails;
     private String productName;
     private Integer productPrice;
@@ -19,5 +22,10 @@ public class ProductsModel {
 
     public ProductsModel(ProductsEntity entity) {
         BeanUtils.copyProperties(entity, this);
+
+        if (entity.getProductType() != null){
+            this.productTypeId = entity.getProductType().getId();
+            this.productType = new ProductTypeModel(entity.getProductType());
+        }
     }
 }

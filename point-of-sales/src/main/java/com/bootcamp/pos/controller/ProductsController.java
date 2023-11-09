@@ -1,7 +1,9 @@
 package com.bootcamp.pos.controller;
 
+import com.bootcamp.pos.model.request.ProductTypeModel;
 import com.bootcamp.pos.model.request.ProductsModel;
-import com.bootcamp.pos.service.ProductService;
+import com.bootcamp.pos.service.ProductTypeService;
+import com.bootcamp.pos.service.ProductsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +15,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/products")
 public class ProductsController {
-    private final ProductService productsService;
+    private final ProductsService productsService;
+    private final ProductTypeService productTypeService;
 
     @GetMapping
     public ModelAndView index(){
@@ -27,6 +30,11 @@ public class ProductsController {
     @GetMapping("/add")
     public ModelAndView add(){
         ModelAndView view = new ModelAndView("pages/products/add");
+        // take data from service
+        List<ProductTypeModel> productType = this.productTypeService.getAll();
+
+        // send to view
+        view.addObject("dataProductType", productType);
         return view;
     }
 
@@ -34,9 +42,6 @@ public class ProductsController {
     public ModelAndView save(@ModelAttribute ProductsModel request){
         // validsi
         if (request == null){
-            return new ModelAndView("redirect:/products/add");
-        }
-        if (request.getProductCode().isEmpty()){
             return new ModelAndView("redirect:/products/add");
         }
         if (request.getProductDetails().isEmpty()){
@@ -64,6 +69,10 @@ public class ProductsController {
         if (data == null){
             return new ModelAndView("redirect:/products");
         }
+        // take data from service
+        List<ProductTypeModel> productType = this.productTypeService.getAll();
+
+        view.addObject("dataProductType", productType);
         // data kirim ke view
         view.addObject("dataProducts", data);
         return view;
@@ -73,9 +82,6 @@ public class ProductsController {
     public ModelAndView update(@ModelAttribute ProductsModel request){
         // validsi
         if (request == null){
-            return new ModelAndView("redirect:/products/edit/"+ request.getId());
-        }
-        if (request.getProductCode().isEmpty()){
             return new ModelAndView("redirect:/products/edit/"+ request.getId());
         }
         if (request.getProductDetails().isEmpty()){

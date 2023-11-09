@@ -31,8 +31,15 @@
             <input type="hidden" name="id" th:value="${dataProducts.id}">
             <div class="card-body">
                 <div class="form-group">
-                    <label>Product Code</label>
-                    <input type="text" class="form-control" name="productCode" id="productCode" th:value="${dataProducts.productCode}">
+                    <label for="productTypeId">Product Code</label>
+                    <select class="form-control" name="productTypeId" id="productTypeId">
+                        <option value="">select one</option>
+                        <option th:each="productType: ${dataProductType}"
+                                th:value="${productType.id}"
+                                th:text="${productType.productTypeCode}"
+                                th:selected="${dataProducts.productTypeId == productType.id}">
+                        </option>
+                    </select>
                 </div>
 
                 <div class="form-group">

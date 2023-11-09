@@ -35,38 +35,43 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Customer Name</label>
-                        <input type="text" class="form-control" name="customerName" id="customerName">
+                        <input type="text" class="form-control" name="customerName" id="customerName" placeholder="enter customer name">
                     </div>
 
                     <div class="form-group">
                         <label>Customer Phone</label>
-                        <input type="text" class="form-control" name="customerPhone" id="customerPhone">
+                        <input type="text" class="form-control" name="customerPhone" id="customerPhone" placeholder="enter customer phone">
                     </div>
 
                     <div class="form-group">
                         <label>Customer Email</label>
-                        <input type="text" class="form-control" name="customerEmail" id="customerEmail">
+                        <input type="text" class="form-control" name="customerEmail" id="customerEmail" placeholder="enter customer email">
                     </div>
 
                     <div class="form-group">
                         <label>Date Order</label>
-                        <input type="date" class="form-control" name="dateOrder" id="dateOrder">
+                        <input type="date" class="form-control" name="dateOrder" id="dateOrder" placeholder="enter date order">
                     </div>
 
                     <div class="form-group">
                         <label>Payment Details</label>
-                        <input type="text" class="form-control" name="paymentDetails" id="paymentDetails">
+                        <input type="text" class="form-control" name="paymentDetails" id="paymentDetails" placeholder="enter payment details">
                     </div>
 
                     <div class="form-group">
                         <label>Customer Details</label>
-                        <input type="text" class="form-control" name="customerDetails" id="customerDetails">
+                        <input type="text" class="form-control" name="customerDetails" id="customerDetails" placeholder="enter customer details">
                     </div>
 
                     <div class="form-group">
-                        <label>Payment Method</label>
-                        <input type="text" class="form-control" name="paymentMethod" id="paymentMethod">
-                    </div>
+                        <label for="paymentMethodId">Payment Methods</label>
+                        <select class="form-control" name="paymentMethodId" id="paymentMethodId">
+                            <option value="">select one</option>
+                            <option th:each="paymentMethods: ${dataPaymentMethods}"
+                                    th:value="${paymentMethods.id}"
+                                    th:text="${paymentMethods.creditCardName}">
+                            </option>
+                        </select></div>
                     <!-- card form end -->
 
                     <!-- card footer -->
