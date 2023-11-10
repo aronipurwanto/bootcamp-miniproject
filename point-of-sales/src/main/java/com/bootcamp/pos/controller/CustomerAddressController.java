@@ -54,6 +54,9 @@ public class CustomerAddressController {
       if (request == null) {
           return new ModelAndView("redirect:/cusaddress/add");
       }
+      if(request.getCustomerId().isEmpty()){
+          return new ModelAndView("redirect:/cusaddress/add");
+      }
       customerAddressService.save(request);
       return new ModelAndView("redirect:/cusaddress");
   }

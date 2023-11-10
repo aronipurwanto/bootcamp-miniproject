@@ -12,6 +12,12 @@ import org.springframework.beans.BeanUtils;
 public class InventoryLocationResponse {
     private String locationId;
 
+    private String productId;
+    private String productName;
+
+    private String locaddresId;
+    private String addressDetails;
+
     private String quantity;
 
     private String reorderLevel;
@@ -24,5 +30,14 @@ public class InventoryLocationResponse {
 
     public InventoryLocationResponse(InventoryLocationEntity entity) {
         BeanUtils.copyProperties(entity, this);
+        if(entity.getProduct() != null){
+            productId = entity.getProductId();
+            productName = entity.getProduct().getName();
+        }
+
+        if(entity.getAddresses() != null){
+            locaddresId = entity.getLocaddresId();
+            addressDetails = entity.getAddresses().getAddressDetails();
+        }
     }
 }

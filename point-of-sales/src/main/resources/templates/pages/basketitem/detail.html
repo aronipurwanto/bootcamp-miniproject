@@ -34,6 +34,14 @@
                         <input type="text" class="form-control" id="id" name="id" placeholder="Enter id" th:value="${basketitem.id}">
                     </div>
                     <div class="form-group">
+                        <label>Customer Id</label>
+                        <input type="text" class="form-control" id="customerId" name="customerId" th:value="${basketitem.name}">
+                    </div>
+                    <div class="form-group">
+                        <label>Basket Date Time</label>
+                        <input type="text" class="form-control" id="basketDtmId" name="basketDtmId" th:value="${basketitem.dateTime}">
+                    </div>
+                    <div class="form-group">
                         <label>Quantity</label>
                         <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Enter quantity" th:value="${basketitem.quantity}">
                     </div>

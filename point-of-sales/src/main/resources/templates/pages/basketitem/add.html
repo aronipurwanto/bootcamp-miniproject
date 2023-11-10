@@ -28,6 +28,26 @@
                 <input type="hidden" name="id" id="id">
                 <div class="card-body">
                     <div class="form-group">
+                        <label for="customerId">Customer Name</label>
+                        <select id="customerId" name="customerId" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="customer : ${dataCus}" th:value="${customer.id}" th:text="${customer.name}">Select One</option>
+                        </select>
+                    </div>
+                    <div class="form-group"></div>
+                    <label for="basketDtmId">Basket Date Time</label>
+                    <select id="basketDtmId" name="basketDtmId" class="form-control">
+                        <option value="">Select One</option>
+                        <option th:each="shopbasket : ${dataShop}" th:value="${shopbasket.id}" th:text="${shopbasket.dateTime}">Select One</option>
+                    </select>
+                    <div class="form-group">
+                        <label for="producttId">Product Name</label>
+                        <select id="producttId" name="producttId" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="product : ${dataProd}" th:value="${product.id}" th:text="${product.name}">Select One</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                             <label for="quantity">Quantity</label>
                         <input type="text" class="form-control" name="quantity" id="quantity" placeholder="Enter quantity">
                     </div>
@@ -39,6 +59,7 @@
                 <!-- CARD BODY  -->
                 <div class="card-footer">
                     <button type="submit" class="btn btn-outline-success">Submit</button>
+                    <a th:href="@{~/basketitem}" type="submit" class="btn btn-outline-success">Back</a>
                 </div>
             </form>
         </div>

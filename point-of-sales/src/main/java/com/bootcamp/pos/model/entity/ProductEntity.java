@@ -19,6 +19,17 @@ public class ProductEntity {
     @Column(name = "product_id")
     private String id;
 
+    //---------------Relasi ke refProduct------------//
+    @Column(name = "ref_product_code")
+    private String refProductId;
+
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ref_product_code", insertable = false, updatable = false)
+    private RefProductTypeEntity refProductType;
+    //---------------------------//
+
+
     @Column(name = "product_details")
     private String details;
 

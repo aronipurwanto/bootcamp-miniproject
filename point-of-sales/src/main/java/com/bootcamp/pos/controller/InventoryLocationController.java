@@ -1,8 +1,12 @@
 package com.bootcamp.pos.controller;
 
 import com.bootcamp.pos.model.entity.InventoryLocationEntity;
+import com.bootcamp.pos.model.response.AddressesResponse;
 import com.bootcamp.pos.model.response.InventoryLocationResponse;
+import com.bootcamp.pos.model.response.ProductResponse;
+import com.bootcamp.pos.service.AddressesService;
 import com.bootcamp.pos.service.InventoryLocationService;
+import com.bootcamp.pos.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +20,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class InventoryLocationController {
     private final InventoryLocationService inventoryLocationService;
+    private final ProductService productService;
+    private final AddressesService addressesService;
 
     @GetMapping
     public ModelAndView index() {
@@ -34,6 +40,13 @@ public class InventoryLocationController {
         List<InventoryLocationResponse> data = inventoryLocationService.getAll();
 
         view.addObject("dataList", data);
+
+        List<ProductResponse> dataProd =productService.getAll();
+        view.addObject("dataProd", dataProd);
+
+        List<AddressesResponse> dataAdr = addressesService.getAll();
+        view.addObject("dataAdr", dataAdr);
+
         return view;
     }
 
@@ -41,6 +54,9 @@ public class InventoryLocationController {
     public ModelAndView save(@ModelAttribute InventoryLocationResponse request) {
         if (request == null) {
             return new ModelAndView("redirect:/inlocal");
+        }
+        if(request.getQuantity().isEmpty()){
+            return new ModelAndView("redirect:/inlocal/add");
         }
         inventoryLocationService.save(request);
         return new ModelAndView("redirect:/inlocal");
@@ -54,6 +70,13 @@ public class InventoryLocationController {
             return new ModelAndView("redirect:/inlocal");
         }
         view.addObject("data", data);
+
+        List<ProductResponse> dataProd =productService.getAll();
+        view.addObject("dataProd", dataProd);
+
+        List<AddressesResponse> dataAdr = addressesService.getAll();
+        view.addObject("dataAdr", dataAdr);
+
         return view;
     }
 

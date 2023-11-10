@@ -19,6 +19,26 @@ public class InventoryLocationEntity {
     @Column(name = "inventory_location_id")
     private String locationId;
 
+
+    //---------------Relasi ke Product------------//
+    @Column(name = "product_id")
+    private String productId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    private ProductEntity product;
+    //---------------------------//
+
+
+    //---------------Relasi ke Address------------//
+    @Column(name = "loc_address_id")
+    private String locaddresId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "loc_address_id",insertable = false,updatable = false)
+    private AddressesEntity addresses;
+    //---------------------------//
+
     @Column(name = "quantity_in_stock")
     private String quantity;
 

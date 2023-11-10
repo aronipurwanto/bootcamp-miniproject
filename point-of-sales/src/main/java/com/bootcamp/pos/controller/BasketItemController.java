@@ -1,9 +1,11 @@
 package com.bootcamp.pos.controller;
 
 import com.bootcamp.pos.model.request.BasketItemsRequest;
-import com.bootcamp.pos.model.response.AddressesResponse;
-import com.bootcamp.pos.model.response.BasketItemsResponse;
+import com.bootcamp.pos.model.response.*;
 import com.bootcamp.pos.service.BasketItemService;
+import com.bootcamp.pos.service.CustomerService;
+import com.bootcamp.pos.service.ProductService;
+import com.bootcamp.pos.service.ShopBasketService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,9 @@ import java.util.List;
 @RequestMapping("/basketitem")
 public class BasketItemController {
     private final BasketItemService basketItemService;
+    private final CustomerService customerService;
+    private final ShopBasketService shopBasketService;
+    private final ProductService productService;
 
     @GetMapping
     public ModelAndView index(){
@@ -32,6 +37,20 @@ public class BasketItemController {
         ModelAndView view = new ModelAndView("pages/basketitem/add");
 
         List<BasketItemsResponse> data = basketItemService.getAll();
+        //---------------getAll data Customer------------//
+        List<CustomerResponse> dataCus = this.customerService.getAll();
+        view.addObject("dataCus", dataCus);
+        //---------------------------//
+
+        //---------------getAll data Shopping Basket------------//
+        List<ShopBasketResponse> dataShop = this.shopBasketService.getAll();
+        view.addObject("dataShop", dataShop);
+        //---------------------------//
+
+        //---------------getAll data Product------------//
+        List<ProductResponse> dataProd = this.productService.getAll();
+        view.addObject("dataProd", dataProd);
+        //---------------------------//
 
         view.addObject("basketitm",data);
         return view;
@@ -41,6 +60,9 @@ public class BasketItemController {
     public ModelAndView save(@ModelAttribute BasketItemsResponse request){
         if(request == null){
             return new ModelAndView("redirect:/basketitem");
+        }
+        if(request.getQuantity().isEmpty()){
+            return new ModelAndView("redirect:/basketitem/add");
         }
         basketItemService.save(request);
         return new ModelAndView("redirect:/basketitem");
@@ -54,6 +76,21 @@ public class BasketItemController {
             return new ModelAndView("redirect:/basketitem");
         }
         view.addObject("basketitem", response);
+        //---------------getAll data Customer------------//
+        List<CustomerResponse> dataCus = customerService.getAll();
+        view.addObject("dataCus", dataCus);
+        //---------------------------//
+
+        //---------------getAll data Shopping Basket------------//
+        List<ShopBasketResponse> dataShop = this.shopBasketService.getAll();
+        view.addObject("dataShop", dataShop);
+        //---------------------------//
+
+        //---------------getAll data Product------------//
+        List<ProductResponse> dataProd = this.productService.getAll();
+        view.addObject("dataProd", dataProd);
+        //---------------------------//
+
         return view;
     }
 

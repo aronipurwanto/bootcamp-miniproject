@@ -39,10 +39,10 @@ public class AddressesController {
     @PostMapping("/save")
     public ModelAndView save(@ModelAttribute AddressesResponse request){
         if(request == null){
-            return new ModelAndView("redirect:/address");
+            return new ModelAndView("redirect:/address/add");
         }
         if(request.getHouseNumber().isEmpty()){
-            return new ModelAndView("redirect:/address");
+            return new ModelAndView("redirect:/address/add");
         }
         addressesService.save(request);
         return new ModelAndView("redirect:/address");

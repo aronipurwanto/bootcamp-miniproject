@@ -41,6 +41,9 @@ public class RefAddressTypeController {
         if(request == null){
             return new ModelAndView("redirect:/refaddress");
         }
+        if(request.getCode().isEmpty()){
+            return new ModelAndView("redirect:/refaddress/add");
+        }
         refAddressTypeService.save(request);
         return new ModelAndView("redirect:/refaddress");
     }

@@ -1,10 +1,9 @@
 package com.bootcamp.pos.controller;
 
-import com.bootcamp.pos.model.response.AddressesResponse;
-import com.bootcamp.pos.model.response.ProductSuppliersResponse;
-import com.bootcamp.pos.model.response.RefAddressTypeResponse;
-import com.bootcamp.pos.model.response.SupllierResponse;
+import com.bootcamp.pos.model.response.*;
+import com.bootcamp.pos.service.ProductService;
 import com.bootcamp.pos.service.ProductSupplierService;
+import com.bootcamp.pos.service.SupllierService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +17,8 @@ import java.util.Optional;
 @RequestMapping("/productsupplier")
 public class ProductSupplierController {
     private final ProductSupplierService productSupplierService;
+    private final ProductService productService;
+    private final SupllierService supllierService;
     @GetMapping
     public ModelAndView index(){
         ModelAndView view = new ModelAndView("pages/productsupplier/index");
@@ -32,14 +33,25 @@ public class ProductSupplierController {
         ModelAndView view = new ModelAndView("pages/productsupplier/add");
 
         List<ProductSuppliersResponse> data = productSupplierService.getAll();
-
         view.addObject("data",data);
+
+        //---------------getAll data Product------------//
+        List<ProductResponse> dataProd = productService.getAll();
+        view.addObject("dataProd", dataProd);
+
+        //---------------getAll data Supplier------------//
+        List<SupllierResponse> dataSup = supllierService.getAll();
+        view.addObject("dataSup", dataSup);
+
         return view;
     }
     @PostMapping("/save")
     public ModelAndView save(@ModelAttribute ProductSuppliersResponse request){
         if(request == null){
             return new ModelAndView("redirect:/productsupplier");
+        }
+        if(request.getValueSupplierToDate().isEmpty()){
+            return new ModelAndView("redirect:/productsupplier/add");
         }
         productSupplierService.save(request);
         return new ModelAndView("redirect:/productsupplier");
@@ -53,6 +65,15 @@ public class ProductSupplierController {
             return new ModelAndView("redirect:/productsupplier");
         }
         view.addObject("data", response);
+
+        //---------------getAll data Product------------//
+        List<ProductResponse> dataProd = productService.getAll();
+        view.addObject("dataProd", dataProd);
+
+        //---------------getAll data Supplier------------//
+        List<SupllierResponse> dataSup = supllierService.getAll();
+        view.addObject("dataSup", dataSup);
+
         return view;
     }
 

@@ -2,7 +2,9 @@ package com.bootcamp.pos.controller;
 
 import com.bootcamp.pos.model.response.ProductResponse;
 import com.bootcamp.pos.model.response.RefAddressTypeResponse;
+import com.bootcamp.pos.model.response.RefProductTypeResponse;
 import com.bootcamp.pos.service.ProductService;
+import com.bootcamp.pos.service.RefProductTypeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductService productService;
+    private final RefProductTypeService refProductTypeService;
     @GetMapping
     public ModelAndView index(){
         ModelAndView view = new ModelAndView("pages/product/index");
@@ -32,14 +35,22 @@ public class ProductController {
         ModelAndView view = new ModelAndView("pages/product/add");
 
         List<ProductResponse> data = productService.getAll();
-
         view.addObject("product",data);
+
+        //---------------getAll data Ref Product------------//
+        List<RefProductTypeResponse> refproduct = refProductTypeService.getAll();
+        view.addObject("dataref",refproduct);
+        //--------------------------//
+
         return view;
     }
     @PostMapping("/save")
     public ModelAndView save(@ModelAttribute ProductResponse request){
         if(request == null){
             return new ModelAndView("redirect:/product");
+        }
+        if(request.getDetails().isEmpty()){
+            return new ModelAndView("redirect:/product/add");
         }
         productService.save(request);
         return new ModelAndView("redirect:/product");
@@ -52,7 +63,14 @@ public class ProductController {
         if(response == null){
             return new ModelAndView("redirect:/product");
         }
+
         view.addObject("product", response);
+
+        //---------------getAll data Ref Product------------//
+        List<RefProductTypeResponse> refproduct = refProductTypeService.getAll();
+        view.addObject("dataref",refproduct);
+        //--------------------------//
+        
         return view;
     }
     @PostMapping("/update")

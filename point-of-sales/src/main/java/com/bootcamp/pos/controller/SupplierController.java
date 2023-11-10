@@ -40,6 +40,9 @@ public class SupplierController {
         if(request == null){
             return new ModelAndView("redirect:/supplier");
         }
+        if(request.getCode().isEmpty()){
+            return new ModelAndView("redirect:/supplier/add");
+        }
         supllierService.save(request);
         return new ModelAndView("redirect:/supplier");
     }

@@ -52,6 +52,9 @@
                     <thead>
                     <tr>
                         <th>id</th>
+                        <th>Customer name</th>
+                        <th>Basket Date Time</th>
+                        <th>Product Name</th>
                         <th>quantity</th>
                         <th>cost</th>
 
@@ -59,6 +62,9 @@
                     </thead>
                     <tr th:each=" data : ${dataList}">
                         <td th:text="${data.id}"></td>
+                        <td th:text="${data.name}"></td>
+                        <td th:text="${data.dateTime}"></td>
+                        <td th:text="${data.productName}"></td>
                         <td th:text="${data.quantity}"></td>
                         <td th:text="${data.cost}"></td>
                         <td>

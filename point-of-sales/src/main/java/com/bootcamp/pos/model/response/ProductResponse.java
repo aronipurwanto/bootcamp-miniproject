@@ -13,6 +13,10 @@ public class ProductResponse {
 
     private String id;
 
+    private String refProductId;
+
+    private String code;
+
     private String details;
 
     private String name;
@@ -23,6 +27,11 @@ public class ProductResponse {
 
     public ProductResponse(ProductEntity entity) {
         BeanUtils.copyProperties(entity,this);
+
+        if(entity.getRefProductType() != null){
+            refProductId = entity.getRefProductId();
+            code = entity.getRefProductType().getCode();
+        }
 
     }
 }

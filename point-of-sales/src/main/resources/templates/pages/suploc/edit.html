@@ -26,17 +26,46 @@
             <!-- card header -->
             <form th:action="@{~/suploc/update}" method="post">
                 <!-- id di hidden -->
-                <input type="hidden" id="id" th:field="*{suploc.id}">
+                <input type="hidden" id="id" th:field="*{data.id}">
                 <!-- form start -->
                 <div class="card-body">
                     <div class="form-group">
+                        <label for="supplierId">Supplier Code</label>
+                        <select id="supplierId" name="supplierId" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="supplier :${dataSup}" th:value="${supplier.id}" th:text="${supplier.code}"
+                                    th:selected="${data.supplierId == supplier.id}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="addressid">Address Details</label>
+                        <select id="addressid" name="addressid" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="address : ${dataAdr}" th:value="${address.id}" th:text="${address.addressDetails}"
+                                    th:selected="${data.addressid == address.id}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cusaddressId">Cus Address Date From</label>
+                        <select id="cusaddressId" name="cusaddressId" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="cusaddress :${dataCusAdr}" th:value="${cusaddress.id}" th:text="${cusaddress.dateFrom}"
+                                    th:selected="${data.cusaddressId == cusaddress.id}">
+                            </option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
                         <label for="dateTo">Date To</label>
-                        <input type="date" class="form-control" name="dateTo" id="dateTo" placeholder="Enter Date To" th:value="${suploc.dateTo}">
+                        <input type="date" class="form-control" name="dateTo" id="dateTo" placeholder="Enter Date To" th:value="${data.dateTo}">
                     </div>
                 </div>
                 <!-- card body -->
                 <div class="card-footer">
                     <button type="submit" class="btn btn-outline-success">Submit</button>
+                    <a th:href="@{~/suploc}" type="submit" class="btn btn-outline-success">Back</a>
                 </div>
             </form>
         </div>

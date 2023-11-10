@@ -48,10 +48,16 @@ public class CustomerController {
     @PostMapping("/save")
     public ModelAndView save(@ModelAttribute CustomerResponse request){
         if(request == null){
-            return new ModelAndView("redirect:/customer");
+            return new ModelAndView("redirect:/customer/add");
         }
         if(request.getName().isEmpty()){
-            return new ModelAndView("redirect:/customer");
+            return new ModelAndView("redirect:/customer/add");
+        }
+        if(request.getEmail().isEmpty()){
+            return new ModelAndView("redirect:/customer/add");
+        }
+        if(request.getPhone().isEmpty()){
+            return new ModelAndView("redirect:/customer/add");
         }
         customerService.save(request);
         return new ModelAndView("redirect:/customer");

@@ -21,6 +21,34 @@ public class BasketItemsEntity {
     @Column(name = "id")
     private String id;
 
+
+//---------------Relasi ke Customer------------//
+    @Column(name = "customerr_id")
+    private String customerId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name ="customerr_id",insertable = false,updatable = false)
+    private CustomerEntity customer;
+   //---------------------------//
+
+    //---------------Relasi ke Shopping Basket------------//
+    @Column(name = "basket_datetime")
+    private String basketDtmId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "basket_datetime",insertable = false,updatable = false)
+    private ShoopingBasketEntity shoopingBasket;
+    //---------------------------//
+
+    //---------------Relasi ke Product------------//
+    @Column(name = "productt_id")
+    private String producttId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "productt_id", insertable = false, updatable = false )
+    private ProductEntity product;
+    //---------------------------//
+
     @Column(name = "quantity")
     private String quantity;
 

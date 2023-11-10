@@ -30,6 +30,25 @@
                 <!-- form start -->
                 <div class="card-body">
                     <div class="form-group">
+                        <label for="productttId">Product Name</label>
+                        <select id="productttId" name="productttId" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="product : ${dataProd}" th:value="${product.id}" th:text="${product.name}"
+                                    th:selected="${data.productttId == product.id}">
+                                     Select One</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="supId">Supplier Code</label>
+                        <select id="supId" th:name="supId" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="supplier : ${dataSup}" th:value="${supplier.id}" th:text="${supplier.code}"
+                                    th:selected="data.supId == supplier.id">
+                                Select One
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="valueSupplierToDate">Value Sup</label>
                         <input type="text" class="form-control" name="valueSupplierToDate" id="valueSupplierToDate" placeholder="Enter Value Sup" th:value="${data.valueSupplierToDate}">
                     </div>
@@ -73,6 +92,7 @@
                 <!-- CARD BODY  -->
                 <div class="card-footer">
                     <button type="submit" class="btn btn-outline-success">Submit</button>
+                    <a th:href="@{~/productsupplier}" type="submit" class="btn btn-outline-success">Back</a>
                 </div>
             </form>
         </div>

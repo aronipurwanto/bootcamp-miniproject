@@ -30,6 +30,16 @@
                 <!-- form start -->
                 <div class="card-body">
                     <div class="form-group">
+                        <label for="refProductId">Ref Product Code</label>
+                        <select id="refProductId" name="refProductId" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="refproduct : ${dataref}" th:value="${refproduct.id}" th:text="${refproduct.code}"
+                                    th:selected="${product.refProductId == refproduct.id}">Select One</option>
+                        </select>
+
+
+                    </div>
+                    <div class="form-group">
                         <label>Details</label>
                         <input type="text" class="form-control" id="details" name="details" placeholder="Enter Details" th:value="${product.details}">
                     </div>
@@ -49,6 +59,7 @@
                 <!-- card body -->
                 <div class="card-footer">
                     <button type="submit" class="btn btn-outline-success">Submit</button>
+                    <a th:href="@{~/product}" type="submit" class="btn btn-outline-success">Back</a>
                 </div>
             </form>
         </div>

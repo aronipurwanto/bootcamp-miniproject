@@ -34,6 +34,18 @@
                         <input type="text" class="form-control" name="id" id="id" placeholder="Enter id" th:value="${detail.id}">
                     </div>
                     <div class="form-group">
+                        <label for="supplierId">Supplier Code</label>
+                        <input type="text" class="form-control" name="supplierId" id="supplierId" th:value="${detail.supplierCode}">
+                    </div>
+                    <div class="form-group">
+                        <label for="addressid">Address Details</label>
+                        <input type="text" class="form-control" name="addressid" id="addressid" th:value="${detail.addressDetails}">
+                    </div>
+                    <div class="form-group">
+                        <label for="cusaddressId">Cus Address Date From</label>
+                        <input type="text" class="form-control" name="cusaddressId" id="cusaddressId" th:value="${detail.dateFrom}">
+                    </div>
+                    <div class="form-group">
                         <label for="dateTo">Date To</label>
                         <input type="text" class="form-control" name="dateTo" id="dateTo" placeholder="Enter Date To" th:value="${detail.dateTo}">
                     </div>

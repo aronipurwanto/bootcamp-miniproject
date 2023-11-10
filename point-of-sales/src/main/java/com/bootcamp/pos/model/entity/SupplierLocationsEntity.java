@@ -20,6 +20,33 @@ public class SupplierLocationsEntity {
     @Id
     @Column(name = "id")
     private String id;
+    //---------------Relasi ke refProduct------------//
+    @Column(name = "supplier_Code")
+    private String supplierId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "supplier_Code", insertable = false, updatable = false)
+    private SuppliersEntity suppliers;
+    //---------------------------//
+
+
+    //---------------Relasi ke Address------------//
+    @Column(name = "address_detail")
+    private String addressid;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "address_detail", insertable = false, updatable = false)
+    private AddressesEntity addresses;
+    //--------------------------//
+
+    //---------------Relasi ke Cus Address------------//
+    @Column(name = "customer_address_date")
+    private String cusaddressId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name ="customer_address_date", insertable = false, updatable = false)
+    private CustomerAddressEntity customerAddress;
+    //--------------------------//
 
     @Column(name = "date_to")
     private LocalDate dateTo;

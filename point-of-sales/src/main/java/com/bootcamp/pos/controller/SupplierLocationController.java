@@ -1,7 +1,9 @@
 package com.bootcamp.pos.controller;
 
-import com.bootcamp.pos.model.response.ShopBasketResponse;
-import com.bootcamp.pos.model.response.SupplierLocationResponse;
+import com.bootcamp.pos.model.response.*;
+import com.bootcamp.pos.service.AddressesService;
+import com.bootcamp.pos.service.CustomerAddressService;
+import com.bootcamp.pos.service.SupllierService;
 import com.bootcamp.pos.service.SupplierLocationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,9 @@ import java.util.List;
 @RequestMapping("/suploc")
 public class SupplierLocationController {
     private final SupplierLocationService supplierLocationService;
+    private final SupllierService supllierService;
+    private final AddressesService addressesService;
+    private final CustomerAddressService customerAddressService;
     @GetMapping
     public ModelAndView index(){
         ModelAndView view = new ModelAndView("pages/suploc/index");
@@ -29,8 +34,17 @@ public class SupplierLocationController {
         ModelAndView view = new ModelAndView("pages/suploc/add");
 
         List<SupplierLocationResponse> data = supplierLocationService.getAll();
+        view.addObject("dataSupLoc",data);
 
-        view.addObject("suploc",data);
+        List<SupllierResponse> dataSup = supllierService.getAll();
+        view.addObject("dataSup",dataSup);
+
+        List<AddressesResponse> dataAdr = addressesService.getAll();
+        view.addObject("daraAdr",dataAdr);
+
+        List<CustomerAddressResponse> dataCusAdr = customerAddressService.getAll();
+        view.addObject("dataCusAdr" , dataCusAdr);
+
         return view;
     }
 
@@ -39,6 +53,10 @@ public class SupplierLocationController {
         if(request == null){
             return new ModelAndView("redirect:/suploc");
         }
+        if(request.getSupplierId().isEmpty()){
+            return new ModelAndView("redirect:/suploc/add");
+        }
+
         supplierLocationService.save(request);
         return new ModelAndView("redirect:/suploc");
     }
@@ -50,8 +68,19 @@ public class SupplierLocationController {
         if(response == null){
             return new ModelAndView("redirect:/suploc");
         }
-        view.addObject("suploc", response);
+        view.addObject("data",response);
+
+        List<SupllierResponse> dataSup = supllierService.getAll();
+        view.addObject("dataSup",dataSup);
+
+        List<AddressesResponse> dataAdr = addressesService.getAll();
+        view.addObject("dataAdr",dataAdr);
+
+        List<CustomerAddressResponse> dataCusAdr = customerAddressService.getAll();
+        view.addObject("dataCusAdr",dataCusAdr);
         return view;
+
+
     }
     @PostMapping("/update")
     public ModelAndView update(@ModelAttribute SupplierLocationResponse request){

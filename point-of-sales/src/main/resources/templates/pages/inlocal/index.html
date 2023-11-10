@@ -52,6 +52,8 @@
                     <thead>
                     <tr>
                         <th>Location Id</th>
+                        <th>Product Name</th>
+                        <th>Address Detail</th>
                         <th>Quantity</th>
                         <th>Reorder Level</th>
                         <th>Reorder Quantity</th>
@@ -62,6 +64,8 @@
                     </thead>
                     <tr th:each="data : ${dataList}">
                         <td th:text="${data.locationId}"></td>
+                        <td th:text="${data.productName}"></td>
+                        <td th:text="${data.addressDetails}"></td>
                         <td th:text="${data.quantity}"></td>
                         <td th:text="${data.reorderLevel}"></td>
                         <td th:text="${data.reorderQuantity}"></td>

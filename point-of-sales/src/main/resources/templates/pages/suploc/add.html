@@ -28,6 +28,27 @@
                 <input type="hidden" name="id" id="id">
                 <div class="card-body">
                     <div class="form-group">
+                        <label for="supplierId">Supplier Code</label>
+                        <select id="supplierId" name="supplierId" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="supplier : ${dataSup}" th:value="${supplier.id}" th:text="${supplier.code}">Select One</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="addressid">Address Details</label>
+                        <select id="addressid" name="addressid" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="address :${daraAdr}" th:value="${address.id}" th:text="${address.addressDetails}">Select One</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cusaddressId">Cus Addres Date From</label>
+                        <select id="cusaddressId" name="cusaddressId" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="cusaddress :${dataCusAdr}" th:value="${cusaddress.id}" th:text="${cusaddress.dateFrom}">Select One</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="dateTo">Date To</label>
                         <input type="date" class="form-control" name="dateTo" id="dateTo" placeholder="Enter Date To">
                     </div>
@@ -35,6 +56,7 @@
                 <!-- CARD BODY  -->
                 <div class="card-footer">
                     <button type="submit" class="btn btn-outline-success">Submit</button>
+                    <a th:href="@{~/suploc}" type="submit" class="btn btn-outline-success">Back</a>
                 </div>
             </form>
         </div>

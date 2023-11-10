@@ -52,11 +52,17 @@
                     <thead>
                     <tr>
                         <th>id</th>
+                        <th>Supplier Code</th>
+                        <th>Address Detail</th>
+                        <th>CusAddress Date From</th>
                         <th>date To</th>
                     </tr>
                     </thead>
                     <tr th:each=" data : ${dataList}">
                         <td th:text="${data.id}"></td>
+                        <td th:text="${data.supplierCode}"></td>
+                        <td th:text="${data.addressDetails}"></td>
+                        <td th:text="${data.dateFrom}"></td>
                         <td th:text="${data.dateTo}"></td>
                         <td>
                             <a th:href="@{~/suploc/detail/{id}(id=${data.id})}"

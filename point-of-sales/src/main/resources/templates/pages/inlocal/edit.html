@@ -3,12 +3,12 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
 <head>
     <meta charset="UTF-8">
-    <title>RefAddress-Edit</title>
+    <title>Inventory Location-Edit</title>
 </head>
 <body>
 <div class="row-mb-2" layout:fragment="breadcrumb">
     <div class="col-sm-6">
-        <h1 class="m-0">Edit RefAddress</h1>
+        <h1 class="m-0">Edit Inventory Location</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -30,8 +30,24 @@
                 <!-- form start -->
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="quantity">Quantity</label>
-                        <input type="text" class="form-control" name="quantity" id="quantity" placeholder="Enter Quantity" th:value="${data.quantity}">
+                        <label for="productId">Product Name</label>
+                        <select id="productId" name="productId" class="form-control">
+                            <option value="">Select One</option>
+                            <option th:each="product : ${dataProd}" th:value="${product.id}" th:text="${product.name}"
+                            th:selected="${data.productId == product.id}">Select One</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="locaddresId">Detail Address</label>
+                        <select id="locaddresId" name="locaddresId" class="form-control ">
+                            <option value="">Select One</option>
+                            <option th:each="address : ${dataAdr}" th:value="${address.id}" th:text="${address.addressDetails}"
+                            th:selected="${data.locationId == address.id}">Select One</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="text" class="form-control" name="quantity" id="quantity" placeholder="Enter Reorder Level" th:value="${data.quantity}">
                     </div>
                     <div class="form-group">
                         <label>Reorder Level</label>
@@ -54,6 +70,7 @@
                 <!-- card body -->
                 <div class="card-footer">
                     <button type="submit" class="btn btn-outline-success">Submit</button>
+                    <a th:href="@{~/inlocal}" type="submit" class="btn btn-outline-success">Back</a>
                 </div>
             </form>
         </div>

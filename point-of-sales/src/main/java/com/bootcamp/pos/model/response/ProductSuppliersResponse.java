@@ -15,6 +15,12 @@ public class ProductSuppliersResponse {
 
     private String id;
 
+    private String productttId;
+    private String productname;
+
+    private String supId;
+    private String supCode;
+
     private String valueSupplierToDate;
 
     private String totalQtySupplier;
@@ -37,5 +43,13 @@ public class ProductSuppliersResponse {
 
     public ProductSuppliersResponse(ProductSuppliersEntity entity) {
         BeanUtils.copyProperties(entity, this);
+        if(entity.getProduct() != null){
+            productttId = entity.getProductttId();
+            productname = entity.getProduct().getName();
+        }
+        if(entity.getSuppliers() !=null){
+            supId = entity.getSupId();
+            supCode = entity.getSuppliers().getCode();
+        }
     }
 }

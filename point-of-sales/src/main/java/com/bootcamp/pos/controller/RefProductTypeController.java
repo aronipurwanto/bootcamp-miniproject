@@ -12,7 +12,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/refproduct")
-public class RefProductTypeController {
+public class    RefProductTypeController {
     private final RefProductTypeService refProductTypeService;
 
     @GetMapping
@@ -37,6 +37,9 @@ public class RefProductTypeController {
     public ModelAndView save(@ModelAttribute RefProductTypeResponse request){
         if(request == null){
             return new ModelAndView("redirect:/refproduct");
+        }
+        if(request.getCode().isEmpty()){
+            return new ModelAndView("redirect:/refproduct/add");
         }
         refProductTypeService.save(request);
         return new ModelAndView("redirect:/refproduct");

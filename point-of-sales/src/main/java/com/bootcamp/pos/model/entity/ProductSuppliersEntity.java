@@ -21,7 +21,23 @@ public class ProductSuppliersEntity {
     @Id
     @Column(name = "id")
     private String id;
+    //---------------Relasi ke product------------//
+    @Column(name = "product_name")
+    private String productttId;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name ="product_name", insertable = false, updatable = false)
+    private ProductEntity product;
+    //---------------------------//
+
+    //---------------Relasi ke product------------//
+    @Column(name = "supplier_code")
+    private String supId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "supplier_code", insertable = false, updatable = false)
+    private SuppliersEntity suppliers;
+    //---------------------------//
     @Column(name = "value_supplied_to_date")
     private String valueSupplierToDate;
 

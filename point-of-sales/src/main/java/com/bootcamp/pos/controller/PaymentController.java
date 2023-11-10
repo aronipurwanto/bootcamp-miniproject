@@ -41,6 +41,9 @@ public class PaymentController {
         if(request == null){
             return new ModelAndView("redirect:/payment");
         }
+        if(request.getCode().isEmpty()){
+            return new ModelAndView("redirect:/payment/add");
+        }
         refPaymentService.save(request);
         return new ModelAndView("redirect:/payment");
     }

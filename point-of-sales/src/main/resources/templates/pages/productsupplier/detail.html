@@ -28,8 +28,16 @@
                 <!-- form start -->
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="id">Value Sup</label>
+                        <label for="id">Id</label>
                         <input type="text" class="form-control" name="id" id="id" placeholder="Enter Id" th:value="${data.id}">
+                    </div>
+                    <div class="form-group">
+                        <label for="productttId">Product Name</label>
+                        <input type="text" class="form-control" id="productttId" name="productttId" th:value="${data.productname}">
+                    </div>
+                    <div class="form-group">
+                        <label for="supId">Supplier Code</label>
+                        <input type="text" class="form-control" id="supId" name="supId" th:value="${data.supCode}">
                     </div>
                     <div class="form-group">
                         <label for="valueSupplierToDate">Value Sup</label>

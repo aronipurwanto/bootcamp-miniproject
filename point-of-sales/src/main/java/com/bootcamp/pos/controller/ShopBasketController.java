@@ -48,6 +48,9 @@ public class ShopBasketController {
         if(request == null){
             return new ModelAndView("redirect:/shopbasket");
         }
+        if(request.getTotalCost().isEmpty()){
+            return new ModelAndView("redirect:/shopbasket/add");
+        }
         shopBasketService.save(request);
         return new ModelAndView("redirect:/shopbasket");
     }

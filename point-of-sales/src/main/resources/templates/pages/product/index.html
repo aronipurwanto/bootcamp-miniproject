@@ -52,6 +52,7 @@
                     <thead>
                     <tr>
                         <th>id</th>
+                        <th>Ref Product Code</th>
                         <th>Details</th>
                         <th>Name</th>
                         <th>Price</th>
@@ -61,6 +62,7 @@
                     </thead>
                     <tr th:each=" data : ${dataList}">
                         <td th:text="${data.id}"></td>
+                        <td th:text="${data.code}"></td>
                         <td th:text="${data.details}"></td>
                         <td th:text="${data.name}"></td>
                         <td th:text="${data.price}">

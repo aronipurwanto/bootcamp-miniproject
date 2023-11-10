@@ -53,6 +53,8 @@
                     <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Product Name</th>
+                        <th>Supplier Code</th>
                         <th>Value Sup</th>
                         <th>Total Quantity</th>
                         <th>Frst Item Sup Date</th>
@@ -68,6 +70,8 @@
                     </thead>
                     <tr th:each=" data : ${dataList}">
                         <td th:text="${data.id}"></td>
+                        <td th:text="${data.productname}"></td>
+                        <td th:text="${data.supCode}"></td>
                         <td th:text="${data.valueSupplierToDate}"></td>
                         <td th:text="${data.totalQtySupplier}"></td>
                         <td th:text="${data.fitsItemSupDate}"></td>
