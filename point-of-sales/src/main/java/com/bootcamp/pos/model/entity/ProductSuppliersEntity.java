@@ -38,34 +38,34 @@ public class ProductSuppliersEntity {
     @JoinColumn(name = "supplier_code", insertable = false, updatable = false)
     private SuppliersEntity suppliers;
     //---------------------------//
-    @Column(name = "value_supplied_to_date")
+    @Column(name = "value_supplied")
     private String valueSupplierToDate;
 
-    @Column(name = "total_quantity_supplied_to_date")
+    @Column(name = "quantity_supplied")
     private String totalQtySupplier;
 
-    @Column(name = "first_item_supplied_date")
+    @Column(name = "first_supplied")
     private String fitsItemSupDate;
 
-    @Column(name = "last_item_supplied_date")
+    @Column(name = "last_supplied")
     private String lastItemSupDate;
 
-    @Column(name = "delivery_lead_time")
+    @Column(name = "delivery")
     private String deliveryLeadTime;
 
     @Column(name = "standart_price")
     private String standartPrice;
 
-    @Column(name = "percentage_discount")
+    @Column(name = "discount")
     private String percentDiscount;
 
-    @Column(name = "min_order_quantity")
+    @Column(name = "min_order")
     private String maxOrderQty;
 
-    @Column(name = "max_order_quantity")
+    @Column(name = "max_order")
     private String minOrderQty;
 
-    @Column(name = "other_ite,_suppliers_details")
+    @Column(name = "other_details")
     private String itemSupDetails;
 
     public ProductSuppliersEntity(ProductSuppliersResponse response) {
