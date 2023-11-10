@@ -81,6 +81,15 @@ public class SuppliersLocationsController {
 
     @PostMapping("/update")
     public ModelAndView update(@ModelAttribute SupplierLocationsModel request){
+        if (request == null){
+            return new ModelAndView("pages/supplier-locations/edit/"+ request.getId());
+        }
+        if (request.getDateFrom() == null){
+            return new ModelAndView("pages/supplier-locations/edit/"+ request.getId());
+        }
+        if (request.getDateTo() == null){
+            return new ModelAndView("pages/supplier-locations/edit/"+ request.getId());
+        }
         // memanggil dari service
         this.supplierLocationsService.update(request, request.getId());
         // data krim ke view

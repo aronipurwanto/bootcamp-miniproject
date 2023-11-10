@@ -92,6 +92,12 @@ public class ProductsSuppliersController {
         if (request == null){
             return new ModelAndView("redirect:/products-suppliers/edit/"+ request.getId());
         }
+        if (request.getTotalQtySupToDate().isEmpty()){
+            return new ModelAndView("redirect:/products-suppliers/edit/"+ request.getId());
+        }
+        if (request.getItemSuppliersDetails().isEmpty()){
+            return new ModelAndView("redirect:/product-suppliers/edit/"+ request.getId());
+        }
         // memanggil save dari service
         this.productSuppliersService.update(request, request.getId());
         // redirect ke index

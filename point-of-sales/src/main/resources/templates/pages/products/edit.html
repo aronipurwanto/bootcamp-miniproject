@@ -36,7 +36,7 @@
                         <option value="">select one</option>
                         <option th:each="productType: ${dataProductType}"
                                 th:value="${productType.id}"
-                                th:text="${productType.productTypeCode}"
+                                th:text="|${productType.productTypeCode} - ${productType.description}|"
                                 th:selected="${dataProducts.productTypeId == productType.id}">
                         </option>
                     </select>

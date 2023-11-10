@@ -49,7 +49,7 @@
                             <option value="">select one</option>
                             <option th:each="suppliers: ${dataSuppliers}"
                                     th:value="${suppliers.id}"
-                                    th:text="${suppliers.supplierCode}">
+                                    th:text="|${suppliers.supplierCode} - ${suppliers.supplierDetails}|">
                             </option>
                         </select>
                     </div>

@@ -63,7 +63,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="data: ${listDataProducts}">
-                        <td th:text="${data.productType.productTypeCode}"></td>
+                        <td th:text="|${data.productType.productTypeCode} - ${data.productType.description}|"></td>
                         <td th:text="${data.productDetails}"></td>
                         <td th:text="${data.productName}"></td>
                         <td th:text="${data.productPrice}"></td>

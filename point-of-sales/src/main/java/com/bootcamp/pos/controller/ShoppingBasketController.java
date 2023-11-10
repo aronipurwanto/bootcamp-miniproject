@@ -81,6 +81,18 @@ public class ShoppingBasketController {
 
     @PostMapping("/update")
     public ModelAndView update(@ModelAttribute ShoppingBasketModel request){
+        if (request == null){
+            return new ModelAndView("pages/shopping-basket/edit/"+ request.getId());
+        }
+        if (request.getBasketDatetime() == null){
+            return new ModelAndView("pages/shopping-basket/edit/"+ request.getId());
+        }
+        if (request.getTotalCost() == null){
+            return new ModelAndView("pages/shopping-basket/edit/"+ request.getId());
+        }
+        if (request.getBasketDetail() == null){
+            return new ModelAndView("pages/shopping-basket/edit/"+ request.getId());
+        }
         // memanggil dari service
         this.shoppingBasketService.update(request, request.getId());
         // data krim ke view

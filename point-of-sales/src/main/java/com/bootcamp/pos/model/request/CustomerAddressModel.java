@@ -16,10 +16,9 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class CustomerAddressModel {
     private String id;
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private LocalDate dateFrom;
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private LocalDate dateTo;
+
+    private String supLocId;
+    private SupplierLocationsModel supplierLocations;
 
     private String customerId;
     private CustomerRequest customer;
@@ -29,6 +28,8 @@ public class CustomerAddressModel {
 
     private String addressTypeId;
     private AddressTypeModel addressType;
+    @DateTimeFormat(pattern = "yyyy-dd-mm")
+    private LocalDate dateTo;
 
     public CustomerAddressModel(CustomerAddressEntity entity) {
         BeanUtils.copyProperties(entity, this);
@@ -44,6 +45,10 @@ public class CustomerAddressModel {
         if (entity.getAddressType() != null){
             this.addressTypeId = entity.getAddressType().getId();
             this.addressType = new AddressTypeModel(entity.getAddressType());
+        }
+        if (entity.getSupplierLocations() != null){
+            this.supLocId = entity.getSupplierLocations().getId();
+            this.supplierLocations = new SupplierLocationsModel(entity.getSupplierLocations());
         }
     }
 }

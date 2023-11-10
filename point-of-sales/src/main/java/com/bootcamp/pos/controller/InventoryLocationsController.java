@@ -87,6 +87,15 @@ public class InventoryLocationsController {
 
     @PostMapping("/update")
     public ModelAndView update(@ModelAttribute InventoryLocationsModel request){
+        if (request == null){
+            return new ModelAndView("pages/inventory-locations/edit/"+ request.getId());
+        }
+        if (request.getQtyInStock() == null){
+            return new ModelAndView("pages/inventory-locations/edit/"+ request.getId());
+        }
+        if (request.getInventoryDetails() == null){
+            return new ModelAndView("pages/inventory-locations/edit/"+ request.getId());
+        }
         // memanggil data dari service
         this.inventoryLocationsService.update(request, request.getId());
         // send to view

@@ -20,11 +20,15 @@ public class CustomerAddressEntity {
     @Column(name = "customer_address_id")
     private String id;
 
-    @Column(name = "date_form")
-    private LocalDate dateFrom;
-
     @Column(name = "date_to")
     private LocalDate dateTo;
+
+    @Column(name = "sup_loc_id")
+    private String supLocId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "sup_loc_id", insertable = false, updatable = false)
+    private SupplierLocationsEntity supplierLocations;
 
     @Column(name = "address_type_id")
     private String addressTypeId;

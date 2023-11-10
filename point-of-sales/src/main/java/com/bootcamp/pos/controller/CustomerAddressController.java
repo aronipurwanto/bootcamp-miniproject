@@ -1,13 +1,7 @@
 package com.bootcamp.pos.controller;
 
-import com.bootcamp.pos.model.request.AddressModel;
-import com.bootcamp.pos.model.request.AddressTypeModel;
-import com.bootcamp.pos.model.request.CustomerAddressModel;
-import com.bootcamp.pos.model.request.CustomerRequest;
-import com.bootcamp.pos.service.AddressService;
-import com.bootcamp.pos.service.AddressTypeService;
-import com.bootcamp.pos.service.CustomerAddressService;
-import com.bootcamp.pos.service.CustomerService;
+import com.bootcamp.pos.model.request.*;
+import com.bootcamp.pos.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +17,7 @@ public class CustomerAddressController {
     private final CustomerService customerService;
     private final AddressService addressService;
     private final AddressTypeService addressTypeService;
+    private final SupplierLocationsService supplierLocationsService;
 
     @GetMapping
     public ModelAndView index(){
@@ -43,13 +38,14 @@ public class CustomerAddressController {
         List<AddressModel> address = this.addressService.getAll();
         // ambil data dari service address type
         List<AddressTypeModel> addressType = this.addressTypeService.getAll();
+        // ambil data dari service supplier locations
+        List<SupplierLocationsModel> supplierLocations = this.supplierLocationsService.getAll();
 
         // kirim data ke view
         view.addObject("dataCustomer", customer);
-        // kirim data ke view
         view.addObject("dataAddress", address);
-        // kirim data ke view
         view.addObject("dataAddressType", addressType);
+        view.addObject("dataSuplierLocs", supplierLocations);
 
         return view;
     }
@@ -59,7 +55,7 @@ public class CustomerAddressController {
         if (request == null){
             return new ModelAndView("pages/customer-address/add");
         }
-        if (request.getDateFrom() == null){
+        if (request.getDateTo() == null){
             return new ModelAndView("pages/customer-address/add");
         }
         // memanggil data save dari service
@@ -81,20 +77,26 @@ public class CustomerAddressController {
         List<AddressModel> address = this.addressService.getAll();
         // ambil data dari service address type
         List<AddressTypeModel> addressType = this.addressTypeService.getAll();
+        // ambil data dari service supplier locs
+        List<SupplierLocationsModel> supplierLocations = this.supplierLocationsService.getAll();
 
         // kirim data ke view
         view.addObject("dataCustomer", customer);
-        // kirim data ke view
         view.addObject("dataAddress", address);
-        // kirim data ke view
         view.addObject("dataAddressType", addressType);
-        // kirim data ke view
+        view.addObject("dataSuplierLocs", supplierLocations);
         view.addObject("customerAddressList", model);
         return view;
     }
 
     @PostMapping("/update")
     public ModelAndView update(@ModelAttribute CustomerAddressModel request){
+        if (request == null){
+            return new ModelAndView("pages/customer-address/edit/"+ request.getId());
+        }
+        if (request.getDateTo() == null){
+            return new ModelAndView("pages/customer-address/edit/"+ request.getId());
+        }
         // memangil data dari service
         this.customerAddressService.update(request, request.getId());
         // send to view

@@ -67,8 +67,15 @@
                         </select></div>
 
                     <div class="form-group">
-                        <label>Date From</label>
-                        <input class="form-control" type="date" name="dateFrom" id="dateFrom" th:value="${customerAddressList.dateFrom}">
+                        <label for="supLocId">Date From</label>
+                        <select class="form-control" name="supLocId" id="supLocId">
+                            <option value="">select one</option>
+                            <option th:each="suploc: ${dataSuplierLocs}"
+                                    th:value="${suploc.id}"
+                                    th:text="${suploc.dateFrom}"
+                                    th:selected="${customerAddressList.supLocId == suploc.id}">
+                            </option>
+                        </select>
                     </div>
 
                     <div class="form-group">
