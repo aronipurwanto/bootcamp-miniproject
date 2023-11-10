@@ -2,15 +2,15 @@
 <html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/login}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
 </head>
 <body>
 <!-- /.login-logo -->
-<div layout:fragment="content" class="card card-outline card-blue">
-    <div class="card-header text-blue">
+<div layout:fragment="content" class="card card-outline bg-gradient-light">
+    <div class="card-header text-center bg-gradient-blue">
        <img th:src="@{~/dist/img/penjualan.jpg}" alt="Kampus Siakad Logo" class="brand-image img-bordered-sm elevation-3"
              style="width: 50px">
-        <a th:href="@{~/home}" class="h3"><b>Point Of Sales</b></a>
+        <a th:href="@{~/home}" class="h4"><b>Point Of Sales</b></a>
     </div>
     <div class="card-body">
         <p class="login-box-msg">Sign in to start your session</p>
@@ -19,7 +19,7 @@
             <div class="input-group mb-3">
                 <input type="email" class="form-control" placeholder="Email" name="username">
                 <div class="input-group-append">
-                    <div class="input-group-text">
+                    <div class="input-group-text bg-gradient-blue">
                         <span class="fas fa-envelope"></span>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
             <div class="input-group mb-3">
                 <input type="password" class="form-control" placeholder="Password" name="password">
                 <div class="input-group-append">
-                    <div class="input-group-text">
+                    <div class="input-group-text bg-gradient-blue">
                         <span class="fas fa-lock"></span>
                     </div>
                 </div>

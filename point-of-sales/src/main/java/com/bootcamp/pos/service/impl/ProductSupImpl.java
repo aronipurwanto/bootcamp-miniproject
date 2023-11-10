@@ -82,6 +82,7 @@ public class ProductSupImpl implements ProductSupService {
     public Optional<ProductSupplierRequest> delete(String id) {
         ProductSupplierEntity entity = productSupRepository.findById(id).orElse(null);
         if (entity == null){
+            log.warn("Delete product supplier with id not found : {}", id);
             return Optional.empty();
         }
 

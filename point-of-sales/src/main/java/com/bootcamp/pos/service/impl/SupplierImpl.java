@@ -20,7 +20,9 @@ public class SupplierImpl implements SupplierService {
     private final SupplierRepository supplierRepository;
     @Override
     public List<SupplierRequest> getAll() {
-        return supplierRepository.findAll().stream().map(SupplierRequest::new).collect(Collectors.toList());
+        return supplierRepository.findAll().stream()
+                .map(SupplierRequest::new)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -28,7 +30,9 @@ public class SupplierImpl implements SupplierService {
         if (id == null){
             return null;
         }
-        return supplierRepository.findById(id).map(SupplierRequest::new).orElse(null);
+        return supplierRepository.findById(id)
+                .map(SupplierRequest::new)
+                .orElse(null);
     }
 
     @Override
@@ -68,6 +72,7 @@ public class SupplierImpl implements SupplierService {
     public Optional<SupplierRequest> delete(String id) {
         SupplierEntity entity = supplierRepository.findById(id).orElse(null);
         if (entity == null){
+            log.warn("Delete supplier with id not found : {}", id);
             return Optional.empty();
         }
         try {

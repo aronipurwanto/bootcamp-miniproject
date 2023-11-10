@@ -83,6 +83,7 @@ public class ShoppingBasketImpl implements ShoppingBasketService {
     public Optional<ShoppingBasketRequest> delete(String id) {
         ShoppingBasketEntity entity = shoppingBasketRepository.findById(id).orElse(null);
         if (entity == null){
+            log.warn("Delete shopping basket with id not found : {}", id);
             return Optional.empty();
         }
 

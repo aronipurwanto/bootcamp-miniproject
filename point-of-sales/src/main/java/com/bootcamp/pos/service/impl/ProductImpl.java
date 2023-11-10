@@ -76,6 +76,7 @@ public class ProductImpl implements ProductService {
     public Optional<ProductRequest> delete(String id) {
         ProductEntity entity = productRepository.findById(id).orElse(null);
         if (entity == null){
+            log.warn("Delete product with id not found : {}", id);
             return Optional.empty();
         }
         try {

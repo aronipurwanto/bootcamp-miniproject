@@ -83,6 +83,7 @@ public class SupplierLocationImpl implements SupplierLocationService {
     public Optional<SupplierLocationRequest> delete(String id) {
         SupplierLocationEntity entity = supplierLocationRepository.findById(id).orElse(null);
         if (entity == null){
+            log.warn("Delete supplier location with id not found : {}", id);
             return Optional.empty();
         }
 

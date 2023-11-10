@@ -74,6 +74,7 @@ public class BasketItemImpl implements BasketItemService {
     public Optional<BasketItemRequest> delete(String id) {
         BasketItemEntity entity = basketItemRepository.findById(id).orElse(null);
         if (entity == null){
+            log.warn("Delete basket item with id not found : {}", id);
             return Optional.empty();
         }
 

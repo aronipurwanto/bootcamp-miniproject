@@ -83,6 +83,7 @@ public class InventoryLocationImpl implements InventoryLocationService {
     public Optional<InventoryLocationRequest> delete(String id) {
         InventoryLocationsEntity entity = inventoryLocationRepository.findById(id).orElse(null);
         if (entity == null){
+            log.warn("Delete inventory with id not found : {}", id);
             return Optional.empty();
         }
 

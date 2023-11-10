@@ -41,6 +41,7 @@ public class CustomerImpl implements CustomerService {
         if (request == null){
             return Optional.empty();
         }
+
         RefPaymentEntity payment = refPaymentRepository.findById(request.getPaymentId()).orElse(null);
         if (payment == null){
             return Optional.empty();

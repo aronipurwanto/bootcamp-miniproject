@@ -59,6 +59,7 @@ public class RefProductImpl implements RefProductService {
     public Optional<RefProductRequest> update(RefProductRequest request, String id) {
         RefProductEntity entity = refProductRepository.findById(id).orElse(null);
         if (entity == null){
+            log.warn("Delete ref product with id not found : {}", id);
             return Optional.empty();
         }
 

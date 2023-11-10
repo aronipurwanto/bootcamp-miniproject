@@ -20,7 +20,9 @@ public class RefPaymentImpl implements RefPaymentService {
     private final RefPaymentRepository refPaymentRepository;
     @Override
     public List<RefPaymentRequest> getAll() {
-        return refPaymentRepository.findAll().stream().map(RefPaymentRequest::new).collect(Collectors.toList());
+        return refPaymentRepository.findAll().stream()
+                .map(RefPaymentRequest::new)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -28,7 +30,9 @@ public class RefPaymentImpl implements RefPaymentService {
         if (id == null){
             return null;
         }
-        return refPaymentRepository.findById(id).map(RefPaymentRequest::new).orElse(null);
+        return refPaymentRepository.findById(id)
+                .map(RefPaymentRequest::new)
+                .orElse(null);
     }
 
     @Override
@@ -70,6 +74,7 @@ public class RefPaymentImpl implements RefPaymentService {
     public Optional<RefPaymentRequest> delete(String id) {
         RefPaymentEntity entity = refPaymentRepository.findById(id).orElse(null);
         if (entity == null){
+            log.warn("Delete ref payment with id not found : {}", id);
             return Optional.empty();
         }
 

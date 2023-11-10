@@ -69,6 +69,7 @@ public class AddressImpl implements AddressService {
     public Optional<AddressRequest> delete(String id) {
         AddressEntity entity = addressRepository.findById(id).orElse(null);
         if (entity == null){
+            log.warn("Delete Address with id not found : {}", id);
             return Optional.empty();
         }
         try {

@@ -20,7 +20,9 @@ public class RefAddressImpl implements RefAddressService {
     private final RefAddressRepository refAddressRepository;
     @Override
     public List<RefAddressRequest> getAll() {
-        return refAddressRepository.findAll().stream().map(RefAddressRequest::new).collect(Collectors.toList());
+        return refAddressRepository.findAll().stream()
+                .map(RefAddressRequest::new)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -28,7 +30,9 @@ public class RefAddressImpl implements RefAddressService {
         if (id == null){
             return null;
         }
-        return refAddressRepository.findById(id).map(RefAddressRequest::new).orElse(null);
+        return refAddressRepository.findById(id)
+                .map(RefAddressRequest::new)
+                .orElse(null);
     }
 
     @Override
@@ -70,6 +74,7 @@ public class RefAddressImpl implements RefAddressService {
     public Optional<RefAddressRequest> delete(String id) {
         RefAddressEntity entity = refAddressRepository.findById(id).orElse(null);
         if (entity == null){
+            log.warn("Delete ref address with id not found : {}", id);
             return Optional.empty();
         }
 

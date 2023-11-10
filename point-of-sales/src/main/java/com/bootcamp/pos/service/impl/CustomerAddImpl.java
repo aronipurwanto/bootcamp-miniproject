@@ -78,6 +78,7 @@ public class CustomerAddImpl implements CustomerAddService {
     public Optional<CustomerAddRequest> delete(String id) {
         CustomerAddressEntity entity = customerAddRepository.findById(id).orElse(null);
         if (entity == null){
+            log.warn("Delete customerAdd with id not found : {}", id);
             return Optional.empty();
         }
         try {
