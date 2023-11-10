@@ -15,6 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RequestMapping("/address")
 public class AddressesController {
+    // inject from service
     private final AddressesService addressesService;
     @GetMapping
     public ModelAndView index(){
